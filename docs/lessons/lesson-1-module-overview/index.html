@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="author" content="Jarrod J Scott">
+<meta name="dcterms.date" content="2024-01-01">
+<meta name="description" content="In the first lesson, we provide an overview for this module of the course. We cover the main objectives &amp; expectations, introduce the various tools we will use, &amp; layout some of the motivation and rationale for the module.">
+<title>Quarto Fieldguide - Lesson 1: Module 🦉 Overview</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../images/favicon_package/favicon.ico" rel="icon">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><link rel="stylesheet" href="../../../assets/css/styles.css">
+</head>
+<body class="floating nav-fixed slimcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../images/icon.png" alt="" class="navbar-logo"></a>
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Quarto Fieldguide</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-lessons" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Lessons</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-lessons">
+<li>
+    <a class="dropdown-item" href="../../../docs/lessons/index.html" rel="" target="">
+ <span class="dropdown-text">Main Page</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../docs/lessons/lesson-1-module-overview/index.html" rel="" target="">
+ <span class="dropdown-text">Lesson 1</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../docs/lessons/lesson-2-build-your-working-environment/index.html" rel="" target="">
+ <span class="dropdown-text">Lesson 2</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../docs/lessons/lesson-3-build-a-basic-site/index.html" rel="" target="">
+ <span class="dropdown-text">Lesson 3</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../docs/lessons/lesson-4-markdown-guidebook/index.html" rel="" target="">
+ <span class="dropdown-text">Lesson 4</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../docs/lessons/lesson-5-markdown-meet-r/index.html" rel="" target="">
+ <span class="dropdown-text">Lesson 5</span></a>
+  </li>  
+    </ul>
+</li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../../docs/lessons/index.html" rel="" target="">
+ <span class="menu-text">Lessons</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+</ul>
+<div class="quarto-navbar-tools">
+    <div class="dropdown">
+      <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label=""><i class="bi bi-github"></i></a>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="quarto-navigation-tool-dropdown-0">
+<li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/stri-mcgill-neo/2024/">
+            Source Code
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/stri-mcgill-neo/2024/issues/new">
+            Report an Issue
+            </a>
+          </li>
+      </ul>
+</div>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full"><div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Lesson 1: Module 🦉 Overview</h1>
+                  <div>
+        <div class="description">
+          <p>In the first lesson, we provide an overview for this module of the course. We cover the main objectives &amp; expectations, introduce the various tools we will use, &amp; layout some of the motivation and rationale for the module.</p>
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">news</div>
+                <div class="quarto-category">code</div>
+                <div class="quarto-category">analysis</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Jarrod J Scott </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">January 1, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto"><nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Contents</h2>
+   
+  <ul class="collapse">
+<li>
+<a href="#overview-objectives" id="toc-overview-objectives" class="nav-link active" data-scroll-target="#overview-objectives">Overview &amp; Objectives</a>
+  <ul class="collapse">
+<li><a href="#what-is-a-web-product" id="toc-what-is-a-web-product" class="nav-link" data-scroll-target="#what-is-a-web-product">What is a web product?</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#motivation" id="toc-motivation" class="nav-link" data-scroll-target="#motivation">Motivation</a>
+  <ul class="collapse">
+<li><a href="#why-a-web-product" id="toc-why-a-web-product" class="nav-link" data-scroll-target="#why-a-web-product">Why a web product?</a></li>
+  <li><a href="#why-r-rstudio-r-markdown" id="toc-why-r-rstudio-r-markdown" class="nav-link" data-scroll-target="#why-r-rstudio-r-markdown">Why R, RStudio, &amp; R Markdown?</a></li>
+  <li><a href="#why-distill" id="toc-why-distill" class="nav-link" data-scroll-target="#why-distill">Why Distill?</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#expectations" id="toc-expectations" class="nav-link" data-scroll-target="#expectations">Expectations</a>
+  <ul class="collapse">
+<li><a href="#student-role" id="toc-student-role" class="nav-link" data-scroll-target="#student-role">Student role</a></li>
+  <li><a href="#instructor-role" id="toc-instructor-role" class="nav-link" data-scroll-target="#instructor-role">Instructor role</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#housekeeping" id="toc-housekeeping" class="nav-link" data-scroll-target="#housekeeping">Housekeeping</a>
+  <ul class="collapse">
+
+  </ul>
+</li>
+  </ul><div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/stri-mcgill-neo/2024/edit/main/docs/lessons/lesson-1-module-overview/index.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/stri-mcgill-neo/2024/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+</nav><div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content">
+<div class="no-row-height column-margin column-container"><div class="">
+<p>Estimated reading time: 16 minute(s).</p>
+</div></div><section id="overview-objectives" class="level1"><h1>Overview &amp; Objectives</h1>
+<p>Welcome to the Data Curation/Quarto module of the STRI-McGill 2024 course on Neotropical Biology, Environments, and Conservation (BIOL 640/553) &amp; Foundations of Environmental Policy (ENVR 610). This module is meant as a complement for the rest of the curriculum and our main goals here are two-fold. First, is to <strong>create interactive, data-driven, web products</strong> that capture analytical workflows, raw data, and data outputs. Second is to give you the tools, motivation, and inspiration to make your science more <strong>accessible</strong>, <strong>transparent</strong>, and <strong>reproducible</strong>.</p>
+<blockquote class="blockquote">
+<p>If you have not already done so, please read the short post on <a href="../using-this-site/index.html">Using this Site</a> before continuing.</p>
+</blockquote>
+<p>We will use <a href="https://quarto.org/">Quarto</a>–an open-source scientific and technical publishing system to build our web products. This site itself is not only the guidebook for your web products but is also <strong><em>created with the same tools you will use for your projects</em></strong>. More on that below.</p>
+<p>In this module of the course, we will learn how to:</p>
+<ol type="1">
+<li><p>Set up a working environment by installing <a href="https://www.r-project.org/">R</a>, <a href="https://www.rstudio.com/">RStudio</a>, <a href="https://quarto.org/">Quarto</a>, and various R packages (e.g., <a href="https://cran.r-project.org/web/packages/knitr/index.html">knitr</a>, <a href="https://www.tidyverse.org/">tidyverse</a>, <a href="https://glin.github.io/reactable/">reactable</a>).</p></li>
+<li><p>Render interactive data tables, figures, graphics, maps, diagrams, and more.</p></li>
+<li><p>Troubleshoot problems using effective web searches, <a href="https://github.com/">GitHub</a> repositories, forums like <a href="https://stackoverflow.com/">Stack Overflow</a>, and of course, our wit.</p></li>
+<li><p>Reference other works and create citeable articles.</p></li>
+<li><p>(if there is interest) Use <a href="https://git-scm.com/">git</a> and <a href="https://pages.github.com/">GitHub Pages</a> for hosting our work (<strong>this is not a requirement of the course</strong>).</p></li>
+</ol>
+<section id="what-is-a-web-product" class="level2"><h2 class="anchored" data-anchor-id="what-is-a-web-product">What is a web product?</h2>
+<p>Ok, first things first. What do we mean by a <strong><em>web product</em></strong>? Well, for the purposes of this module, we consider a web product to be, primarily, a collection of HTML documents that can be opened with a browser like Chrome, Firefox, etc. That doesn’t necessarily mean that it needs to be <em>hosted on the web</em>, just that anyone can access the information without installing special software or understanding specific tools.</p>
+<blockquote class="blockquote">
+<p>It is NOT a requirement of this course to publish your web product online.</p>
+</blockquote>
+<p>Furthermore, we will use R Markdown and the Distill framework to create what are called <strong>static</strong> (as opposed to <strong>dynamic</strong>) web products. The difference is straightforward. <em>Dynamic</em> <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> means that anytime a page loads, the content and look are tailored to the user, like Facebook or Twitter. <em>Static</em> means that everyone who visits the site sees the same thing.</p>
+<p>Just because your web product is <em>static</em> does not mean it will be dull. Unlike PDF documents, your web products will have dynamic, interactive components like tables, figures, maps, and so on. Consider this example of Supplementary Material that we submitted for a recent paper. Here is the <a href="files/Johnson_Supplementary_PDF.pdf">pdf version</a> (written in R Markdown &amp; <a href="https://www.latex-project.org/">LaTeX</a>) and here is the <a href="https://hypocolypse.github.io/som.html">HTML version</a>. While the content of the two documents are identical, their functionalities are not. The first thing to notice is that most of the data tables in the PDF document (called <em>Supplementary Data</em>) were too big to fit in the document and instead are uploaded as separate, stand-alone, text files to the journal’s website. On the other hand, in the HTML version, every data table is embedded in the document.</p>
+<p>Go ahead and check out the <a href="https://hypocolypse.github.io/som.html#content-description">Content Description</a> section and click on any of the links that say <strong>Supplementary Data</strong>. Supplementary Data 2 for example has 13 columns and 911 rows, far to large to fit (comfortably) in a PDF document. Have a look at <a href="https://hypocolypse.github.io/som.html#supplementary-data-3">Supplementary Data 3</a>. Notice that you can copy or download the contents of the table, sort, search (try searching for <em>invertebrate</em>), and expand the full table (under <strong>Show entries</strong>, select <em>All</em>). This table even contains hyperlinks that lead to other important information. Go ahead and click on one of the links. Moving on.</p>
+</section></section><section id="motivation" class="level1 page-columns page-full"><h1>Motivation</h1>
+<p>Next, I want take a moment to explore some of the motivation and rationale behind this module of the course. In subsequent lessons we get into more specific details on many of these topics, but for now let’s just stick with the high level stuff.</p>
+<section id="why-a-web-product" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="why-a-web-product">Why a web product?</h2>
+<p>Good question. For me the answer is Open Science—a movement to make scientific research (including publications, data, physical samples, and software) and its dissemination <em>accessible to all levels of society</em>, amateur or professional <span class="citation" data-cites="woelfle2011open">(<a href="#ref-woelfle2011open" role="doc-biblioref">Woelfle, Olliaro, and Todd 2011</a>)</span>. Creating a web product can help make your science more <strong>accessible</strong>, <strong>transparent</strong>, and <strong>reproducible</strong>.</p>
+<p>Consider that many journals and journal articles sit behind pay walls that most people can’t access without paying an unreasonable price. That sucks, and while people are pushing back against this paradigm, for now this is the reality. We do our best to publish open access articles but sometimes this is not possible. A webpage allows you to share your science with a wider audience. By and large, journal articles are highly technical documents. There is nothing wrong with this; it is just the nature of the medium. But this can make the information inaccessible to non-experts. By also presenting your work as a web product you have the opportunity to tell the story behind the science, which can have important outreach implications <span class="citation" data-cites="forrester2017next">(<a href="#ref-forrester2017next" role="doc-biblioref">Forrester 2017</a>)</span>.</p>
+<p>A typical journal article is just a few pages, but we all know that a lot more goes into a study than what we usually see in print. Even with extensive Supplementary Material, authors are limited by what they can include in their publication. With a web product you are liberated from these limitations. A webpage gives you a venue to discuss all of the stuff that didn’t make it into your publication and to tell a more complete story of your science. Do you have a gallery of photos from your fieldwork? What about a bunch of statistical tests you tried that didn’t work? Or some personal thoughts on the system you study? In most cases this information would be inappropriate for a journal article but it is still useful and interesting information to share.</p>
+<p>I think it is an important obligation of all scientists is to make their studies transparent and reproducible. If you publish a study I should––with minimal effort––be able to find your data, carry out the same analyses, and reach the same conclusions. There should be no mystery. Sadly, this is not always the case. In my own field of microbial ecology, it can be a daunting task to find raw data from other studies and even harder to figure out exactly how the data was analyzed. Without proper documentation, you may even forget how you did something. Here is a sobering quote from a Nature News Feature from about results of a survey given to to 1,500 scientists on the state of reproducible science.</p>
+<blockquote class="blockquote">
+<p><span style="color: steelblue;"><i class="fa-solid fa-quote-left fa-xl" aria-label="quote-left"></i></span> More than 70% of researchers have tried and failed to reproduce another scientist’s experiments, and more than half have failed to reproduce their own experiments. Those are some of the telling figures that emerged from Nature’s survey of 1,576 researchers who took a brief online questionnaire on reproducibility in research. <span style="color: steelblue;"><i class="fa-solid fa-quote-right fa-xl" aria-label="quote-right"></i></span> <span class="citation" data-cites="baker20161">(<a href="#ref-baker20161" role="doc-biblioref">Baker 2016</a>)</span></p>
+</blockquote>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>As of today, this article has been cited at least 2225 times. <span style="color: steelblue;"><i class="fa-solid fa-lightbulb" aria-label="lightbulb"></i></span> <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+</div></div><p>If however, you build a web product around your project, where you document everything you do no matter how trivial, you can avoid these pitfalls and produce truly reproducible and transparent science. Everything I do now ends up on a project webpage. I can easily share the information and I no longer have directories filled with random bits of information on my computer. My websites have a much better memory than I do. So what is reproducible and transparent science? Turns out there really isn’t a starndard, well-defined definition</p>
+<p>According to this article in Science Translational Medicine, reproducibility …</p>
+<blockquote class="blockquote">
+<p><span style="color: steelblue;"><i class="fa-solid fa-quote-left fa-xl" aria-label="quote-left"></i></span>` … [is a] set of procedures that permit the reader of a paper to see the entire processing trail from the raw data and code to figures and tables. <span style="color: steelblue;"><i class="fa-solid fa-quote-right fa-xl" aria-label="quote-right"></i></span> <span class="citation" data-cites="goodman2016does">(<a href="#ref-goodman2016does" role="doc-biblioref">Goodman, Fanelli, and Ioannidis 2016</a>)</span>.</p>
+</blockquote>
+<p>Or the U.S. National Science Foundation (NSF) defines it this way …</p>
+<blockquote class="blockquote">
+<p><span style="color: steelblue;"><i class="fa-solid fa-quote-left fa-xl" aria-label="quote-left"></i></span>` … refers to the ability of a researcher to duplicate the results of a prior study using the same materials as were used by the original investigator. <span style="color: steelblue;"><i class="fa-solid fa-quote-right fa-xl" aria-label="quote-right"></i></span> <span class="citation" data-cites="cacioppo2015social">(<a href="#ref-cacioppo2015social" role="doc-biblioref">Cacioppo et al. 2015</a>)</span></p>
+</blockquote>
+<p>Of course, all of this is easier said than done. Researchers interested in reaching a wider audience and presenting tranparent and reproducible science face many challenges; they are under a lot of pressure to produce papers and often not given the chance to pursue these activities <span class="citation" data-cites="forrester2017next">(<a href="#ref-forrester2017next" role="doc-biblioref">Forrester 2017</a>)</span>. So what can we do about it? I think that a good first step is to create web products that embrace the concepts of accessibility, transparency, and reproducibility. Institutional outreach and media departments do an incredible job of presenting the highlights of science, but they do not have the time or resources to go much deeper. I believe that with a little organization, training, and support we can all create web products that add value to the science, whether as educational and reference tools, or as outreach components.</p>
+<p>Consider again the paper we recently published on an acute hypoxic event in Bocas del Toro published in Nature Communications. All Nature journals now require authors to adhere to <a href="https://www.nature.com/nature-portfolio/editorial-policies/reporting-standards">Reporting standards and availability of data, materials, code and protocols</a>.</p>
+<blockquote class="blockquote">
+<p><span style="color: steelblue;"><i class="fa-solid fa-quote-left fa-xl" aria-label="quote-left"></i></span> … authors are required to make materials, data, code, and associated protocols promptly available to readers without undue qualifications. <span style="color: steelblue;"><i class="fa-solid fa-quote-right fa-xl" aria-label="quote-right"></i></span></p>
+</blockquote>
+<p>Authors must include a <strong>Data availability</strong> and <strong>Code availability</strong> statements in their papers. Here is the Code Availability statement from our paper.</p>
+<div class="cell" data-layout-align="left">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure"><p><a href="https://www.nature.com/articles/s41467-021-24777-3#data-availability"><img src="files/code_availabilty.png" class="img-fluid figure-img" width="769"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>And here is <a href="https://twitter.com/coraloha?s=20">@coraloha</a> reaction on Twitter. Some people get really jazzed about Open Science <span style="color: steelblue;"><i class="fa-solid fa-lightbulb" aria-label="lightbulb"></i></span> <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<center>
+<blockquote class="twitter-tweet blockquote">
+<p lang="en" dir="ltr">
+Whoaaaaaa now this is open science to the next level! And the name, come on…Metal AF 🔥 🎸 🤘 <a href="https://t.co/8sznPR5QYz">https://t.co/8sznPR5QYz</a>
+</p>
+— Dr.&nbsp;Chris Wall (<span class="citation" data-cites="coraloha">(<a href="#ref-coraloha" role="doc-biblioref"><strong>coraloha?</strong></a>)</span>) <a href="https://twitter.com/coraloha/status/1420774018668318721?ref_src=twsrc%5Etfw">July 29, 2021</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</center>
+<section id="fa-edit-assignment" class="level3"><h3 class="anchored" data-anchor-id="fa-edit-assignment">
+<span style="color: steelblue;"><i class="fa-solid fa-edit" aria-label="edit"></i></span> Assignment</h3>
+<p>So what do <em>you</em> think? Is Open Science important? Do you think web products can help communicate your science in a more accessible, transparent, and reproducible way? Your assignment is to read up on Open Science and reproducible research. There is a lot of debate on this subject and what I presented above is my view on the topic. It important that you form your own opinion. Here are a few articles to get you started but I do encourage you to dig deeper.</p>
+<ul>
+<li>
+<a href="https://doi.org/10.1038/533452a">1,500 scientists lift the lid on reproducibility</a> <span class="citation" data-cites="baker20161">(<a href="#ref-baker20161" role="doc-biblioref">Baker 2016</a>)</span><br>
+</li>
+<li>
+<a href="https://doi.org/10.1126/scitranslmed.aaf5027">What does research reproducibility mean?</a> <span class="citation" data-cites="goodman2016does">(<a href="#ref-goodman2016does" role="doc-biblioref">Goodman, Fanelli, and Ioannidis 2016</a>)</span><br>
+</li>
+<li>
+<a href="https://doi.org/10.1038/s41562-016-0021">A manifesto for reproducible science</a> <span class="citation" data-cites="munafo2017manifesto">(<a href="#ref-munafo2017manifesto" role="doc-biblioref">Munafò et al. 2017</a>)</span>
+</li>
+</ul>
+<p>Moving along.</p>
+</section></section><section id="why-r-rstudio-r-markdown" class="level2"><h2 class="anchored" data-anchor-id="why-r-rstudio-r-markdown">Why R, RStudio, &amp; R Markdown?</h2>
+<p>There are many ways to make a website—–Squarespace, Wordpress, Wix, and so on. You can even code your own website in HTML, CSS, and JavaScript. However, in my experience, none of these platforms allow you to run and document code while constructing web products quite like the combination of R, RStudio, &amp; R Markdown. As with everything there are limitations, but I feel the benefits outweigh the drawbacks.</p>
+<section id="r" class="level3"><h3 class="anchored" data-anchor-id="r">R</h3>
+<p><a href="https://www.r-project.org/">R</a> is both a programming language and a software environment for statistical computing and graphics. At some point, I imagine you will all need to need to embrace a programming environment to analyze your data and summarize your findings using figures, tables, etc. R is certainly not the only way to do this; however I believe this environment offers a valuable suite of tools for your scientific needs. The benefits of R include; <strong>a</strong>) it is free and open source, <strong>b</strong>) its capabilities are extended through user-created packages<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>, <strong>c</strong>) it has a huge community of users (which means it is well supported), <strong>d</strong>) it is powerful and flexible.</p>
+</section><section id="rstudio" class="level3"><h3 class="anchored" data-anchor-id="rstudio">RStudio</h3>
+<p><a href="https://www.rstudio.com/">RStudio</a> is an integrated development environment (<a href="https://en.wikipedia.org/wiki/Integrated_development_environment">IDE</a>) for R language <a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>. Take a moment to familiarize yourself with the idea of an IDE—in a nutshell, RStudio provides a holistic working environment to process (R) code, generate figures/tables, and create websites.</p>
+<blockquote class="blockquote">
+<p>Imagine a car. Think of R as the engine and the RStudio IDE as the dashboard.</p>
+</blockquote>
+</section><section id="r-markdown" class="level3"><h3 class="anchored" data-anchor-id="r-markdown">R Markdown</h3>
+<p><a href="https://rmarkdown.rstudio.com/">R Markdown</a> is really the bread and butter of what we will be doing. R Markdown is a file format (<code>.Rmd</code>) for making dynamic documents with R. R Markdown combines the syntax of Markdown with the language (and environment) of R. R Markdown documents are written in <a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a>—a <em>lightweight</em> <a href="https://en.wikipedia.org/wiki/Markup_language">markup language</a> (like HTML), that uses a relatively simple syntax to facilitate the <em>transformation</em> of human-readible text files into <code>.html</code> or <code>.pdf</code> documents. What this means is that rather than writing HTML and CSS code to make a website, you write your content in Markdown, which is then translated (by RStudio in this case) to web content. (R) code in your document is embedded within <a href="https://rmarkdown.rstudio.com/lesson-3.html">code chunks</a>. During the building of a page or site, RStudio identifies code chunks, runs the code, translates the results to Markdown, and then renders the output to a HTML file.</p>
+<blockquote class="blockquote">
+<p>You do not need to include R code to produce a R Markdown web product. If fact, I learned R by first writing R Markdown documents.</p>
+</blockquote>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="files/flow.png" class="img-fluid" style="width:0.0%"></p>
+</div>
+</div>
+<!-- Image Map Generated by https://imagemapper.pageballoon.com/ -->
+<div>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewbox="0 0 700 137"><image width="700" height="137" href="files/flow.png"></image><a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" alt="CSS" title="CSS"> <rect x="642" y="22" fill="#fff" opacity="0" width="50" height="50"></rect></a><a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" alt="HTML5" title="HTML5"> <rect x="587" y="22" fill="#fff" opacity="0" width="50" height="50"></rect></a><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" alt="JS" title="JS"> <rect x="616" y="80" fill="#fff" opacity="0" width="50" height="50"></rect></a><a href="https://www.markdownguide.org/" target="_blank" alt="Markdown" title="Markdown"> <rect x="12" y="82" fill="#fff" opacity="0" width="91" height="55"></rect></a><a href="https://www.markdownguide.org/" target="_blank" alt="Markdown" title="Markdown"> <rect x="340" y="45" fill="#fff" opacity="0" width="87" height="54"></rect></a><a href="https://quarto.org" target="_blank" alt="Quarto" title="Quarto"> <rect x="155" y="37" fill="#fff" opacity="0" width="60" height="70"></rect></a><a href="https://yihui.org/knitr/" target="_blank" alt="knitr" title="knitr"> <rect x="243" y="37" fill="#fff" opacity="0" width="64" height="69"></rect></a><a href="https://www.r-project.org/about.html" target="_blank" alt="R" title="R"> <rect x="30" y="4" fill="#fff" opacity="0" width="68" height="53"></rect></a><a href="https://pandoc.org/" target="_blank" alt="PanDoc" title="PanDoc"> <rect x="459" y="37" fill="#fff" opacity="0" width="98" height="67"></rect></a>
+</svg><figcaption>
+The rendering process—creating web pages from R Markdown documents (R code plus Markdown). This figure contains clickable links if you are interested in learning more about these tools.
+</figcaption>
+</div>
+<p>When a page or site is rendered, the R code in your R Markdown document (<code>.Rmd</code>) is first processed by a program called <code>knitr</code>. Knitr executes all the R code, knits the results together with the Markdown text, and creates a new Markdown document. The new Markdown document is then processed by PanDoc, which converts the Markdown syntax into HTML and CSS code. PanDoc is like a swiss-army knife for Markdown—–it can covert many types of Markdown documents into a variety of other formats. Don’t worry, most of these steps happen behind the scenes. As long as you have a properly formatted R Markdown document, these tools will take care of the rest. <span style="color: steelblue;"><i class="fa-solid fa-lightbulb fa-l" aria-label="lightbulb"></i></span> <a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
+</section></section><section id="why-distill" class="level2"><h2 class="anchored" data-anchor-id="why-distill">Why Distill?</h2>
+<p>In this module we will use the <a href="https://rstudio.github.io/distill/">Distill</a> framework to create our web products. Distill for R Markdown is a web publishing format optimized for scientific and technical communication. We are using Distill because it <strong>a</strong>) is a very stable format developed and actively maintained by RStudio; <strong>b</strong>) has a large and active user community; <strong>c</strong>) provides a good balance of functionality and ease of use; and <strong>d</strong>) is a minimal, lightly themed, template focused on writing and code.</p>
+<p>I think the main downside of Distill is that you are limited by how much customization you can do. Distill sites can be customized to some degree (with a bit of effort<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>) but not nearly to the degree of other R Markdown frameworks like <a href="https://bookdown.org/yihui/blogdown/">blogdown</a> and <a href="https://github.com/r-lib/hugodown">hugodown</a>, both of which use <a href="http://gohugo.io/">Hugo</a> for building sites. For a better idea of what I am talking about, have a look at <a href="https://istmobiome.rbind.io/">a site I built using blogdown and Hugo</a>.</p>
+<p>Some features of the Distill framework include:</p>
+<ul>
+<li>Reader-friendly typography that adapts well to mobile devices.</li>
+<li>Features essential to technical writing like <a href="https://rstudio.github.io/distill/#equations">LaTeX math</a>, <a href="https://rstudio.github.io/distill/#citations">citations</a>, and <a href="https://rstudio.github.io/distill/#footnotes-and-asides">footnotes</a>.</li>
+<li>Flexible <a href="https://rstudio.github.io/distill/figures.html">figure layout</a> options (e.g.&nbsp;displaying figures at a larger width than the article text).</li>
+<li>Attractively rendered <a href="https://rstudio.github.io/distill/tables.html">tables</a> with optional support for pagination.</li>
+<li>Support for a wide variety of <a href="https://rstudio.github.io/distill/diagrams.html">diagramming tools</a> for illustrating concepts.</li>
+<li>The ability to incorporate JavaScript and D3-based <a href="https://rstudio.github.io/distill/interactivity.html">interactive visualizations</a>.</li>
+</ul></section></section><section id="expectations" class="level1"><h1>Expectations</h1>
+<p>Let’s take a moment to go through what we expect of you and what you should expect of me as your instructor.</p>
+<section id="student-role" class="level2"><h2 class="anchored" data-anchor-id="student-role">Student role</h2>
+<p>Throughout this field course, you will all be designing and running experiments, making observations and measurements, collecting data, etc., often as part of a group with fellow students. Your job for this module of the course is to take all the parts of your projects—hypotheses, background information, methods, results, and conclusions—and capture these elements in a <a href="https://rmarkdown.rstudio.com/">R Markdown</a> web product using the <a href="https://rstudio.github.io/distill/">Distill</a> framework.</p>
+<blockquote class="blockquote">
+<p><span style="color: steelblue;"><i class="fa-solid fa-edit" aria-label="edit"></i></span> Regardless of whether you are part of a group or running solo, you will each create a web product that contains the details for <strong>at least two projects</strong> you work on in the course.</p>
+</blockquote>
+<p>You have two choices on how to present your projects.</p>
+<ol type="1">
+<li><p><strong>Website</strong>: You can present your projects in website style using the <a href="https://rstudio.github.io/distill/website.html">Distill website template</a>. Here is an example of a Distill website we created for a recent publication on an acute hypoxic event in Bocas del Toro called <a href="https://hypocolypse.github.io/">Hypocolypse</a>.</p></li>
+<li><p><strong>Blog</strong>: Or you can present your projects in blog style using the <a href="https://rstudio.github.io/distill/blog.html">Distill blog template</a>. Want an example of a blog created using Distill? Well, you’re looking at one right now :)</p></li>
+</ol>
+<p>We will get into the nitty-gritty of the differences between the two formats in subsequent lessons. For now, let’s summarize the key differences.</p>
+<p><strong>Structural difference</strong>: A website is simply a collection of pages that can be accessed via the navigation bar at the top of a page. A blog contains <strong>1</strong>) a collection of posts plus <strong>2</strong>) a dedicated page to list all posts, called a <strong>listing page</strong>. The listing page is usually, but not always, the home page. A Distill blog is basically a distill website with added blog posts.</p>
+<p><strong>Layout difference</strong>: Websites require you to manually set up links to pages on your site. Within a blog, Distill creates the listing page, which collects links to posts for you, displaying key metadata (like date published, author, categories, title, etc.) and a thumbnail image.</p>
+<p><strong>Workflow difference</strong>: All pages on a Distill website (and root pages of blogs) are re-rendered (i.e., re-built) each time the site is built. However, individual blog posts must be rendered on their own, with intent. Why? Well, it is because R packages are upgraded all the time and upgrades tend to break older code. So continuously re-rendering really old posts is nearly impossible to do without errors.</p>
+<p><span style="color: steelblue;"><i class="fa-solid fa-question-circle" aria-label="question-circle"></i></span> So which is better, a Distill blog or website? Well, that depends on how you want to portray and display your projects.<br><span style="color: steelblue;"><i class="fa-solid fa-question-circle" aria-label="question-circle"></i></span> OK then, which is easier? Based on my experience using Distill (5 websites and now 1 blog), I would have to say that building and managing a website is slightly more intuitive than a blog. This mainly has to do with how files are organized in your working directory, basically the structural differences I described above. The directory of a website has a flat structure, meaning all of your R Markdown documents (<code>.Rmd</code>) are in the main directory. With a blog, the <code>.Rmd</code> files are collected in the <code>_posts</code> directory. This structure can make it tricky sometimes to figure out how to create links that connect different parts of the site, so called <em>internal link</em>. But really, both have roughly the same learning curve; a tiny bit steep at the beginning then a plateau of smooth sailing. So my advivce is go with what works best for you.</p>
+<section id="fa-edit-assignment-1" class="level3"><h3 class="anchored" data-anchor-id="fa-edit-assignment-1">
+<span style="color: steelblue;"><i class="fa-solid fa-edit" aria-label="edit"></i></span> Assignment</h3>
+<p>Your first assignment is to think about the format you want to use, <strong>website</strong> or <strong>blog</strong>. You do not have to decide now but do check out the examples provided above to get a better sense of the format differences between the two. If you’re up to it, go ahead and read through the <a href="https://rstudio.github.io/distill/website.html">Distill website template</a> and the <a href="https://rstudio.github.io/distill/blog.html">Distill blog template</a> pages. If you have little or no experience with this type of coding, most of the content on these pages will be gibberish. But fear not! Soon enough, this will all make sense.</p>
+<p>Lastly, I wanted to add that some of you may have a lot of experience with these tools already. That’s great––you can help your classmates with their projects. If you think something I say doesn’t make sense, please say something. I would rather do something the right way than be right about the way I am doing something.</p>
+</section></section><section id="instructor-role" class="level2"><h2 class="anchored" data-anchor-id="instructor-role">Instructor role</h2>
+<p>As an instructor, my role is as guide and facilitator. My philosophy is that I teach the way I learn; to create a venue where you can be curious, get your hands dirty, make mistakes, and explore. I’m here to help you see what’s possible and help you create something you are proud of. Towards this end, I will write tutorials and lessons and help you work through the material to achieve your goals for the module. If you want to incorporate some particular functionality in your projects that I do not cover in the lessons, I will help you figure out how to do it. You can expect me to work with each of you individually on various aspects of your projects.</p>
+<p>You should also expect me to be patient. I know first hand how difficult some of this material can be to digest and a big part of my role is helping you avoid many of the potholes and pitfalls I stumbled over and fell in. I can promise you that, at times, this process will be a little frustrating. But I can also promise that with some hard work (and maybe a few tears), you will have the tools to create a range of useful and beautiful documents.</p>
+<p>Finally, I am happy to write additional tutorials and lessons covering material not included on the site already. So please, pretty please, let me know if there is something extra you want to learn and I will write a post so other students can follow along.</p>
+</section></section><section id="housekeeping" class="level1"><h1>Housekeeping</h1>
+<p>A little housekeeping to finish up. Unfortunately this is <strong>not</strong> a formal course on R coding or statistics. Given the time we have, these topics are beyond the scope of this module—we want you in the field working on experiments as much as possible, not sitting in front of you computer the whole time :) This doesn’t mean you won’t be performing statistical analyses; it just means that we do not have any formal lectures planned for these topics. Of course, if there is a specific analysis you wish to perform or test you want to run, the instructors and/or your fellow students will help you write the code.</p>
+<p>To get the full benefit of using R Markdown, <strong><em>an understanding of R is helpful but not required</em></strong>. That said, if you persist with R Markdown you will learn R, specifically when running analyses and rendering the results as figures or tables. In fact, when I first started creating R Markdown documents a couple of years ago my knowledge of R itself was downright awful. Working with R Markdown dramatically increased my understanding of writing R code for statistical analyses.</p>
+<p>Next, we need to talk about operating systems (OS). I use Mac OSX and Linux but unfortunately I have little experience implementing these tools in Windows. If you are on a Windows machine, don’t worry; we will make it all work, it may just take a little more effort. Tons of people use Windows with R, RStudio, and R Markdown; sadly for you I do not happen to be one of them :(</p>
+<p>This website is a living document, meaning that it will be updated continuously. I will make announcements when new material is added. The structure of the site is simple. All lessons and homework are listed on the landing page in order. Start at the bottom and work your way up; that way the newest material is always first. The navigation bar at the top has quick links to tools, resources, etc.</p>
+<section id="fa-edit-assignment-2" class="level3"><h3 class="anchored" data-anchor-id="fa-edit-assignment-2">
+<span style="color: steelblue;"><i class="fa-solid fa-edit" aria-label="edit"></i></span> Assignment</h3>
+<p>One more thing I would like you to do before we wrap up. Go back through this page from the top. You do not have to read the contents again (yawn) I just want you to make note of the different elements—text formatting (e.g., <em>italics</em> and <strong>bold</strong>), headers, <a href="https://rstudio.github.io/distill/basics.html#table-of-contents">table of contents</a>, <a href="https://rstudio.github.io/distill/basics.html#appendices">footnotes and asides</a>, hyperlinks, <a href="https://rstudio.github.io/distill/basics.html#appendices">appendices</a>, <a href="https://rstudio.github.io/distill/citations.html">citations</a>, images, etc. You will be incorporating many of these elements in your web products. Don’t worry about the details right now, we will cover them in more detail later.</p>
+<p>That’s all for now.</p>
+</section></section><div id="quarto-appendix" class="default"><section id="source-code" class="level2 appendix"><h2 class="anchored quarto-appendix-heading">Source Code</h2><div class="quarto-appendix-contents">
+<p>The source code for this page can be accessed on GitHub <i class="fa-brands fa-github fa-l" aria-label="github"></i> by <a href="https://github.com/stri-mcgill-neo/2024/blob/main/docs/lessons/lesson-1-module-overview/index.qmd">clicking this link</a>.</p>
+
+
+
+</div></section><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-baker20161" class="csl-entry" role="listitem">
+Baker, Monya. 2016. <span>“1,500 Scientists Lift the Lid on Reproducibility.”</span> <em>Nature</em> 533 (7604). <a href="https://doi.org/10.1038/533452a">https://doi.org/10.1038/533452a</a>.
+</div>
+<div id="ref-cacioppo2015social" class="csl-entry" role="listitem">
+Cacioppo, John T, Robert M Kaplan, Jon A Krosnick, James L Olds, and Heather Dean. 2015. <span>“Social, Behavioral, and Economic Sciences Perspectives on Robust and Reliable Science.”</span> <em>Report of the Subcommittee on Replicability in Science Advisory Committee to the National Science Foundation Directorate for Social, Behavioral, and Economic Sciences</em> 1.
+</div>
+<div id="ref-forrester2017next" class="csl-entry" role="listitem">
+Forrester, N. 2017. <span>“The Next Generation of Science Outreach.”</span> <em>Nature Jobs</em>. <a href="http://blogs.nature.com/naturejobs/2017/04/14/the-next-generation-of-science-outreach">http://blogs.nature.com/naturejobs/2017/04/14/the-next-generation-of-science-outreach</a>.
+</div>
+<div id="ref-goodman2016does" class="csl-entry" role="listitem">
+Goodman, Steven N, Daniele Fanelli, and John PA Ioannidis. 2016. <span>“What Does Research Reproducibility Mean?”</span> <em>Science Translational Medicine</em> 8 (341): 341ps12–12. <a href="https://doi.org/10.1126/scitranslmed.aaf5027">https://doi.org/10.1126/scitranslmed.aaf5027</a>.
+</div>
+<div id="ref-munafo2017manifesto" class="csl-entry" role="listitem">
+Munafò, Marcus R, Brian A Nosek, Dorothy VM Bishop, Katherine S Button, Christopher D Chambers, Nathalie Percie du Sert, Uri Simonsohn, Eric-Jan Wagenmakers, Jennifer J Ware, and John Ioannidis. 2017. <span>“A Manifesto for Reproducible Science.”</span> <em>Nature Human Behaviour</em> 1 (1): 1–9. <a href="https://doi.org/10.1038/s41562-016-0021">https://doi.org/10.1038/s41562-016-0021</a>.
+</div>
+<div id="ref-woelfle2011open" class="csl-entry" role="listitem">
+Woelfle, Michael, Piero Olliaro, and Matthew H Todd. 2011. <span>“Open Science Is a Research Accelerator.”</span> <em>Nature Chemistry</em> 3 (10): 745–48. <a href="https://doi.org/10.1038/nchem.1149">https://doi.org/10.1038/nchem.1149</a>.
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+<ol>
+<li id="fn1"><p>Henceforth, I use the term <em>dynamic</em> throughout these lessons to refer to a component of a document that does something or is interactive, like a table that scrolls or a map you can zoom in on. Do not confuse this with a dynamic website.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>To get the number of citations for this article I used the function <code>cr_citation_count</code> from the <a href="https://cran.r-project.org/web/packages/rcrossref/index.html"><code>rcrossref</code></a> package. The function takes a Digital Object Identifier (DOI) as the input and searches CrossRef OpenURL to return the number of citations.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>If you want to embed a tweet on a page, click on the ellipsis icon at the top of the tweet <span style="color: steelblue;"><i class="fa-solid fa-ellipsis-h fa-xl" aria-label="ellipsis-h"></i></span>, select <span style="color: steelblue;"><i class="fa-solid fa-code" aria-label="code"></i></span><strong>Embed Tweet</strong>, copy the HTML code provided, &amp; plop it right into your <code>qmd</code> file. The only thing is you need to do is wrap the entire code in the HTML <code>&lt;center&gt;</code> &amp; <code>&lt;/center&gt;</code> tags.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p><a href="https://cran.r-project.org/web/packages/">The Comprehensive R Archive Network (CRAN)</a>, R’s central software repository, currently contains 19893 packages. Hundreds more can be found in places like GitHub and Bioconductor<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Recent versions of RStudio now have the functionality to run <a href="https://www.rstudio.com/blog/three-ways-to-program-in-python-with-rstudio/">Python code</a> in your R Markdown document.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>The figure above is called an image map, which is a HTML technique that allows you to create clickable areas on an image. I coded this so that each logo contains a different hyperlink. Try it out. <a href="https://gist.github.com/jarrodscott/31b8f7ab985a291c53538a97a1c3dcdc">Click here</a> if you are interested in the source code.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>We will cover some of this in future lessons on adding custom HTML and CSS code.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">Proudly supported by <a href="https://posit.co"><img src="https://www.rstudio.com/assets/img/posit-logo-fullcolor-TM.svg" class="img-fluid" alt="Posit" width="65"></a></div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+<li class="nav-item">
+    <a class="nav-link" href="../../../about.html">About</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../../docs/faq/index.qmd">FAQ</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../../license.qmd">License</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../../trademark.qmd">Trademark</a>
+  </li>  
+</ul>
+</div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+<li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/quarto_pub">
+      <i class="bi bi-twitter" role="img" aria-label="Quarto Twitter">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/quarto-dev/quarto-cli">
+      <i class="bi bi-github" role="img" aria-label="Quarto GitHub">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://quarto.org/docs/blog/index.xml">
+      <i class="bi bi-rss" role="img" aria-label="Quarto Blog RSS">
+</i> 
+    </a>
+  </li>  
+</ul>
+</div>
+  </div>
+</footer>
+
+
+</body></html>

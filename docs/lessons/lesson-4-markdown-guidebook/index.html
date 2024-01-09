@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="author" content="Jarrod J Scott">
+<meta name="dcterms.date" content="2024-01-04">
+<meta name="description" content="A lesson devoted to developing and honing your skills writing Markdown-formatted text. Your assignment is to write text and incorporate Markdown-formatted elements.">
+<title>Quarto Fieldguide - Lesson 4: Markdown Guidebook</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../images/favicon_package/favicon.ico" rel="icon">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><link rel="stylesheet" href="../../../assets/css/styles.css">
+</head>
+<body class="floating nav-fixed slimcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../images/icon.png" alt="" class="navbar-logo"></a>
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Quarto Fieldguide</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-lessons" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Lessons</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-lessons">
+<li>
+    <a class="dropdown-item" href="../../../docs/lessons/index.html" rel="" target="">
+ <span class="dropdown-text">Main Page</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../docs/lessons/lesson-1-module-overview/index.html" rel="" target="">
+ <span class="dropdown-text">Lesson 1</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../docs/lessons/lesson-2-build-your-working-environment/index.html" rel="" target="">
+ <span class="dropdown-text">Lesson 2</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../docs/lessons/lesson-3-build-a-basic-site/index.html" rel="" target="">
+ <span class="dropdown-text">Lesson 3</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../docs/lessons/lesson-4-markdown-guidebook/index.html" rel="" target="">
+ <span class="dropdown-text">Lesson 4</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../docs/lessons/lesson-5-markdown-meet-r/index.html" rel="" target="">
+ <span class="dropdown-text">Lesson 5</span></a>
+  </li>  
+    </ul>
+</li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../../docs/lessons/index.html" rel="" target="">
+ <span class="menu-text">Lessons</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+</ul>
+<div class="quarto-navbar-tools">
+    <div class="dropdown">
+      <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label=""><i class="bi bi-github"></i></a>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="quarto-navigation-tool-dropdown-0">
+<li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/stri-mcgill-neo/2024/">
+            Source Code
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/stri-mcgill-neo/2024/issues/new">
+            Report an Issue
+            </a>
+          </li>
+      </ul>
+</div>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full"><div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Lesson 4: Markdown Guidebook</h1>
+                  <div>
+        <div class="description">
+          <p>A lesson devoted to developing and honing your skills writing Markdown-formatted text. Your assignment is to write text and incorporate Markdown-formatted elements.</p>
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">news</div>
+                <div class="quarto-category">code</div>
+                <div class="quarto-category">analysis</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Jarrod J Scott </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">January 4, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto"><nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Contents</h2>
+   
+  <ul class="collapse">
+<li><a href="#markdown" id="toc-markdown" class="nav-link active" data-scroll-target="#markdown">Markdown</a></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
+  <li>
+<a href="#elements" id="toc-elements" class="nav-link" data-scroll-target="#elements">Elements</a>
+  <ul class="collapse">
+<li><a href="#headings" id="toc-headings" class="nav-link" data-scroll-target="#headings">Headings</a></li>
+  <li><a href="#paragraphs" id="toc-paragraphs" class="nav-link" data-scroll-target="#paragraphs">Paragraphs</a></li>
+  <li><a href="#line-breaks" id="toc-line-breaks" class="nav-link" data-scroll-target="#line-breaks">Line Breaks</a></li>
+  <li><a href="#emphasis" id="toc-emphasis" class="nav-link" data-scroll-target="#emphasis">Emphasis</a></li>
+  <li><a href="#lists" id="toc-lists" class="nav-link" data-scroll-target="#lists">Lists</a></li>
+  <li><a href="#blockquotes" id="toc-blockquotes" class="nav-link" data-scroll-target="#blockquotes">Blockquotes</a></li>
+  <li><a href="#links" id="toc-links" class="nav-link" data-scroll-target="#links">Links</a></li>
+  <li><a href="#subscript" id="toc-subscript" class="nav-link" data-scroll-target="#subscript">Subscript</a></li>
+  <li><a href="#superscript" id="toc-superscript" class="nav-link" data-scroll-target="#superscript">Superscript</a></li>
+  <li><a href="#escaping-characters" id="toc-escaping-characters" class="nav-link" data-scroll-target="#escaping-characters">Escaping Characters</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources</a>
+  <ul class="collapse">
+
+  
+  </ul>
+</li>
+  </ul><div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/stri-mcgill-neo/2024/edit/main/docs/lessons/lesson-4-markdown-guidebook/index.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/stri-mcgill-neo/2024/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+</nav><div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content"><section id="markdown" class="level1 page-columns page-full"><h1>Markdown</h1>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>Estimated reading time: 16 minute(s).</p>
+</div></div><p><a href="https://www.markdownguide.org/">Markdown</a> is a <em>lightweight markup language with plain-text-formatting syntax</em>. What this means is that Markdown is easy-to-write using any generic text editor and easy-to-read in its raw form. When you render a page or document, R Studio translates the Markdown syntax to HTML code. I structured this part of the lesson to show you the Markdown way of writing, the HTML equivalent, and what the rendered output looks like. You should take note of the structure of the HTML. There are exceptions, but most HTML elements are wrapped in <a href="https://www.w3schools.com/TAgs/default.asp">tags</a>—an opening tag at the beginning of the element that looks like this <code>&lt;tag&gt;</code> and a closing tag at the end that looks like this <code>&lt;/tag&gt;</code>. Say you want to write a level 1 header in HTML. You would code it like so: <code>&lt;h1&gt;</code>Header 1<code>&lt;/h1&gt;</code>. Moving on.</p>
+</section><section id="learning-objectives" class="level1"><h1>Learning Objectives</h1>
+<p>In this lesson, you will learn Markdown by writing it. You will learn how to add emphasis to text (e.g., <strong>bold</strong> or <em>italic</em>), create ordered and unordered lists, create links and headers, use blockquotes, add line breaks and hyperlink, and more. There are a few things I <strong>will not cover</strong> in this lesson, specifically Markdown formatting for code blocks, inserting images, and creating tables. These will each be covered as part of other lessons.</p>
+<section id="fa-edit-assignment" class="level3"><h3 class="anchored" data-anchor-id="fa-edit-assignment">
+<span style="color: steelblue;"><i class="fa-solid fa-edit" aria-label="edit"></i></span> Assignment</h3>
+<p>Your assignment for this lesson is to open up the project you created in the previous lesson and start adding Markdown formatted text. You can use the <code>index.Rmd</code>, <code>about.Rmd</code>, or create a new page if you’re feeling bold. Write whatever you want. If you have field notes, you can totally use that text. If you have nothing, use this <a href="https://loremipsum.io/">Lorem ipsum generator</a> to make a bunch of plain text that you can add to your page.</p>
+<p>Be sure to check out the <a href="#resources">Resources</a> section of this lesson for suggested tutorials, references, and markdown editors. If you are a beginner, I suggest using a Markdown editor at first. Markdown editors are a great tool to learn Markdown because you can see a <strong>live preview</strong> of what the rendered text will look like.</p>
+<blockquote class="blockquote">
+<p>Your task is to add at least one example of all Markdown elements listed below.</p>
+</blockquote>
+<table class="table"><tbody>
+<tr class="odd">
+<td>Headings</td>
+<td>Blockquotes</td>
+</tr>
+<tr class="even">
+<td>Paragraphs</td>
+<td>Links</td>
+</tr>
+<tr class="odd">
+<td>Line Breaks</td>
+<td>Subscript</td>
+</tr>
+<tr class="even">
+<td>Emphasis</td>
+<td>Superscript</td>
+</tr>
+<tr class="odd">
+<td>Lists</td>
+<td>Escape Characters</td>
+</tr>
+</tbody></table>
+<p>I recommend using this lesson more as a reference or guide when you need to figure out out to format some text element. If you want to actually read through this lesson cover-to-cover, that is up to you.</p>
+<blockquote class="blockquote">
+<p>Remember. Knit often!!!</p>
+<p>Note: I heavily style my work with external CSS and this site is no different.</p>
+</blockquote>
+<p>So if you render something and it does not look exactly like the examples below, this is likely because of CSS.</p>
+</section></section><section id="elements" class="level1"><h1>Elements</h1>
+<section id="headings" class="level2"><h2 class="anchored" data-anchor-id="headings">Headings</h2>
+<p>To create a heading, add number signs (<code>#</code>) in front of a word or phrase. The number of signs you use should correspond to the heading level you want. For example, to create a heading level two (&lt;h2&gt;), use two number signs (e.g., <code>## This is a Header</code> ). There are 6 header levels. Level 1 is the largest and mostly used for titles.</p>
+
+<table class="table table-bordered">
+<thead class="thead-light"><tr>
+<th>
+Markdown
+</th>
+<th>
+HTML
+</th>
+<th>
+Rendered Output
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>
+<code class="highlighter-rouge"># Header L1</code>
+</td>
+<td>
+<code class="highlighter-rouge">&lt;h1&gt;Header L1&lt;/h1&gt;</code>
+</td>
+<td>
+<h1 class="no-anchor" data-toc-skip="">
+Header L1
+</h1>
+</td>
+</tr>
+<tr>
+<td>
+<code class="highlighter-rouge">## Header L2</code>
+</td>
+<td>
+<code class="highlighter-rouge">&lt;h2&gt;Header L2&lt;/h2&gt;</code>
+</td>
+<td>
+<h2 class="no-anchor" data-toc-skip="">
+Header L2
+</h2>
+</td>
+</tr>
+<tr>
+<td>
+<code class="highlighter-rouge">### Header L3</code>
+</td>
+<td>
+<code class="highlighter-rouge">&lt;h3&gt;Header L3&lt;/h3&gt;</code>
+</td>
+<td>
+<h3 class="no-anchor" data-toc-skip="">
+Header L3
+</h3>
+</td>
+</tr>
+<tr>
+<td>
+<code class="highlighter-rouge">#### Header L4</code>
+</td>
+<td>
+<code class="highlighter-rouge">&lt;h4&gt;Header L 4&lt;/h4&gt;</code>
+</td>
+<td>
+<h4 class="no-anchor">
+Header L4
+</h4>
+</td>
+</tr>
+<tr>
+<td>
+<code class="highlighter-rouge">##### Header L5</code>
+</td>
+<td>
+<code class="highlighter-rouge">&lt;h5&gt;Header L5&lt;/h5&gt;</code>
+</td>
+<td>
+<h5 class="no-anchor">
+Header L5
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+<code class="highlighter-rouge">###### Header L6</code>
+</td>
+<td>
+<code class="highlighter-rouge">&lt;h6&gt;Header L6&lt;/h6&gt;</code>
+</td>
+<td>
+<h6 class="no-anchor">
+Header L6
+</h6>
+</td>
+</tr>
+</tbody>
+</table>
+<section id="heading-best-practices" class="level3"><h3 class="anchored" data-anchor-id="heading-best-practices">Heading Best Practices</h3>
+<p>Applications that use Markdown do not agree on how to handle a missing space between the number signs (<code>#</code>) and the heading text. For compatibility, <strong>always put a space between the number signs and the heading name</strong>.</p>
+<table class="table">
+<thead><tr class="header">
+<th>✅ Do this</th>
+<th>❌ But not this</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td># A Heading</td>
+<td>#A Heading</td>
+</tr></tbody>
+</table>
+<p>For the same reason, you should also <strong>put blank lines before and after a heading</strong>.</p>
+<table class="table">
+<colgroup>
+<col style="width: 53%">
+<col style="width: 46%">
+</colgroup>
+<thead><tr class="header">
+<th>✅ Do this</th>
+<th>❌ But not this</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td>Put a blank line before…# Heading…and after a heading.</td>
+<td>Without blank lines, # Headingmight not render correctly.</td>
+</tr></tbody>
+</table></section></section><section id="paragraphs" class="level2"><h2 class="anchored" data-anchor-id="paragraphs">Paragraphs</h2>
+<p>To create paragraphs, simply use a blank line to separate one or more lines of text.</p>
+<table class="table">
+<colgroup>
+<col style="width: 32%">
+<col style="width: 35%">
+<col style="width: 32%">
+</colgroup>
+<thead><tr class="header">
+<th>Markdown</th>
+<th>HTML</th>
+<th>Rendered Output</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><code>I really like using Markdown.</code></td>
+<td>&lt;p&gt;I really like using Markdown.&lt;/p&gt;</td>
+<td>I really like using Markdown.</td>
+</tr>
+<tr class="even">
+<td>
+<code>I think I'll use it to format</code>  <code>all of my documents from now on.</code>
+</td>
+<td>&lt;p&gt;I think I’ll use it to format all of my documents from now on.&lt;/p&gt;</td>
+<td>I think I’ll use it to format all of my documents from now on.</td>
+</tr>
+</tbody>
+</table>
+<section id="paragraph-best-practices" class="level3"><h3 class="anchored" data-anchor-id="paragraph-best-practices">Paragraph Best Practices</h3>
+<p>Unless the paragraph is in a list, do not indent paragraphs with spaces or tabs. If you must indent <a href="https://www.markdownguide.org/hacks/#indent-tab">try this little hack</a></p>
+<table class="table">
+<colgroup>
+<col style="width: 42%">
+<col style="width: 57%">
+</colgroup>
+<thead><tr class="header">
+<th>✅ Do this</th>
+<th>❌ But not this</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Don’t put tabs or spaces <br> in front of your paragraphs.</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;This can result in unexpected <br> formatting problems.</td>
+</tr>
+<tr class="even">
+<td>Keep lines left-aligned like this.</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;Don’t add tabs or spaces <br> in front of paragraphs.</td>
+</tr>
+</tbody>
+</table></section></section><section id="line-breaks" class="level2"><h2 class="anchored" data-anchor-id="line-breaks">Line Breaks</h2>
+<table class="table">
+<colgroup>
+<col style="width: 32%">
+<col style="width: 37%">
+<col style="width: 30%">
+</colgroup>
+<thead><tr class="header">
+<th>Markdown</th>
+<th>HTML</th>
+<th>Rendered Output</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td>
+<code>This is the first line.</code><br><code>And this is the second line.</code>
+</td>
+<td>&lt;p&gt;This is the first line.&lt;br&gt; <br> And this is the second line.&lt;/p&gt;</td>
+<td>This is the first line. <br> And this is the second line.</td>
+</tr></tbody>
+</table>
+<section id="line-break-best-practices" class="level3"><h3 class="anchored" data-anchor-id="line-break-best-practices">Line Break Best Practices</h3>
+<p>You can use two or more spaces (commonly referred to as <em>trailing whitespace</em>) for line breaks in most Markdown applications, but apparently this is a bit controversial. For one it is hard to see trailing whitespace in an editor, and many people (accidentally or intentionally) put two spaces after every sentence. For this reason, you may want to use something other than trailing whitespace for line breaks. If your Markdown application supports HTML, you can use the &lt;br&gt; HTML tag<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. For compatibility, use trailing white space or the <br> HTML tag at the end of the line.</p>
+</section></section><section id="emphasis" class="level2"><h2 class="anchored" data-anchor-id="emphasis">Emphasis</h2>
+<p>Emphasis can be added by making text <strong>bold</strong> or <em>italic</em>.</p>
+<section id="bold" class="level3"><h3 class="anchored" data-anchor-id="bold">Bold</h3>
+<p>To bold text, add either two asterisks (<code>**</code>) or two underscores (<code>__</code>) before and after a word or phrase. To bold the middle of a word for emphasis, add two asterisks (<code>**</code>) without spaces around the letters.</p>
+<table class="table">
+<colgroup>
+<col style="width: 28%">
+<col style="width: 45%">
+<col style="width: 26%">
+</colgroup>
+<thead><tr class="header">
+<th>Markdown</th>
+<th>HTML</th>
+<th>Rendered Output</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Bold text **rocks**.</td>
+<td>Bold text &lt;strong&gt;rocks&lt;/strong&gt;.</td>
+<td>Bold text <strong>rocks</strong>.</td>
+</tr>
+<tr class="even">
+<td>Bold text __rocks__.</td>
+<td>Bold text &lt;b&gt;rocks&lt;/b&gt;.</td>
+<td>Bold text <strong>rocks</strong>.</td>
+</tr>
+<tr class="odd">
+<td>Bold**text**rocks.</td>
+<td>Bold&lt;b&gt;text&lt;/b&gt; rocks.</td>
+<td>Bold<strong>text</strong>rocks.</td>
+</tr>
+</tbody>
+</table></section><section id="bold-best-practices" class="level3"><h3 class="anchored" data-anchor-id="bold-best-practices">Bold Best Practices</h3>
+<p>Markdown applications do not agree on how to handle underscores (<code>_</code>) in the middle of a word. For compatibility, use asterisks to bold the middle of a word for emphasis.</p>
+<table class="table">
+<thead><tr class="header">
+<th>✅ Do this</th>
+<th>❌ But not this</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td>Bold**text**rocks.</td>
+<td>Bold__text__rocks.</td>
+</tr></tbody>
+</table></section><section id="italic" class="level3"><h3 class="anchored" data-anchor-id="italic">Italic</h3>
+<p>To italicize text, add one asterisk (<code>*</code>) or underscore (<code>_</code>) before and after a word or phrase. To italicize the middle of a word for emphasis, add one asterisk (<code>*</code>) without spaces around the letters.</p>
+<table class="table">
+<colgroup>
+<col style="width: 31%">
+<col style="width: 38%">
+<col style="width: 30%">
+</colgroup>
+<thead><tr class="header">
+<th>Markdown</th>
+<th>HTML</th>
+<th>Rendered Output</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Italicized text is *awesome*.</td>
+<td>Italicized text is &lt;em&gt;awesome&lt;/em&gt;.</td>
+<td>Italicized text is <em>awesome</em>.</td>
+</tr>
+<tr class="even">
+<td>Italicized text is _awesome_.</td>
+<td>Italicized text is &lt;em&gt;awesome&lt;/em&gt;.</td>
+<td>Italicized text is <em>awesome</em>.</td>
+</tr>
+<tr class="odd">
+<td>Italicized*text*isawesome.</td>
+<td>Italicized&lt;em&gt;text&lt;/em&gt;isawesome.</td>
+<td>Italicized<em>text</em>isawesome.</td>
+</tr>
+</tbody>
+</table></section><section id="italic-best-practices" class="level3"><h3 class="anchored" data-anchor-id="italic-best-practices">Italic Best Practices</h3>
+<p>As above, Markdown applications don’t agree on how to handle underscores in the middle of a word. For compatibility, use asterisks to italicize the middle of a word for emphasis.</p>
+<table class="table">
+<thead><tr class="header">
+<th>✅ Do this</th>
+<th>❌ But not this</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td>Italicized text is *awesome*.</td>
+<td>Italicized text is _awesome_.</td>
+</tr></tbody>
+</table></section><section id="bold-and-italic" class="level3"><h3 class="anchored" data-anchor-id="bold-and-italic">Bold and Italic</h3>
+<p>To emphasize text with <strong>bold</strong> and <em>italics</em> at the same time, add three asterisks (<code>***</code>) or three underscores (<code>___</code>) before and after a word or phrase. To bold and italicize the middle of a word for emphasis, add three asterisks without spaces around the letters.</p>
+<table class="table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 43%">
+<col style="width: 26%">
+</colgroup>
+<thead><tr class="header">
+<th>Markdown</th>
+<th>HTML</th>
+<th>Rendered Output</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>This text is ***really important***.</td>
+<td>This text is &lt;em&gt;&lt;strong&gt;really important&lt;/strong&gt;&lt;/em&gt;.</td>
+<td>This text is <strong><em>really important</em></strong>.</td>
+</tr>
+<tr class="even">
+<td>This text is ___really important___.</td>
+<td>This text is &lt;em&gt;&lt;strong&gt;really important&lt;/strong&gt;&lt;/em&gt;.</td>
+<td>This text is <strong><em>really important</em></strong>.</td>
+</tr>
+<tr class="odd">
+<td>This text is __*really important*__.</td>
+<td>This text is &lt;em&gt;&lt;strong&gt;really important&lt;/strong&gt;&lt;/em&gt;.</td>
+<td>This text is <strong><em>really important</em></strong>.</td>
+</tr>
+<tr class="even">
+<td>This text is **_really important_**.</td>
+<td>This text is &lt;em&gt;&lt;strong&gt;really important&lt;/strong&gt;&lt;/em&gt;.</td>
+<td>This text is <strong><em>really important</em></strong>.</td>
+</tr>
+<tr class="odd">
+<td>This textis***really***important.</td>
+<td>This textis&lt;em&gt;&lt;strong&gt;really&lt;/strong&gt;&lt;/em&gt;important.</td>
+<td>This textis<strong><em>really</em></strong>important.</td>
+</tr>
+</tbody>
+</table></section><section id="bold-and-italic-best-practices" class="level3"><h3 class="anchored" data-anchor-id="bold-and-italic-best-practices">Bold and Italic Best Practices</h3>
+<p>For compatibility, use asterisks to bold and italicize the middle of a word for emphasis.</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead><tr class="header">
+<th>✅ Do this</th>
+<th>❌ But not this</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td>This textis***really***important.</td>
+<td>This textis___really___important.</td>
+</tr></tbody>
+</table></section></section><section id="lists" class="level2"><h2 class="anchored" data-anchor-id="lists">Lists</h2>
+<p>You can organize items into <strong>ordered</strong> and <strong>unordered</strong> lists.</p>
+<section id="ordered-lists" class="level3"><h3 class="anchored" data-anchor-id="ordered-lists">Ordered Lists</h3>
+<p>To create an ordered list, add line items with numbers followed by periods. The numbers don’t have to be in numerical order, but if list starts with the number 1 subsequent list items will be rendered in sequential order. In fact, whatever number you start a list with becomes the smallest number in the list.</p>
+<p>To write an ordered list in HTML you must enclose each list item in the <code>&lt;li&gt;</code> tag and wrap the whole list in the <code>&lt;ol&gt;</code> tag.</p>
+<table class="table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 51%">
+<col style="width: 24%">
+</colgroup>
+<thead><tr class="header">
+<th>Markdown</th>
+<th>HTML</th>
+<th>Rendered Output</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>1. First item <br> 2. Second item <br> 3. Third item</td>
+<td>&lt;ol&gt; <br> &nbsp; &lt;li&gt;First item&lt;/li&gt; <br> &nbsp; &lt;li&gt;Second item&lt;/li&gt; <br> &nbsp; &lt;li&gt;Third item &lt;/li&gt; <br> &lt;/ol&gt;</td>
+<td>1. First item <br> 2. Second item <br> 3. Third item<br>
+</td>
+</tr>
+<tr class="even">
+<td>1. First item <br> 1. Second item <br> 1. Third item</td>
+<td>&lt;ol&gt; <br> &nbsp; &lt;li&gt;First item&lt;/li&gt; <br> &nbsp; &lt;li&gt;Second item&lt;/li&gt; <br> &nbsp; &lt;li&gt;Third item &lt;/li&gt; <br> &lt;/ol&gt;</td>
+<td>1. First item <br> 2. Second item <br> 3. Third item<br>
+</td>
+</tr>
+<tr class="odd">
+<td>1. First item <br> 9. Second item <br> 2. Third item</td>
+<td>&lt;ol&gt; <br> &nbsp; &lt;li&gt;First item&lt;/li&gt; <br> &nbsp; &lt;li&gt;Second item&lt;/li&gt; <br> &nbsp; &lt;li&gt;Third item &lt;/li&gt; <br> &lt;/ol&gt;</td>
+<td>1. First item <br> 2. Second item <br> 3. Third item<br>
+</td>
+</tr>
+<tr class="even">
+<td>5. First item <br> 1. Second item <br> 9. Third item</td>
+<td>&lt;ol&gt; <br> &nbsp; &lt;li&gt;First item&lt;/li&gt; <br> &nbsp; &lt;li&gt;Second item&lt;/li&gt; <br> &nbsp; &lt;li&gt;Third item &lt;/li&gt; <br> &lt;/ol&gt;</td>
+<td>5. First item <br> 6. Second item <br> 7. Third item<br>
+</td>
+</tr>
+</tbody>
+</table></section><section id="ordered-list-best-practices" class="level3"><h3 class="anchored" data-anchor-id="ordered-list-best-practices">Ordered List Best Practices</h3>
+<p>Some markup languages let you use a parenthesis (<code>)</code>) as a delimiter (e.g., <code>1) First item</code>), but not all Markdown applications support this, so it isn’t a great option from a compatibility perspective. For compatibility, use periods only.</p>
+<table class="table">
+<thead><tr class="header">
+<th>✅ Do this</th>
+<th>❌ But not this</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>1. First item</td>
+<td>1) First item</td>
+</tr>
+<tr class="even">
+<td>2. Second item</td>
+<td>2) Second item</td>
+</tr>
+</tbody>
+</table></section><section id="unordered-lists" class="level3"><h3 class="anchored" data-anchor-id="unordered-lists">Unordered Lists</h3>
+<p>To create an unordered list, add a dash (<code>-</code>), an asterisk (<code>*</code>), or a plus sign (<code>+</code>) in front of line items.</p>
+<table class="table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 49%">
+<col style="width: 29%">
+</colgroup>
+<thead><tr class="header">
+<th>Markdown</th>
+<th>HTML</th>
+<th>Rendered Output</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>- First item <br> - Second item <br> - Third item</td>
+<td>&lt;ul&gt; <br> &nbsp; &lt;li&gt;First item&lt;/li&gt; <br> &nbsp; &lt;li&gt;Second item&lt;/li&gt; <br> &nbsp; &lt;li&gt;Third item &lt;/li&gt; <br> &lt;/ul&gt;</td>
+<td>• First item <br> • Second item <br> • Third item<br>
+</td>
+</tr>
+<tr class="even">
+<td>* First item <br> * Second item <br> * Third item</td>
+<td>&lt;ul&gt; <br> &nbsp; &lt;li&gt;First item&lt;/li&gt; <br> &nbsp; &lt;li&gt;Second item&lt;/li&gt; <br> &nbsp; &lt;li&gt;Third item &lt;/li&gt; <br> &lt;/ul&gt;</td>
+<td>• First item <br> • Second item <br> • Third item<br>
+</td>
+</tr>
+<tr class="odd">
+<td>+ First item <br> + Second item <br> + Third item</td>
+<td>&lt;ul&gt; <br> &nbsp; &lt;li&gt;First item&lt;/li&gt; <br> &nbsp; &lt;li&gt;Second item&lt;/li&gt; <br> &nbsp; &lt;li&gt;Third item &lt;/li&gt; <br> &lt;/ul&gt;</td>
+<td>• First item <br> • Second item <br> • Third item<br>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Indent one or more items to create a nested list.</p>
+<table class="table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 52%">
+<col style="width: 26%">
+</colgroup>
+<thead><tr class="header">
+<th>Markdown</th>
+<th>HTML</th>
+<th>Rendered Output</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td>- First item <br> - Second item <br> &nbsp; - Indented item <br> &nbsp; - Indented item <br> - Third item</td>
+<td>&lt;ul&gt; <br> &nbsp; &lt;li&gt;First item&lt;/li&gt; <br> &nbsp; &lt;li&gt;Second item&lt;/li&gt; <br> &nbsp; &nbsp; &lt;ul&gt; <br> &nbsp; &nbsp; &nbsp; &lt;li&gt;Indented item&lt;/li&gt; <br> &nbsp; &nbsp; &nbsp; &lt;li&gt;Indented item&lt;/li&gt; <br> &nbsp; &nbsp; &lt;/ul&gt; <br> &nbsp; &lt;li&gt;Third item &lt;/li&gt; <br> &lt;/ul&gt;</td>
+<td>• First item <br> • Second item <br> &nbsp; ◦ Indented item <br> &nbsp; ◦ Indented item <br> • Third item<br>
+</td>
+</tr></tbody>
+</table></section><section id="unordered-list-best-practices" class="level3"><h3 class="anchored" data-anchor-id="unordered-list-best-practices">Unordered List Best Practices</h3>
+<p>Markdown applications do not agree on how to handle different delimiters in the same list. For compatibility, do not mix and match delimiters in the same list—pick one and stick with it.</p>
+<table class="table">
+<thead><tr class="header">
+<th>✅ Do this</th>
+<th>❌ But not this</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>- First item</td>
+<td>* First item</td>
+</tr>
+<tr class="even">
+<td>- Second item</td>
+<td>- Second item</td>
+</tr>
+<tr class="odd">
+<td>- Third item</td>
+<td>+ Third item</td>
+</tr>
+</tbody>
+</table></section><section id="adding-elements-in-lists" class="level3"><h3 class="anchored" data-anchor-id="adding-elements-in-lists">Adding Elements in Lists</h3>
+<p>To add another element to a list, while preserving the continuity of the list, indent the element four spaces or one tab.</p>
+<section id="adding-a-paragraph" class="level4"><h4 class="anchored" data-anchor-id="adding-a-paragraph">Adding a paragraph</h4>
+<pre><code>1. This is the first list item.
+2. Here is the second list item.
+
+    I need to add another paragraph below the second list item.
+
+3. And here is the third list item.</code></pre>
+<p>The rendered output looks like this:</p>
+<ol type="1">
+<li><p>This is the first list item.</p></li>
+<li>
+<p>Here is the second list item.</p>
+<p>I need to add another paragraph below the second list item.</p>
+</li>
+<li><p>And here is the third list item.</p></li>
+</ol></section><section id="adding-a-blockquote" class="level4"><h4 class="anchored" data-anchor-id="adding-a-blockquote">Adding a blockquote</h4>
+<pre><code>1. This is the first list item.
+2. Here's the second list item.
+
+     &gt; A blockquote would look great below the second list item.
+
+3. And here's the third list item.</code></pre>
+<p>The rendered output looks like this:</p>
+<ol type="1">
+<li><p>This is the first list item.</p></li>
+<li>
+<p>Here’s the second list item.</p>
+<blockquote class="blockquote">
+<p>A blockquote would look great below the second list item.</p>
+</blockquote>
+</li>
+<li><p>And here’s the third list item.</p></li>
+</ol></section><section id="images" class="level4"><h4 class="anchored" data-anchor-id="images">Images</h4>
+<pre><code>1. Check out the file containing the course badge.
+2. Do you know what the pattern is overlaying the map?
+
+    &lt;img src="../../../images/panama_logo.png" width="250"&gt;
+
+3. Let me know what you think it is!</code></pre>
+<p>The rendered output looks like this:</p>
+<ol type="1">
+<li><p>Check out the file containing the course badge.</p></li>
+<li>
+<p>Do you know what the pattern is overlaying the map?</p>
+<p><img src="../../assets/panama_logo.png" width="250"></p>
+</li>
+<li><p>Let me know what you think it is!</p></li>
+</ol></section><section id="lists-1" class="level4"><h4 class="anchored" data-anchor-id="lists-1">Lists</h4>
+<p>You can nest an unordered list in an ordered list, or vice versa.</p>
+<pre><code>1. First item
+2. Second item
+3. Third item
+    - Indented item
+    - Indented item
+4. Fourth item</code></pre>
+<p>The rendered output looks like this:</p>
+<ol type="1">
+<li>First item</li>
+<li>Second item</li>
+<li>Third item
+<ul>
+<li>Indented item</li>
+<li>Indented item</li>
+</ul>
+</li>
+<li>Fourth item</li>
+</ol></section></section></section><section id="blockquotes" class="level2"><h2 class="anchored" data-anchor-id="blockquotes">Blockquotes</h2>
+<p>To create a blockquote, add a <code>&gt;</code> in front of a paragraph.</p>
+<pre><code>&gt; Ants have the most complicated social organization on earth next to humans.</code></pre>
+<p>The rendered output looks like this:</p>
+<blockquote class="blockquote">
+<p>Ants have the most complicated social organization on earth next to humans<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
+</blockquote>
+<section id="blockquotes-with-multiple-paragraphs" class="level3"><h3 class="anchored" data-anchor-id="blockquotes-with-multiple-paragraphs">Blockquotes with Multiple Paragraphs</h3>
+<pre><code>&gt; Ants have the most complicated social organization on earth next to humans.
+&gt;
+&gt; When you have seen one ant, one bird, one tree, you have not seen them all.</code></pre>
+<p>The rendered output looks like this:</p>
+<blockquote class="blockquote">
+<p>Ants have the most complicated social organization on earth next to humans.</p>
+<p>When you have seen one ant, one bird, one tree, you have not seen them all<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p>
+</blockquote>
+</section><section id="nested-blockquotes" class="level3"><h3 class="anchored" data-anchor-id="nested-blockquotes">Nested Blockquotes</h3>
+<p>Blockquotes can be nested by adding a <code>&gt;&gt;</code> in front of the paragraph you want to nest.</p>
+<pre><code>&gt; Geometry has two great treasures; one is the Theorem of Pythagoras; the other, the division of a line into extreme and mean ratio.
+&gt;
+&gt;&gt; The first we may compare to a measure of gold; the second we may name a precious jewel.</code></pre>
+<p>The rendered output looks like this:</p>
+<blockquote class="blockquote">
+<p>Geometry has two great treasures; one is the Theorem of Pythagoras; the other, the division of a line into extreme and mean ratio.</p>
+<blockquote class="blockquote">
+<p>The first we may compare to a measure of gold; the second we may name a precious jewel<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.</p>
+</blockquote>
+</blockquote>
+</section><section id="blockquotes-with-other-elements" class="level3"><h3 class="anchored" data-anchor-id="blockquotes-with-other-elements">Blockquotes with Other Elements</h3>
+<p>Blockquotes can contain other Markdown formatted elements. Not all elements can be used—you will need to experiment to see which ones work.</p>
+<pre><code>&gt; ### The sequencing data looks great.
+&gt;
+&gt; - The reads are long.
+&gt; - The error rate is low.
+&gt;
+&gt;  Now we are **ready*** analysis.</code></pre>
+<p>The rendered output looks like this:</p>
+<blockquote class="blockquote">
+<h3 id="the-sequencing-data-looks-great." class="anchored">The sequencing data looks great.</h3>
+<ul>
+<li>The reads are long.</li>
+<li>The error rate is low.</li>
+</ul>
+<p>Now we are <strong>ready</strong> for analysis.</p>
+</blockquote>
+</section><section id="blockquotes-best-practices" class="level3"><h3 class="anchored" data-anchor-id="blockquotes-best-practices">Blockquotes Best Practices</h3>
+<p>As with headers, for compatibility, put blank lines before and after blockquotes.</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 49%">
+</colgroup>
+<thead><tr class="header">
+<th>✅ Do this</th>
+<th>❌ But not this</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td>Put a blank line before…&gt; a blockquote…and after.</td>
+<td>Without blank lines, &gt; a blockquotemight not render correctly.</td>
+</tr></tbody>
+</table></section><section id="horizontal-rules" class="level3"><h3 class="anchored" data-anchor-id="horizontal-rules">Horizontal Rules</h3>
+<p>To create a horizontal rule, use three or more asterisks (<code>***</code>), dashes (<code>---</code>), or underscores (<code>___</code>) on a line by themselves.</p>
+<pre><code>***
+
+---
+
+_________________
+</code></pre>
+<p>The rendered output of all three looks identical:</p>
+<hr></section><section id="horizontal-rule-best-practices" class="level3"><h3 class="anchored" data-anchor-id="horizontal-rule-best-practices">Horizontal Rule Best Practices</h3>
+<p>For compatibility, put blank lines before and after horizontal rules.</p>
+<table class="table">
+<colgroup>
+<col style="width: 54%">
+<col style="width: 45%">
+</colgroup>
+<thead><tr class="header">
+<th>✅ Do this</th>
+<th>❌ But not this</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td>Put a blank line before…—…and after a horizontal rule.</td>
+<td>Without blank lines, —this would actually be a heading.</td>
+</tr></tbody>
+</table></section></section><section id="links" class="level2"><h2 class="anchored" data-anchor-id="links">Links</h2>
+<p>To create a link, enclose the link text in brackets (<code>[ ]</code>), followed immediately by the URL in parentheses (<code>( )</code>).</p>
+<pre><code>This is a link to awesome [geometric patterns](https://en.wikipedia.org/wiki/Islamic_geometric_patterns) .</code></pre>
+<p>And here is the equivalent in HTML.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>This is a link to awesome <span class="kw">&lt;a</span> <span class="er">href</span><span class="ot">=</span><span class="st">"https://en.wikipedia.org/wiki/Islamic_geometric_patterns"</span><span class="kw">&gt;</span>link<span class="kw">&lt;/a&gt;</span> geometric patterns.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The rendered output looks like this:</p>
+<p>This is a link to awesome <a href="https://en.wikipedia.org/wiki/Islamic_geometric_patterns">geometric patterns</a>.</p>
+<section id="adding-titles" class="level3"><h3 class="anchored" data-anchor-id="adding-titles">Adding Titles</h3>
+<p>You can optionally add a title for a link. This will appear as a tooltip when the user hovers over the link. To add a title, enclose it in quotation marks after the URL.</p>
+<pre><code>This is a link to awesome [geometric patterns](https://en.wikipedia.org/wiki/Islamic_geometric_patterns "These are called Girih tiles. Incredible.") .</code></pre>
+<p>The rendered output looks like this:</p>
+<p>This is a link to awesome <a href="https://en.wikipedia.org/wiki/Islamic_geometric_patterns" title="These are called Girih tiles. Incredible.">geometric patterns</a> .</p>
+</section><section id="urls-and-email-addresses" class="level3"><h3 class="anchored" data-anchor-id="urls-and-email-addresses">URLs and Email Addresses</h3>
+<p>To quickly turn a URL or email address into a link, enclose it in angle brackets.</p>
+<pre><code>&lt;https://en.wikipedia.org/wiki/Mariano_Rivera&gt;
+&lt;mariano@rivera.com&gt;</code></pre>
+<p>The rendered output looks like this:</p>
+<p><a href="https://en.wikipedia.org/wiki/Mariano_Rivera" class="uri">https://en.wikipedia.org/wiki/Mariano_Rivera</a><br><a href="mailto:mariano@rivera.com" class="email">mariano@rivera.com</a></p>
+</section><section id="formatting-links" class="level3"><h3 class="anchored" data-anchor-id="formatting-links">Formatting Links</h3>
+<p>To emphasize links, add asterisks before and after the brackets and parentheses. To denote links as code, add backticks in the brackets.</p>
+<pre><code>**[Substituted tryptamines](https://en.wikipedia.org/wiki/Substituted_tryptamine)** are super interesting.  
+This is the *[Markdown Guide](https://www.markdownguide.org)*.
+Want to create an article in Distill? See the help page for the command &lt;a href='https://pkgs.rstudio.com/distill/reference/create_article.html'&gt;distill::create_article&lt;/a&gt;</code></pre>
+<p>The rendered output looks like this:</p>
+<p><strong><a href="https://en.wikipedia.org/wiki/Substituted_tryptamine">Substituted tryptamines</a></strong> are super interesting.<br>
+This is the <em><a href="https://www.markdownguide.org">Markdown Guide</a></em>.<br>
+Want to create an article in Distill? See the help page for the command <a href="https://pkgs.rstudio.com/distill/reference/create_article.html">distill::create_article</a></p>
+</section></section><section id="subscript" class="level2"><h2 class="anchored" data-anchor-id="subscript">Subscript</h2>
+<p>This isn’t common, but some Markdown processors allow you to use subscript to position one or more characters slightly below the normal line of type. To create a subscript, use one tilde symbol (<code>~</code>) before and after the characters.</p>
+<pre><code>C~12~H~16~N~2~</code></pre>
+<p>The rendered output looks like this:</p>
+<p>C<sub>12</sub>H<sub>16</sub>N<sub>2</sub></p>
+<p>And of course, the HTML equivalent.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>C<span class="kw">&lt;sub&gt;</span>12<span class="kw">&lt;/sub&gt;</span>H<span class="kw">&lt;sub&gt;</span>16<span class="kw">&lt;/sub&gt;</span>N<span class="kw">&lt;sub&gt;</span>2<span class="kw">&lt;/sub&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section><section id="superscript" class="level2"><h2 class="anchored" data-anchor-id="superscript">Superscript</h2>
+<p>Also not common, but some Markdown processors allow you to use superscript to position one or more characters slightly above the normal line of type. To create a superscript, use one caret symbol (<code>^</code>) before and after the characters.</p>
+<pre><code>z = z^2^ + C</code></pre>
+<p>The rendered output looks like this:</p>
+<p>z = z<sup>2</sup> + C</p>
+<p>HTML equivalent.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>z = z<span class="kw">&lt;sup&gt;</span>2<span class="kw">&lt;/sup&gt;</span> + C</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section><section id="escaping-characters" class="level2"><h2 class="anchored" data-anchor-id="escaping-characters">Escaping Characters</h2>
+<p>As you have seen, there are many special characters used to format text in Markdown like the asterick (<code>*</code>) and the number or pound sign (<code>#</code>). To display a literal character that would otherwise be used to format text in a Markdown document, add a backslash (<code>\</code>) in front of the character.</p>
+<pre><code>\# Without the backslash, this would be a header.</code></pre>
+<p>The rendered output looks like this:</p>
+<p># Without the backslash, this would be a header.</p>
+<section id="characters-you-can-escape" class="level3"><h3 class="anchored" data-anchor-id="characters-you-can-escape">Characters You Can Escape</h3>
+<p>You can use a backslash to escape the following characters.</p>
+<table class="table">
+<thead><tr class="header">
+<th>Character</th>
+<th>Name</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>\</td>
+<td>backslash</td>
+</tr>
+<tr class="even">
+<td>`</td>
+<td>backtick</td>
+</tr>
+<tr class="odd">
+<td>*</td>
+<td>asterisk</td>
+</tr>
+<tr class="even">
+<td>_</td>
+<td>underscore</td>
+</tr>
+<tr class="odd">
+<td>{ }</td>
+<td>curly braces</td>
+</tr>
+<tr class="even">
+<td>[ ]</td>
+<td>brackets</td>
+</tr>
+<tr class="odd">
+<td>&lt; &gt;</td>
+<td>angle brackets</td>
+</tr>
+<tr class="even">
+<td>( )</td>
+<td>parentheses</td>
+</tr>
+<tr class="odd">
+<td>#</td>
+<td>pound sign</td>
+</tr>
+<tr class="even">
+<td>+</td>
+<td>plus sign</td>
+</tr>
+<tr class="odd">
+<td>-</td>
+<td>minus sign (hyphen)</td>
+</tr>
+<tr class="even">
+<td>.</td>
+<td>dot</td>
+</tr>
+<tr class="odd">
+<td>!</td>
+<td>exclamation mark</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></section></section></section><section id="resources" class="level1"><h1>Resources</h1>
+<p>Here are a few resources I recommend to augment your skill development.</p>
+<ul>
+<li>
+<a href="https://www.markdownguide.org/basic-syntax/">Basic Markdown Syntax Reference</a> from <em><a href="https://www.markdownguide.org/">The Markdown Guide</a></em>, a free and open-source reference guide.</li>
+<li>
+<a href="https://www.markdownguide.org/extended-syntax/">Extended Markdown Syntax Reference</a>. Advanced features that build on the basic Markdown syntax. Also from <em><a href="https://www.markdownguide.org/">The Markdown Guide</a></em>.</li>
+<li>
+<a href="https://commonmark.org/help/tutorial/index.html">Interactive Markdown Tutorial</a> for beginners. Each lesson contains an explanation of Markdown syntax. Hit the <strong><em>Try it</em></strong> button to test your skills and see what your solution looks like when it is rendered. There is also an option to see the HTML equivalent of the Markdown text. This is a nice tutorial.</li>
+<li>
+<a href="https://www.tablesgenerator.com/markdown_tables">Markdown Tables Generator</a>. Tired of typing all of those hyphens and pipes?</li>
+<li>
+<a href="https://dev.w3.org/html5/html-author/charref">Character Entity Reference Chart</a> for coding special symblos in Markdown.</li>
+<li>
+<a href="https://www.markdownguide.org/hacks/#link-targets">Hacks</a>. Workarounds for things not officially supported by Markdown.</li>
+</ul>
+<section id="markdown-editors" class="level3"><h3 class="anchored" data-anchor-id="markdown-editors">Markdown Editors</h3>
+<p>Markdown editors are a great tool to learn Markdown because you can see a <strong>live preview</strong> of what the rendered text will look like. Below I list both online and desktop Markdown editors.</p>
+<section id="markdown-online-editors" class="level4"><h4 class="anchored" data-anchor-id="markdown-online-editors">Markdown Online Editors</h4>
+<p>Online editors are universally supported across operating systems. Here are a few to get you started.</p>
+<ul>
+<li>
+<a href="https://stackedit.io/">StackEdit</a>. In-browser Markdown editor</li>
+<li>
+<a href="https://dillinger.io/">Dillinger</a>. “The Last Markdown Editor, Ever.”</li>
+<li>
+<a href="https://hackmd.io/">HackMD</a>. Scroll down until you see the <strong>Use for free</strong> button.</li>
+<li>
+<a href="https://marktwo.app/">MarkTwo</a>. Free, open source progressive web app. It features seamless transition between read and edit mode, snappy performance for large documents, and efficient, continuous, and private syncing via your own Google drive.</li>
+<li>
+<a href="https://mark.reaper.im/">Mark</a>. Simple Web Markdown Editor.</li>
+<li>
+<a href="markdown.pioul.fr">Minimalist Online Markdown Editor</a>. The name says it all.</li>
+</ul></section><section id="markdown-desktop-editors" class="level4"><h4 class="anchored" data-anchor-id="markdown-desktop-editors">Markdown Desktop Editors</h4>
+<p>I only list free desktop editors here. There are plenty more if you are willing to pony up some cash. Some of these are operating system specific while others are universal.</p>
+<ul>
+<li>
+<a href="http://abricotine.brrd.fr/">Abricotine</a> Abricotine supports very good instant preview. <strong>Universal</strong>.</li>
+<li>
+<a href="https://github.com/marktext/marktext">MarkText</a>. MarkText is very similar to Abricotine, but it’s development is much faster than Abricotine’s (while isn’t really stable yet). <strong>Universal</strong>.</li>
+<li>
+<a href="https://www.zettlr.com/">Zettlr</a>. Zettlr ships with a lot of features helpful in writing markdown. It is especially aimed at writing research papers in the arts and humanities (and therefore offers writing aids such as automatic footnote insertion and in-place editing, or a global search). <strong>Universal</strong>.</li>
+<li>
+<a href="https://znote.io/">Znote</a>. Znote is a free, elegant program meant to help you write beautifully organized Markdown documents. You can organize your texts, notes, and files even better, using the simplistic left-side widget organizer for smoothly navigating different files. <strong>Universal</strong>.</li>
+<li>
+<a href="http://markdownpad.com/">MarkdownPad</a> and <a href="http://markdownpad.com/news/2013/introducing-markdownpad-2/">MarkdownPad 2</a> are full-featured Markdown editors for <strong>Windows</strong>.</li>
+<li>
+<a href="https://macdown.uranusjr.com/">MacDown</a> is an open source Markdown editor for <strong>macOS</strong>.</li>
+</ul></section></section></section><div id="quarto-appendix" class="default"><section id="source-code" class="level2 appendix"><h2 class="anchored quarto-appendix-heading">Source Code</h2><div class="quarto-appendix-contents">
+<p>The source code for this page can be accessed on GitHub <i class="fa-brands fa-github fa-l" aria-label="github"></i> by <a href="https://github.com/stri-mcgill-neo/2024/blob/main/docs/lessons/lesson-4-markdown-guidebook/index.qmd">clicking this link</a>.</p>
+</div></section><section id="credits" class="level2 appendix"><h2 class="anchored quarto-appendix-heading">Credits</h2><div class="quarto-appendix-contents">
+<p>This lesson was modeled (and mostly copied!) from the <a href="https://www.markdownguide.org/basic-syntax/">Markdown Basic Syntax Guide</a> by <a href="https://www.mattcone.com/">Matt Cone</a> licenced under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</p>
+
+
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+<ol>
+<li id="fn1"><p>Note, this is one of those exceptions to the opening/closing HTML tags. To insert single line breaks in a text you simply add &lt;br&gt; where you want the break<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>E. O. Wilson said that.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>E. O. Wilson said that too.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Johannes Kepler said that.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">Proudly supported by <a href="https://posit.co"><img src="https://www.rstudio.com/assets/img/posit-logo-fullcolor-TM.svg" class="img-fluid" alt="Posit" width="65"></a></div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+<li class="nav-item">
+    <a class="nav-link" href="../../../about.html">About</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../../docs/faq/index.qmd">FAQ</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../../license.qmd">License</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../../trademark.qmd">Trademark</a>
+  </li>  
+</ul>
+</div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+<li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/quarto_pub">
+      <i class="bi bi-twitter" role="img" aria-label="Quarto Twitter">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/quarto-dev/quarto-cli">
+      <i class="bi bi-github" role="img" aria-label="Quarto GitHub">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://quarto.org/docs/blog/index.xml">
+      <i class="bi bi-rss" role="img" aria-label="Quarto Blog RSS">
+</i> 
+    </a>
+  </li>  
+</ul>
+</div>
+  </div>
+</footer>
+
+
+</body></html>

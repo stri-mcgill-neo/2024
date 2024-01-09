@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="author" content="Jarrod J Scott">
+<meta name="dcterms.date" content="2024-01-04">
+<meta name="description" content="In this lesson, you learn how to integrate code into your document using code chunks and inline code. We cover the structure of code chunks—how to properly format chunks by selecting a coding language, using chunk options, and naming chunks. We also cover how to integrate inline code for inserting code directly into the text of a .qmd file.">
+<title>Quarto Fieldguide - Lesson 5: Markdown say hello to 🤝 R</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../images/favicon_package/favicon.ico" rel="icon">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><link rel="stylesheet" href="../../../assets/css/styles.css">
+</head>
+<body class="floating nav-fixed slimcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../images/icon.png" alt="" class="navbar-logo"></a>
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Quarto Fieldguide</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-lessons" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Lessons</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-lessons">
+<li>
+    <a class="dropdown-item" href="../../../docs/lessons/index.html" rel="" target="">
+ <span class="dropdown-text">Main Page</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../docs/lessons/lesson-1-module-overview/index.html" rel="" target="">
+ <span class="dropdown-text">Lesson 1</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../docs/lessons/lesson-2-build-your-working-environment/index.html" rel="" target="">
+ <span class="dropdown-text">Lesson 2</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../docs/lessons/lesson-3-build-a-basic-site/index.html" rel="" target="">
+ <span class="dropdown-text">Lesson 3</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../docs/lessons/lesson-4-markdown-guidebook/index.html" rel="" target="">
+ <span class="dropdown-text">Lesson 4</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../docs/lessons/lesson-5-markdown-meet-r/index.html" rel="" target="">
+ <span class="dropdown-text">Lesson 5</span></a>
+  </li>  
+    </ul>
+</li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../../docs/lessons/index.html" rel="" target="">
+ <span class="menu-text">Lessons</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+</ul>
+<div class="quarto-navbar-tools">
+    <div class="dropdown">
+      <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label=""><i class="bi bi-github"></i></a>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="quarto-navigation-tool-dropdown-0">
+<li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/stri-mcgill-neo/2024/">
+            Source Code
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/stri-mcgill-neo/2024/issues/new">
+            Report an Issue
+            </a>
+          </li>
+      </ul>
+</div>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full"><div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Lesson 5: Markdown say hello to 🤝 R</h1>
+                  <div>
+        <div class="description">
+          <p>In this lesson, you learn how to integrate code into your document using code chunks and inline code. We cover the structure of code chunks—how to properly format chunks by selecting a coding language, using chunk options, and naming chunks. We also cover how to integrate inline code for inserting code directly into the text of a .qmd file.</p>
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">news</div>
+                <div class="quarto-category">code</div>
+                <div class="quarto-category">analysis</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Jarrod J Scott </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">January 4, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto"><nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Contents</h2>
+   
+  <ul class="collapse">
+<li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
+  <li>
+<a href="#code-chunks" id="toc-code-chunks" class="nav-link" data-scroll-target="#code-chunks">Code Chunks</a>
+  <ul class="collapse">
+<li><a href="#code-chunk-anatomy" id="toc-code-chunk-anatomy" class="nav-link" data-scroll-target="#code-chunk-anatomy">Code chunk anatomy</a></li>
+  </ul>
+</li>
+  <li><a href="#inline-r-code" id="toc-inline-r-code" class="nav-link" data-scroll-target="#inline-r-code">Inline R Code</a></li>
+  <li><a href="#testing-code" id="toc-testing-code" class="nav-link" data-scroll-target="#testing-code">Testing Code</a></li>
+  <li>
+<a href="#concluding-remarks" id="toc-concluding-remarks" class="nav-link" data-scroll-target="#concluding-remarks">Concluding Remarks</a>
+  <ul class="collapse">
+
+  </ul>
+</li>
+  </ul><div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/stri-mcgill-neo/2024/edit/main/docs/lessons/lesson-5-markdown-meet-r/index.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/stri-mcgill-neo/2024/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+</nav><div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content"><p>If you have experience using R, you know there are different ways to process code. You can run commands interactively in the R console or use batch processing to run scripts. You can send results to files (like figures or tables), print results to the screen, or save the results as object in the R environment.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>Estimated reading time: 10 minute(s).</p>
+</div></div><p>Processing code in a R Markdown document is very similar in principle. When you incorporate code in your R Markdown document and render that document, <code>knitr</code> first executes all of the code. However, in order to do this, <code>knitr</code> needs to know which text in the document is code. To differentiate code from normal text, we can either use <a href="https://rmarkdown.rstudio.com/lesson-3.html"><strong>code chunks</strong></a> or <a href="https://rmarkdown.rstudio.com/lesson-4.html"><strong>inline code</strong></a>. Think of code chunks and inline code as mini R environments. <code>knitr</code> essentially pulls the code out, runs the code, and then puts the results in a new document as Markdown-formatted text.</p>
+<p>Let me show you what I mean. The image on the left is a screenshot from a HTML page that was built from a R Markdown document. The R Markdown document contained a line of R code, in this case <code>base::summary(trees)</code>, that was executed by <code>knitr</code> during the rendering process. Below the command you can see the output. I did not code the results into the document, rather <code>knitr</code> did when it ran the command.</p>
+<p>On the right is a screenshot of my R console. I just copied the command and ran it in regular old R. I hope you can see that aside for some formatting differences, these results are identical. This is because <code>knitr</code> is running the code in R and encoding the results in Markdown, itself translated to HTML by PanDoc. Ninety-five percent of the time, all you need to do is paste your R code into a code chunk and it will be processed like this. Of course, nothing is absolute, and we will encounter some exceptions.</p>
+<p><br></p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="files/console.png" class="img-fluid" width="2086"></p>
+</div>
+</div>
+<p><em>Executing the same command in a R Markdown document (left) and the R console (right).</em></p>
+<section id="learning-objectives" class="level1 page-columns page-full"><h1>Learning Objectives</h1>
+<p>In this lesson, you will learn how to use code chunks to analyze and display data in your R Markdown document. You will learn the structure of code chunks and how to control and customize their behavior using <a href="https://yihui.org/knitr/options/">chunk options</a>. You will also learn how to write and use inline code to display results within the body of your document.</p>
+<p>You do not need to be an R expert to go through this module, but some understanding of R is very helpful. If you are interested in learning how to code in R, I suggest investing some time exploring this amazing tool. There are hundreds of tutorials and courses online, many of which are free. For example, Bill Petti offers a nice <a href="https://billpetti.github.io/Crash_course_in_R/">Crash Course in R</a> that covers many of the basics.</p>
+<p>In this lesson, we will use some built-in data sets to demonstrate how code is integrated into R Markdown documents. R comes with many built-in dummy data sets (from the <a href="https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html">datasets package</a>), which are super useful when you are trying to test code, demonstrate a function, create a <a href="https://stackoverflow.com/help/minimal-reproducible-example">minimal, reproducible example</a>, and so on. This is because anyone following along has access to the exact same data in the exact same format.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>To see a list of the built-in data sets, simply type <code><a href="https://rdrr.io/r/utils/data.html">data()</a></code> in your R or RStudio console.</p>
+</div></div></section><section id="code-chunks" class="level1 page-columns page-full"><h1>Code Chunks</h1>
+<p>The most common way of adding code to your document is with code chunks. Chunks are particularly useful if you have multiple lines of code you want to run like <a href="https://r4ds.had.co.nz/functions.html">functions</a>, <a href="https://r4ds.had.co.nz/iteration.html">for loops</a>, and so on—basically any code that cannot be written in a concise manner and/or code that you want to display in the final document. In contrast, inline code (covered below) is used when you have a small bit of code that you want executed and then show the results (but not the code itself) within say a sentence or paragraph. More on that soon.</p>
+<section id="code-chunk-anatomy" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="code-chunk-anatomy">Code chunk anatomy</h2>
+<p>Great. Let me begin by first explaining the structure of a code chunk. Below is an annotated screenshot of a piece of code I wrote to define a simple, accessible color palette. For the moment you can ignore what this code does, rather make sure you understand how the chunk is structured. There are five main components of a code chunk: <strong>1</strong>) the code itself, <strong>2</strong>) code delimiters, <strong>3</strong>) the coding language, <strong>4</strong>) the chunk name, and <strong>5</strong>) the chunk options.</p>
+<aside>
+If you haven’t worked much with colors, the strings preceded by hash tags (<code>#</code>) are called <a href="https://www.color-hex.com/">hex codes</a>. Hex codes are great for encoding color in many languages, including R.
+</aside><div class="cell">
+<div class="cell-output-display">
+<p><img src="files/chunk.jpg" class="img-fluid" style="width:0.0%"></p>
+</div>
+</div>
+<div>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewbox="0 0 792 538"><image width="792" height="538" href="files/chunk.jpg"></image><a href="#delimiters"> <rect x="19" y="276" fill="#fff" opacity="0" width="50" height="50"></rect></a><a href="#coding-language"> <rect x="143" y="15" fill="#fff" opacity="0" width="50" height="50"></rect></a><a href="#chunk-name"> <rect x="250" y="38" fill="#fff" opacity="0" width="50" height="50"></rect></a><a href="#chunk-options"> <rect x="332" y="193" fill="#fff" opacity="0" width="50" height="50"></rect></a><a href="#the-code"> <rect x="710" y="353" fill="#fff" opacity="0" width="50" height="50"></rect></a>
+</svg><figcaption>
+Anatomy of a code chunk. The formatting here is strict. Make sure to follow it exactly. This figure contains clickable links if you are interested in learning more about these tools.
+</figcaption>
+</div>
+<section id="the-code" class="level3"><h3 class="anchored" data-anchor-id="the-code">1. The code</h3>
+<p>If you want to execute and render code in your document, the first thing you need of course is code. If I just write the code above in my document and run <code>knitr</code>, the code in the rendered document would look something like this:</p>
+<hr>
+<p>friend_pal &lt;- c(“#009E73”, “#D55E00”, “#F0E442”, “#CC79A7”, “#56B4E9”, “#E69F00”, “#0072B2”, “#7F7F7F”, “#B6DBFF”)</p>
+<p>cols &lt;- function(a) image(1:9, 1, as.matrix(1:9), col = a, axes = FALSE, xlab = ““, ylab =”“) cols(friend_pal)</p>
+<hr>
+<p>Notice that there is no formatting and nothing is executed. This is because <code>knitr</code> does not know the text above is code—it simply reads it as text and renders it accordingly. If we want more than this we need to include additional information.</p>
+</section><section id="delimiters" class="level3"><h3 class="anchored" data-anchor-id="delimiters">2. Delimiters</h3>
+<p>Code in R Markdown is distinguished from the rest of the text with delimiters. Often called a <em>code fence</em>, delimiters partition your code from the rest of the text. Code chunks in R markdown are delimited by <strong>three</strong> back ticks (<code>```</code>), which open and close the chunk. If we wrap the text above in back ticks then the final output is formatted like so:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>friend_pal <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"#009E73"</span>, <span class="st">"#D55E00"</span>, <span class="st">"#F0E442"</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                <span class="st">"#CC79A7"</span>, <span class="st">"#56B4E9"</span>, <span class="st">"#E69F00"</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>                <span class="st">"#0072B2"</span>, <span class="st">"#7F7F7F"</span>, <span class="st">"#B6DBFF"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>cols <span class="ot">&lt;-</span> <span class="cf">function</span>(a) <span class="fu">image</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">1</span>, <span class="fu">as.matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>),</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>                          <span class="at">col =</span> a, <span class="at">axes =</span> <span class="cn">FALSE</span> , <span class="at">xlab =</span> <span class="st">""</span>, <span class="at">ylab =</span> <span class="st">""</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">cols</span>(friend_pal)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now we have formatted code. Neat. Even though <code>knitr</code> recognizes this as code (of some kind), it has no idea what language the code is written in and thus will not evaluate and execute the chunk—it simply takes the code between the delimiters and turns into <a href="https://www.markdownguide.org/basic-syntax/#code">Markdown-formatted code text</a>. This can actually be useful if you want to call out a block of code without running anything. But if you want <code>knitr</code> to actually do something with this code, you need to provide more information.</p>
+<blockquote class="blockquote">
+<p>Any additional code chunk details <strong>must</strong> be enclosed in curly brackets (<code><a href="https://rdrr.io/r/base/Paren.html">{ }</a></code>).</p>
+</blockquote>
+<p>Let me say that again. Any additional code chunk details <strong>must</strong> be enclosed in curly brackets (<code><a href="https://rdrr.io/r/base/Paren.html">{ }</a></code>). Failure to do so will break your document and make you very frustrated. Everything described below needs to be enclosed in curly brackets.</p>
+</section><section id="coding-language" class="level3"><h3 class="anchored" data-anchor-id="coding-language">3. Coding Language</h3>
+<p>To evaluate code, the minimum information you need to provide is the name of a language. R Markdown <a href="https://rmarkdown.rstudio.com/lesson-5.html">supports many languages</a> like Python, BASH, and of course R. For example, I can call BASH and run a simple command just like I would do in a terminal. Here I use the <a href="https://ss64.com/bash/ls.html"><code>ls</code></a> command to list all the files in a directory and add the flags <code>l</code> to get a long listing for every file, <code>a</code> to include any hidden files, and <code>h</code> to return file sizes in human readable format.</p>
+<p>Pretty please pay attention to the structure of the chunk.</p>
+<ul>
+<li>Three back ticks ( <strong>```</strong> ),</li>
+<li>followed by open curly bracket ( <strong>{</strong> ),</li>
+<li>the language name (<strong>bash</strong>),</li>
+<li>closed curly bracket ( <strong>}</strong> ),</li>
+<li>
+<strong>&lt;return&gt;</strong>,</li>
+<li>the command you want to run,</li>
+<li>
+<strong>&lt;return&gt;</strong> again,</li>
+<li>and finally three back ticks ( <strong>```</strong> ).</li>
+</ul>
+<p>If you fail to follow this format, RStudio will not be very nice.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-lah</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>total 112
+drwxr-xr-x@  6 rad  staff   192B Sep 16 09:40 .
+drwxr-xr-x@ 10 rad  staff   320B Sep 16 09:39 ..
+-rw-r--r--@  1 rad  staff   6.0K Sep 16 09:17 .DS_Store
+drwxr-xr-x@  8 rad  staff   256B Sep 15 16:11 files
+-rw-r--r--@  1 rad  staff    20K Sep 16 09:40 index.qmd
+-rw-r--r--@  1 rad  staff    20K Sep 16 09:40 index.rmarkdown</code></pre>
+</div>
+</div>
+<p>By specifying a language, <code>knitr</code> was able to interpret the code and run the commands. And as you can see, I get a printout of the results right in the final document. Though we will mainly use the <code>r</code> language option you may want to explore the functionality of other languages in your own work. OK, back to R.</p>
+<blockquote class="blockquote">
+<p>Also make certain that there are line breaks before and after code chunks.</p>
+</blockquote>
+<p>Suppose I want to generate some quick summary statistics for one of the built-in data sets using the <a href="https://rdrr.io/r/base/summary.html">base::summary()</a> function. In my R Markdown document I would code the chunk like so.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>base<span class="sc">::</span><span class="fu">summary</span>(trees)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This command simply calls the <code>summary</code> function (from the <code>base</code> package) and runs the it using the <code>trees</code> data set. When I build my document, the code chunk renders like this followed by the output of the command:</p>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">base</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">trees</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     Girth           Height       Volume     
+ Min.   : 8.30   Min.   :63   Min.   :10.20  
+ 1st Qu.:11.05   1st Qu.:72   1st Qu.:19.40  
+ Median :12.90   Median :76   Median :24.20  
+ Mean   :13.25   Mean   :76   Mean   :30.17  
+ 3rd Qu.:15.25   3rd Qu.:80   3rd Qu.:37.30  
+ Max.   :20.60   Max.   :87   Max.   :77.00  </code></pre>
+</div>
+</div>
+<p>The main thing to notice about the rendered code chunk is that there are no chunk delimiters or any information about the chunk, just the formatted command <code>base::summary(trees)</code> with the formatted results printed below.</p>
+</section><section id="chunk-name" class="level3"><h3 class="anchored" data-anchor-id="chunk-name">4. Chunk name</h3>
+<p>Adding a chuck name is <em>optional</em> but my advice is to always add a name. The main reason is that it is easier to track down problems if each chunk has a name—especially in large documents or websites. Keep the name simple. If you follow the same rules I described in the post on <a href="../../posts/naming-things/index.html">naming things</a>, you should be OK. Bad chunk names can cause errors when a document is rendered.</p>
+<blockquote class="blockquote">
+<p>The name <strong>must be unique</strong>, it needs to come right after the language variable, and it must be separated by a space. Failure to follow these rules will result in errors.</p>
+</blockquote>
+<p>If you look at any of my code you will notice that I do not use chunk names. I don’t add chunk names for one simple reason, I’m lazy This is one of those cases where you should probably not follow my example.</p>
+</section><section id="chunk-options" class="level3"><h3 class="anchored" data-anchor-id="chunk-options">5. Chunk Options</h3>
+<p>The last piece of this puzzle are the chunk options. Options are listed <strong>after</strong> the language and the name and <strong>must</strong> be separated by a comma (<code>,</code>). Chunk options are how you fine-tune the way <code>knitr</code> processes and renders your code. There are something like 50 chunk options, and it can get a little confusing to figure out what each one does and when to use them. I only want to cover the most common options here and will leave the rest up to you. You can familiarize yourself with the chunk options by checking out the relevant sections from the <a href="https://bookdown.org/yihui/rmarkdown-cookbook/chunk-options.html">R Markdown Cookbook</a>, <a href="https://bookdown.org/yihui/rmarkdown/r-code.html">R Markdown: The Definitive Guide</a>, and the <a href="https://yihui.org/knitr/options/#chunk_options">knitr guide</a>.</p>
+<p>If you remember back when you created your first Distill site, R Markdown populated the <code>index.Rmd</code> and <code>about.Rmd</code> each with a code chunk that looked like this:</p>
+<p>There are a few things to unpack here. First, the language of the chunk is <code>r</code>, the name is <code>setup</code>, and the option is <code>include=FALSE</code>. With <code>include=FALSE</code>, the code chunk is evaluated but the code and any output will be completely suppressed.</p>
+<p>Second, the command that is called within the chunk uses the <code>opts_chunk$set</code> function from the <code>knitr</code> package to set a <strong>global chunk option</strong> for the entire document, in this case <code>echo = FALSE</code>. The <code>echo</code> option controls whether code chunks are visible in the rendered document. Setting the global command <code>echo = FALSE</code> means that all chunks in the rendered document will be hidden by default. The only way to escape this behavior is to either change the global option to <code>echo = TRUE</code> or set <code>echo = TRUE</code> for individual code chunks.</p>
+<p>For example, let’s return to our toy example where we summarize the <code>trees</code> data set. If we leave the global option as is, the code chunk will be evaluated but not rendered in the final document. However, if we want to see the code in that chunk we must set <code>echo=TRUE</code>, like so.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: summary1</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>base<span class="sc">::</span><span class="fu">summary</span>(trees)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>And the rendered code will look like this.</p>
+<div class="cell">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">base</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">trees</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     Girth           Height       Volume     
+ Min.   : 8.30   Min.   :63   Min.   :10.20  
+ 1st Qu.:11.05   1st Qu.:72   1st Qu.:19.40  
+ Median :12.90   Median :76   Median :24.20  
+ Mean   :13.25   Mean   :76   Mean   :30.17  
+ 3rd Qu.:15.25   3rd Qu.:80   3rd Qu.:37.30  
+ Max.   :20.60   Max.   :87   Max.   :77.00  </code></pre>
+</div>
+</div>
+<p>What about if we want to see the code but do not want it evaluated (executed). In that case we need to add the option <code>eval=FALSE</code>, like so</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: summary3</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>base<span class="sc">::</span><span class="fu">summary</span>(trees)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Here we see the code but no output is included. In other words, the code was not run because we set <code>eval=FALSE</code>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">base</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">trees</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="fa-edit-assignment" class="level3"><h3 class="anchored" data-anchor-id="fa-edit-assignment">
+<span style="color: steelblue;"><i class="fa-solid fa-edit" aria-label="edit"></i></span> Assignment</h3>
+<p>As we move through the course we will explore additional chunk options, especially when we cover figures and tables, which have their own settings. For now, play around with <code>include</code>, <code>eval</code>, and <code>echo</code> in your documents. Use dummy data if you want.</p>
+</section></section></section><section id="inline-r-code" class="level1"><h1>Inline R Code</h1>
+<p>The last thing I want to show you for this lesson is inline R code. Chunks are great when you have a lot of commands to run and/or you want to control the output. Inline code lets you add the output of a command anywhere in a document. Let’s return to our old friend, the <code>trees</code> data set for a demonstration of this functionality.</p>
+<p>I know from looking at the <a href="https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/trees.html">trees help page</a> that the data set is a <em>data frame with 31 observations on 3 variables</em> (Girth, Height, and Volume). Now pretend I do not know what the actual data frame looks like, but I am interested to report the dimensions of the data set and determine the maximum and minimum values of each variable.</p>
+<p>I can write a sentence like this in my R Markdown document using inline R code to extract the information without ever looking at the data set:</p>
+<hr>
+<p>The <code>trees</code> data frame has <code>`r nrow(trees)`</code> observations on <code>`r length(trees)`</code> variables. The maximum girth is <code>`r max(trees$Girth)`</code> and the minimum height is <code>`r min(trees$Height)`</code>.</p>
+<hr>
+<p>What I did here was create inline, mini code chunks by enclosing each command in <em>single back ticks</em>, adding the <code>r</code> language qualifier, followed by the command. R Markdown will always display the results of inline code, but never the code itself. You cannot use <code>knitr</code> chunk options with inline expressions and inline output is indistinguishable from the surrounding text. Here is what the passage looks like when it is rendered in the final document.</p>
+<blockquote class="blockquote">
+<p>The <code>trees</code> data frame has 31 observations on 3 variables. The maximum distance is 20.6 and the minimum speed is 63.</p>
+</blockquote>
+<p>You can even use inline code for quick calculations and render the results right in the text. For example, the square root of <span class="math inline">\(\pi\)</span> is <code>`r sqrt(pi)`</code> renders as <em>The square root of <span class="math inline">\(\pi\)</span> is 1.7724539</em>. Running inline r code is super handy.</p>
+<section id="fa-edit-assignment-1" class="level3"><h3 class="anchored" data-anchor-id="fa-edit-assignment-1">
+<span style="color: steelblue;"><i class="fa-solid fa-edit" aria-label="edit"></i></span> Assignment</h3>
+<p>Add inline R code to your document.</p>
+</section></section><section id="testing-code" class="level1"><h1>Testing Code</h1>
+<p>It is a really good habit to test code chunks as you add them. This will ensure that each chunk works, making it easier to track down problems should any arise. If you refer to the first image on this page, you can you have options for Chunk Output—Inline and Console. This controls where the output is displayed. Let’s take a quick look at a code chunk in RStudio and see how you test chunks before rendering.</p>
+<p>Take a look at the tool bar on the far right of the chunk.</p>
+<ul>
+<li><p>Option 1 <span style="color: grey;"><i class="fa-solid fa-cog" aria-label="cog"></i></span> <strong>Modify Chunk Options</strong> , is a drop down menu that gives you an alternative way to set code chunk options.</p></li>
+<li><p>Option 2 <i class="fa fa-step-forward fa-rotate-90" aria-hidden="true"></i> will <strong>Run all Code Chunks Above</strong> meaning that RStudio will run all code chunks above the current chunk but not run the current chunk itself.</p></li>
+<li><p>Option 3 <span style="color: green;"><i class="fa-solid fa-play" aria-label="play"></i></span> will <strong>Run the Current Chunk</strong>. Incidentally, if you do not see these options it means something is wrong with the chunk formatting.</p></li>
+</ul>
+<p>Look for the <strong>Run</strong> drop down menu in the upper right hand corner of your editor window. There you can find several more options for running chunks without rendering the document.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="files/test_code.png" class="img-fluid" width="1208"></p>
+</div>
+</div>
+</section><section id="concluding-remarks" class="level1"><h1>Concluding Remarks</h1>
+<p>As you may have noticed, chunk details are hidden in rendered documents. Chunk details are instructions for <code>knitr</code> on how chunks should be rendered. This information is not important for reproducibility or transparency, so it is hidden. Anytime you do see code chunk information on a page, it is because that chunk is intentionally being rendered <a href="https://rmarkdown.rstudio.com/articles_verbatim.html"><em>verbatim</em></a>. Normally I do this for demonstration purposes only. When I show code chunk information, it is as a learning tool only. Otherwise these details are hidden and you will have to dig around the source code on GitHub to find them :). The same goes for inline code.</p>
+<p>Please spend some time learning this material and asking questions. I promise, the more you take away from this lesson, the less likely you will be to throw your computer off a bridge. This is your chance to get your hands dirty writing and testing code.</p>
+</section><div id="quarto-appendix" class="default"><section id="source-code" class="level2 appendix"><h2 class="anchored quarto-appendix-heading">Source Code</h2><div class="quarto-appendix-contents">
+<p>The source code for this page can be accessed on GitHub <i class="fa-brands fa-github fa-l" aria-label="github"></i> by <a href="https://github.com/stri-mcgill-neo/2024/blob/main/docs/lessons/lesson-5-markdown-meet-r/index.qmd">clicking this link</a>.</p>
+
+
+</div></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">Proudly supported by <a href="https://posit.co"><img src="https://www.rstudio.com/assets/img/posit-logo-fullcolor-TM.svg" class="img-fluid" alt="Posit" width="65"></a></div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+<li class="nav-item">
+    <a class="nav-link" href="../../../about.html">About</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../../docs/faq/index.qmd">FAQ</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../../license.qmd">License</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../../trademark.qmd">Trademark</a>
+  </li>  
+</ul>
+</div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+<li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/quarto_pub">
+      <i class="bi bi-twitter" role="img" aria-label="Quarto Twitter">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/quarto-dev/quarto-cli">
+      <i class="bi bi-github" role="img" aria-label="Quarto GitHub">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://quarto.org/docs/blog/index.xml">
+      <i class="bi bi-rss" role="img" aria-label="Quarto Blog RSS">
+</i> 
+    </a>
+  </li>  
+</ul>
+</div>
+  </div>
+</footer>
+
+
+</body></html>
