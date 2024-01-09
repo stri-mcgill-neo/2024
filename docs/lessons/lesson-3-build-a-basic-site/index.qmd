@@ -1,0 +1,526 @@
+---
+title: "Lesson 3: Build  📖 a Basic Site"
+author: "Jarrod J Scott"
+description: |
+  In this lesson we go through the steps for creating your first site. We cover the three building blocks of the web (HTML, CSS, JS), generate a basic site with Distill, and discuss the rendering process. 
+date: "2024-01-03"
+categories: [news, code, analysis]
+image: "files/feature.png"
+repository_url: "https://github.com/stri-mcgill-neo/2024/"
+reading-time: true
+#execute:
+#  keep-md: true
+knitr:
+  opts_chunk: 
+    echo: true
+    eval: false
+    message: false
+    warning: false
+filters:
+   - lightbox
+lightbox:
+  match: auto
+  effect: fade
+  desc-position: right
+  loop: false   
+---
+
+```{r}
+#| label: load
+#| eval: true
+#| echo: false
+
+is_html = knitr::is_html_output()
+pacman::p_load(tidyverse, fontawesome, slickR, downlit, here,
+               install = FALSE, update = FALSE)
+
+here::i_am("assets/scripts/functions.R")
+source(here("assets/scripts/functions.R"))
+```
+
+# Learning Objectives
+
+In this lesson, you will create your first site. Remember, you have the choice of a [Distill website](https://rstudio.github.io/distill/website.html) or a [Distill blog](https://rstudio.github.io/distill/blog.html). Since the structure of a Distill website is a bit simpler we will start there. This lesson is designed to lay down the conceptual and mechanical framework you need to get started. Your job is to understand this material because it is the basis for everything that comes after. If you do not understand something, please ask. Chances are pretty good that you are not alone.
+
+::: aside
+Estimated reading time: `r round(reading_time(), digits = 0)` minute(s).
+:::
+
+> If you have not already done so, please read the short post on [Naming Things](../2024-04-21-naming-things/index.html) in the Tip n' Tricks section before getting started.
+
+# Three Core Languages
+
+The three core technologies, or building blocks, of web pages are HTML, CSS, and JS. Let's briefly discuss each to get a better idea of what they do. Do not worry---you are not required to write code in HTML, CSS, or JS but even a basic understanding of these languages will allow you to perform more advanced customization of your site. Let's look at a little toy exercise to demonstrate the functionality of each language. How about we create a level 3 header and a button.
+
+## HTML
+
+HTML, or [**H**yper **T**ext **M**arkup **L**anguage](https://developer.mozilla.org/en-US/docs/Web/HTML) provides the **basic type, format, structure, and makeup** of a web page or site. It is the standard markup language^[Markup language is a computer language that uses tags to define elements within a document. It is human-readable, meaning markup files contain standard words, rather than typical programming syntax.] for documents displayed in web browsers. HTML lets you structure a page into elements---paragraphs, sections, headings, navigation bars, and so on. HTML elements are delineated by *tags*, written using angle brackets. To display the level 2 header and button we code it like so:
+
+```{verbatim}
+<h2>The Button element</h2>
+<button type="button">Click Me, I'm a button!</button>
+```
+
+And here is what it looks like on our pretend page after the code is rendered. Neat.
+
+<div class="warning" style='padding:0.1em; background-color:#f5f5f5; color:#414141;border: 1px solid #B7B7B7;'>
+<span>
+<h2 style="font-family:Times;">The Button Element</h2>
+<button type="button">Click Me, I'm a button!</button>
+</span>
+</div>
+
+## CSS
+
+CSS, or [**C**ascading **S**tyle **S**heets](https://developer.mozilla.org/en-US/docs/Web/CSS), is a style sheet language ^[A style sheet language is a computer language that expresses the presentation of structured documents.] used to **control presentation, formatting, and layout** of a document written in a markup language, like HTML. . Now let's say we wanted to *style* the header and button elements created above. OK, how about we modify the header to be center aligned, uppercase, and blue. While we're at it, we can also change the look of the button. How about we make the button blue and rounded, set the font larger and white, and increase the left margin and padding.
+
+To accomplish this, we add the following code to our stylesheet ^[There are three ways you implement CSS into your HTML: internal, external, and inline styles. Internal or embedded CSS requires you to add \<style\> tag in the \<head\> section of your HTML document. With external CSS, you'll link your web pages to an external `.css` file, which can be created by any text editor in your device. Inline CSS is used to style a specific HTML element. For this CSS style, you'll only need to add the style attribute to each HTML tag, without using selectors. I mainly use an external CSS for styling. For example, here is the [CSS file for our site](https://github.com/stri-mcgill-neo/2024/blob/main/assets/css/styles.css)]:
+
+
+```{css}
+h2 {
+  text-align: center;
+  text-transform: uppercase;
+  color: #004276;
+  font-family: 'Open Sans';
+}
+
+button {
+  color: #FFFFFF;
+  background-color: #004276;
+  font-size: 1.1em; 
+  margin-left: 2em;
+  padding: 0.5em;
+  border-radius: 30px;
+}
+```
+
+And now we get CSS-styled header and button. Again, neat but the button still doesn't do anything useful.
+
+<div class="warning" style='padding:0.1em; background-color:#f5f5f5; color:#414141;border: 1px solid #B7B7B7;'>
+<span>
+<h2 style="text-align:center;text-transform:uppercase;color:#004276;font-family:Open Sans;">
+The Button Element
+</h2>
+<button type="button" style="color:#FFFFFF;background-color:#004276;font-size: 1.1em;margin-left:2em;padding:0.5em;border-radius: 30px;">
+Click Me, I'm a button!
+</button>
+</span>
+</div>
+
+</br>
+
+Now that we have a styled button, let's see if we can get it to do something useful. For this we can use a little JavaScript in our code.
+
+## JS
+
+JS, or [**J**ava**S**cript](https://developer.mozilla.org/en-US/docs/Web/JavaScript), is a programming language used to **control the behavior of different elements**. JS is used to for interactive web applications---powering features like interactive images, carousels, and forms. What if we wanted to create a button that did something useful when we clicked it? Perhaps displaying the date and time would be nice? Returning to our original HTML, we add the `onclick` option and a JS function that gets the current date and time.
+
+```{verbatim}
+<!-- Original Code -->
+<button type="button">Click Me, I'm a button!</button>
+```
+
+...to this.
+
+```{verbatim}
+<!-- Modified with JS function -->
+<button type="button" onclick="document.getElementById('demo').innerHTML = Date()"></button>
+```
+
+<div class="warning" style='padding:0.1em; background-color:#f5f5f5; color:#414141;border: 1px solid #B7B7B7;'>
+<span>
+<h2 onclick="myFunction(this, 'red')" style='text-align:center;text-transform:uppercase;color:#004276;font-family:Open Sans;'>The Button Element</h2>
+<button type="button" 
+style="color:#FFFFFF;background-color:#004276;font-size: 1.1em;margin-left:2em;padding:0.5em;border-radius: 30px;" 
+onclick="getElementById('demo').innerHTML = Date()">Click to display Date and Time.</button>
+<p id="demo"></p>
+</span>
+</div>
+    
+</br>
+
+So that's it in a nutshell. We began with a basic header and button coded in HTML, then styled both elements using CSS, and finally added some interactive functionality with JS. The beauty of writing your documents in (R) Markdown and using a framework like Distill is that a lot of this coding is already done for you. As you will learn, the Markdown text and code you write is translated into HTML. Frameworks like Distill offer pre-packaged HTML templates, the content of which is styled with [built-in CSS](https://rstudio.github.io/distill/website.html#theming). Distill also provides a [variety of ways](https://rstudio.github.io/distill/interactivity.html) to add interactive JavaScript visualizations to your pages, including pre-built [htmlwidgets](http://www.htmlwidgets.org/) that wrap JavaScript visualization libraries like [Leaflet](http://rstudio.github.io/leaflet/), [Plotly](https://plot.ly/r/), [dygraphs](http://rstudio.github.io/dygraphs/), [r2D3](https://rstudio.github.io/r2d3/), and [threejs](https://bwlewis.github.io/rthreejs/). I know I sound like a broken record, but we will cover topics like theming and interactive graphics in subsequent lessons.
+
+### [{{< fa book-open >}}]{style="color: steelblue;"}  Further Reading
+
+If you are interested in developing your HTML and CSS skills I highly recommend [Interneting is hard (But it doesn't have to be)](https://www.internetingishard.com/), a comprehensive HTML/CSS curriculum created by Oliver James.
+
+```{r}
+#| eval: true
+#| echo: false
+#| fig-align: center
+#| fig-link: https://www.internetingishard.com/
+knitr::include_graphics("files/internetingishard.png")
+```
+
+I have not really learned how to code in JS yet, so I cannot really suggest any tutorials/courses but for some inspiration, check out the awesome interactive graphics in the [htmlwidgets R gallery](http://gallery.htmlwidgets.org/).
+
+# Build a Distill Website
+
+Let's go through a quick demo on creating a Distill website. Here we go through the process step-by-step. If you prefer a graphical representation instead, scroll down a little to see images of this process.
+
+## Written recipe
+
+-   **Step 1**: Open RStudio and go to the `File` menu and select `New Project`. A window called `New Project Wizard` will pop up. Select `New Directory`.
+-   **Step 2**: Under `Project Type` scroll down until you see `Distill Website`. Hit the arrow on the right.
+-   **Step 3**: Fill in the part that says `Directory Name`. In this example I simply call it `distill_website.` Also, under `Create project as subdirectory of:` select a path to write the project. You can ignore the rest for now.
+-   **Step 4**: Boom! Site created. You should see three files in your RStudio IDE---`index.Rmd`, `about.Rmd`, and `_site.yml`. We will go through the details in a minute, but in a nutshell:
+
+| **File type** | **Description**             |
+|---------------|-----------------------------|
+| `_site.yml`   | Website configuration file. |
+| `index.Rmd`   | Website home page.          |
+| `about.Rmd`   | Website about page.         |
+
+: Files created by Distill that should show up in the RStudio IDE.
+
+-   **Step 5**: Navigate to your project directory. Notice that in addition to the three files we saw in Step 4 there is also a `_site/` directory and a `.Rproj` file^[This file contains various project options and can also be used as a shortcut for opening the project directly from the filesystem.]. Open the `_site/` directory and double-click `index.html` to open. This is your new homepage.
+
+------------------------------------------------------------------------
+
+## Visual recipe
+
+The same steps described above---in graphical format ^[This image carousel was created using the [slickR](https://github.com/yonicd/slickR) package. slickR is a great option for displaying graphics like figures and images. We will cover slickR in a future lesson.].
+
+```{r}
+#| eval: true
+#| echo: false
+
+library(magrittr)
+tmp_list <- list.files("files/", pattern = "step_")
+tmp_list <- tmp_list %>% stringr::str_replace(".png", "")
+
+test <- tidyr::as_tibble(tmp_list)
+test$path <- test$value
+
+test$path <- gsub("^", "files/", test$path)
+test$path <- gsub("$", ".png", test$path)
+test$info <- ""
+## To add random text for captions
+#for (i in 1:nrow(test)) {
+#  test$info[i] <- stringi::stri_rand_lipsum(1, start_lipsum = FALSE)
+#  test$info[i] <- stringr::str_sub(test$info[i], start = 1, end = 400)
+#}
+#stringi::stri_rand_strings(10, 4, pattern = "[A-Za-z0-9]")
+
+```
+
+```{r}
+#| eval: true
+#| echo: false
+test$info[1] <- "Step 1: Open RStudio and go to the File menu and select New Project. A window called New Project Wizard will pop up. Select New Directory. Proceed to Step 2."
+test$info[2] <- "Step 2: Under Project Type scroll down until you see Distill Website. Hit the arrow on the right. Proceed to Step 3."
+test$info[3] <- "Step 3: Fill in the part that says Directory Name. In this example I simply call it distill_website. Also, under Create project as subdirectory of: select a path to write the project. You can ignore the rest for now. Proceed to Step 4."
+test$info[4] <- "Step 4: Boom! Site created. You should see three files in your RStudio IDE---index.Rmd, about.Rmd, and _site.yml. We will go through each of these in a minute. For now proceed to Step 5."
+test$info[5] <- "Step 5: Navigate to your project directory. Notice that in addition to the three files we saw in Step 4 there is also a _site/ directory and a .Rproj file. Open the _site/ and double-click index.html to open. Here is your new homepage."
+```
+
+```{r}
+#| eval: true
+#| echo: false
+#| fig-height: 6
+require(slickR)
+(slickR(obj = test$path, height = 500, width = "90%", objLinks = NULL) + 
+  slickR::settings(focusOnSelect = TRUE)) %synch% 
+  (slickR(test$info, slideType = 'p') + 
+     slickR::settings(arrows = FALSE, adaptiveHeight = FALSE, dots = TRUE)
+   )
+
+#for(carimage in test$path) {
+#  file.copy(carimage, "../../../public_build/docs/lessons/lesson-3-build-a-basic-site/files/")
+#}
+```
+
+------------------------------------------------------------------------
+
+So this site would have two pages---the landing page (`index.Rmd`) and a sub page called About (`about.Rmd`). Let's say the root URL for this site is `https://example.io/`. If you were to navigate to this URL you would see the content of `index.Rmd`, the homepage. To access the About page you would need to go to `https://example.io/about.html`. Notice the homepage does not require any special extension but any sub pages do, like `.../about.html`.
+
+# A Closer Look
+
+Now that we have a basic Distill site, let's take a closer look at the primary files generated when we created the site. All R Markdown websites, at a minimum, **must** have: 
+
+-    a file called `_site.yml`, which provides the global YAML^[YAML is a human-readable markup language. With it, you can create easily readable documents that can be consumed by a variety of programming languages.] header for the site.  
+-    a `.Rmd` file named `index.Rmd`, which provides the content for the home page of the website.
+
+Other things, like `about.Rmd` or custom CSS or whatever, are optional.
+
+## _site.yml
+
+The `_site.yml`, written in [YAML](https://en.wikipedia.org/wiki/YAML), instructs the R Markdown site generator (in this case Distill) how to build the site---it contains default **metadata that is applied to all `.Rmd` files**  on the site. These metadata include the base URL and title, the position and content of the navigation bar, controls for the table of contents, etc. In the site you just created, the YAML file should look like this.
+
+```{verbatim}
+---
+name: "distill_website"
+title: "My Website"
+description: |
+  My Website
+output_dir: "_site"
+navbar:
+  right:
+    - text: "Home"
+      href: index.html
+    - text: "About"
+      href: about.html
+output: distill::distill_article
+---
+```
+
+If for example, you want to add a table of contents to every page on your site, you can just add the `toc` option to `_site.yml`, which will apply this option globally. YAML files are quite customizable but some settings are document and/or framework specific so you need to play around with the options if you want to change something. To see some of the options you can run the following in the Console of RStudio.
+
+```{r}
+#| echo: true
+?rmarkdown::html_document
+```
+
+> The structure and formating of the `_site.yml` is important. Indentation, new lines, and so on need to be coded properly. A malformed `_site.yml` file can break your site :)
+
+Click below if you would like to see the current version of the `_site.yml` file for our course web site. Compare this to the default `_site.yml` file above. You can also access the file [here](https://github.com/stri-mcgill-neo/2024/blob/main/_site.yml).
+
+```{r}
+#| code-fold: true
+name: "web"
+title: ".Rmd Fieldguide"
+description: |
+  R Markdown Tutorials
+output_dir: "public_build"
+base_url: https://stri-mcgill-neo.github.io/2024/
+favicon: files/favicon_io/favicon.ico
+collections:
+  posts:
+    categories: true
+    categories_metadata: true
+    authors_metadata: false
+    feed_items_max: 20 # default
+    citations: false
+creative_commons: CC BY-SA
+exclude: ["public", "README.html", "README.md", "page_build", "public_build", "sandbox"]
+navbar:
+  source_url: true
+  right:
+    - icon: fa-home
+      href: index.html
+    - text: "Resources"
+      menu:
+        - text: "Distill homepage"
+          href: https://rstudio.github.io/distill/
+    - icon: fa-github fa-lg
+      href: https://github.com/stri-mcgill-neo/2024
+    - icon: fa fa-rss
+      href: sitemap.xml
+output:
+  distill::distill_article:
+    includes:
+      in_header: giscus.html
+    highlight_downlit: true
+    highlight: haddock
+    css: assets/css/styles.css
+    toc: true
+    toc_depth: 2
+    toc_float: true
+compare_updates_url: https://github.com/stri-mcgill-neo/2024/compare/pubv1...master
+rss:
+  full_content: TRUE
+```
+
+## .Rmd files
+
+Each of the `.Rmd` files generated by Distill contain their own YAML metadata in what's called a YAML header, contained within a *code fence* of three dashes (`---`). Any changes you make to the YAML header of a page **overrides** the global settings in `_site.yml`. At a minimum, a page must contain at least a nonempty \<title\> element in the YAML header. Everything else is optional. So if you set the global option `toc: true` but you do not want a TOC on your About page, you would simply set `toc: false` in the page's YAML header. The two `.Rmd` files also contain a small code chunk containing R code (in a *code fence* of three back ticks, ` ``` `). 
+
+Here is what the `index.Rmd` file (I added the ## comments to point out the YAML header and code chunk). The `about.Rmd` file is basically the same. 
+
+
+```{verbatim}
+## YAML header
+---
+title: "My Website"
+description: |
+  Welcome to the website. I hope you enjoy it!
+site: distill::distill_website
+---
+
+## R Code chunk
+```{r}
+#| label: setup
+#| include: false
+knitr::opts_chunk$set(echo = FALSE)
+
+# Learn more about creating websites with Distill at:
+# https://rstudio.github.io/distill/website.html
+```
+
+# How to Render R Markdown
+
+Whether we are working with a single file or an entire website, R Markdown files need to be translated into a more readable product. This process is called **rendering**-----where the input file(s) are transformed to a specified output format, like HTML. 
+
+```{r}
+#| eval: true
+#| echo: false
+#| out-width: 0%
+
+knitr::include_graphics("files/flow.png")
+```
+
+<!-- Image Map Generated by https://imagemapper.pageballoon.com/ -->
+
+<div>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 700 137">
+  <image width="700" height="137" xlink:href="files/flow.png"></image> <a xlink:href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" alt="CSS" title="CSS">
+    <rect x="642" y="22" fill="#fff" opacity="0" width="50" height="50"></rect>
+  </a><a xlink:href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" alt="HTML5" title="HTML5">
+    <rect x="587" y="22" fill="#fff" opacity="0" width="50" height="50"></rect>
+  </a><a xlink:href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" alt="JS" title="JS">
+    <rect x="616" y="80" fill="#fff" opacity="0" width="50" height="50"></rect>
+  </a><a xlink:href="https://www.markdownguide.org/" target="_blank" alt="Markdown" title="Markdown">
+    <rect x="12" y="82" fill="#fff" opacity="0" width="91" height="55"></rect>
+  </a><a xlink:href="https://www.markdownguide.org/" target="_blank" alt="Markdown" title="Markdown">
+    <rect x="340" y="45" fill="#fff" opacity="0" width="87" height="54"></rect>
+  </a><a xlink:href="https://quarto.org" target="_blank" alt="Quarto" title="Quarto">
+    <rect x="155" y="37" fill="#fff" opacity="0" width="60" height="70"></rect>
+  </a><a xlink:href="https://yihui.org/knitr/" target="_blank" alt="knitr" title="knitr">
+    <rect x="243" y="37" fill="#fff" opacity="0" width="64" height="69"></rect>
+  </a><a xlink:href="https://www.r-project.org/about.html" target="_blank" alt="R" title="R">
+    <rect x="30" y="4" fill="#fff" opacity="0" width="68" height="53"></rect>
+  </a><a xlink:href="https://pandoc.org/" target="_blank" alt="PanDoc" title="PanDoc">
+    <rect x="459" y="37" fill="#fff" opacity="0" width="98" height="67"></rect>
+  </a>
+</svg>
+<figcaption>
+The rendering process---creating web pages from R Markdown documents (R code plus Markdown). EXTENDED FUNCTION. This is an image map---an HTML technique that allows you to create clickable areas on an image. I coded this so that each logo contains a different hyperlink. Try it out. <a href = "https://gist.github.com/jarrodscott/7c16b36b6a79e5398f22379999ed80ef">Click here </a> if you are interested in the source code.
+</figcaption>
+</div>
+
+</br>
+
+Basically, we begin with an R Markdown document that contains code and Markdown formatted text. When you render the R Markdown document a program called [`knitr`]((https://yihui.org/knitr/)) **executes all the R code**, knits the results together with any [Markdown](https://www.markdownguide.org/) text, and creates a new Markdown document. The new Markdown document is then processed by [PanDoc](https://pandoc.org/), which converts the Markdown syntax into [HTML and CSS](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5) code. PanDoc is like a *swiss-army knife* for Markdown-----it can covert many types of Markdown documents into a variety of other formats. Don't worry, all of these steps happen behind the scenes. As long as you have a properly formatted R Markdown document---**including the YAML header**---these tools will take care of the rest.
+
+A site like this one is simply a collections of R Markdown documents that are rendered into a website where each `.Rmd` file becomes a page of the site.
+
+## Written recipe
+
+When you are ready, you have two primary options for building or rendering---you can either render an individual page or the entire site. Let's go through each option in turn. Scroll down for a graphical representation of both options. 
+
+<aside>
+I will use the terms **building**, **rendering**, and **knitting** interchangeably since they effectively mean the same thing. 
+</aside>
+
+There are several ways to **render an individual page**:
+
+> Note. The page or document you wish to render must be open and selected.  
+
+1\. On the top menu bar find **File** and select **Knit Document**.  
+2\. Find the **Console** tab and run the command `rmarkdown::render_site("index.Rmd")`.    
+3\. In the window of the document you wish to render, find the **Knit** button and click it.   
+4\. Use the shortcut key sequence.  
+
+-   On a Mac `command`+`shift`+`K` **or** `r knitr::asis_output("&#8984;")`+`r knitr::asis_output("&#8679;")`+`K`.   
+-   On a Windows/Linux (I think) `ctrl`+`shift`+`K` **or** `r knitr::asis_output("&#8963;")`+`r knitr::asis_output("&#8679;")`+ `K`.  
+
+5\. You also have the option of selecting `Knit on Save` so every time you save the document it is automatically rendered. For now I advise against doing this since it takes control out of your hands.    
+
+There are several ways to **render an entire site**:
+
+1\. Find the **Build** tab and hit the ⛏**Build Website**  button.   
+2\. On the top menu bar find **Build** and select **Build All**.  
+3\. Find the **Console** tab and run the command `rmarkdown::render_site()`.    
+4\. Use the shortcut key sequence.  
+
+-   On a Mac `command`+`shift`+`B` **or** `r knitr::asis_output("&#8984;")`+`r knitr::asis_output("&#8679;")`+`B`.   
+-   On a Windows/Linux (I think) `ctrl`+`shift`+`B` **or** `r knitr::asis_output("&#8963;")`+`r knitr::asis_output("&#8679;")`+ `B`.
+
+------------------------------------------------------------------------
+
+## Visual recipe
+
+```{r}
+#| eval: true
+#| echo: false
+tmp_list <- list.files("files/", pattern = "render_")
+tmp_list <- tmp_list %>% stringr::str_replace(".png", "")
+
+test <- tidyr::as_tibble(tmp_list)
+test$path <- test$value
+
+test$path <- gsub("^", "files/", test$path)
+test$path <- gsub("$", ".png", test$path)
+test$info <- ""
+## To add random text for captions
+#for (i in 1:nrow(test)) {
+#  test$info[i] <- stringi::stri_rand_lipsum(1, start_lipsum = FALSE)
+#  test$info[i] <- stringr::str_sub(test$info[i], start = 1, end = 400)
+#}
+#stringi::stri_rand_strings(10, 4, pattern = "[A-Za-z0-9]")
+```
+
+```{r}
+#| eval: true
+#| echo: false
+
+test$info[1] <- "Render a single page: 1) On the top menu bar find <File> and select <Knit Document>.  2) Find the <Console> tab and run the command rmarkdown::render_site('index.Rmd'). 3) In the window of the document you wish to render, find the <Knit> button and click it. 4) Use the shortcut key sequence."
+test$info[2] <- "Render an entire site: 1) Find the <Build> tab and hit the ⛏<Build Website> button. 2) On the top menu bar find <Build> and select <Build All>. 3) Find the <Console> tab and run the command rmarkdown::render_site(). 4) Use the shortcut key sequence.  "
+```
+
+```{r}
+#| eval: true
+#| echo: false
+#| fig-height: 6
+
+(slickR(obj = test$path, height = 400, width = "90%", objLinks = NULL) + 
+  slickR::settings(focusOnSelect = TRUE)) %synch%  
+  (slickR(obj = test$info, slideType = 'p') + 
+     slickR::settings(arrows = FALSE, adaptiveHeight = FALSE, dots = TRUE)
+   )
+#for(file in test$path) {
+#  file.copy(file, "../../../public_build/docs/lessons/lesson-3-build-a-basic-site/files/")
+#}
+```
+
+------------------------------------------------------------------------
+
+# Assignments
+
+Now that you are a whiz at building and rendering, please go through the following exercises.  
+
+### [{{< fa book-open >}}]{style="color: steelblue;"} Assignment
+
+Your first task is to remember this phase: 
+
+> **Knit often**. Or if you prefer, **Render often**.
+
+I cannot stress this enough. Whenever you make a change to the YAML header, add a new code chunk, etc., re-knit (or render) your document. **This is very important**. Regular knitting allows you to **a**) see the effects of a change and **b**) track down (troubleshoot) issues more easily. For some documents, this is not practical. For example, if you have an analysis that takes forever to run, knitting every time you make a small change would be wacky. There are ways dealing with issues like this, which we will get to. For now, **Knit often**.
+
+After a successful render, always look at the updated HTML page to make sure it looks the way you want it to.
+
+### Change & render a single page
+
+1\. OK, go ahead and quit RStudio. Now, in the directory Distill created when it built the dummy site, find the file with the `.Rproj` extension. Double click to open. 
+
+2\. OK, change the title and description in the YAML header of the `index.Rmd` file. If the file does not open automatically when you start the project, you can either load it from `Files` tab within the IDE or by going to `File` in the menu bar at the top, selecting `Open File`, and selecting the `index.Rmd`. **Render** the **individual page** using the instructions above and look at the resulting HTML file. Now write a small paragraph in plain text below the code block. Re-knit the page. 
+
+3\. Sweet. Below your text block, add the following code chunk. Re-knit the page. Success? 
+
+```{r}
+#| echo: fenced
+library(ggplot2)
+data(cars)
+qplot(speed, dist, data = cars) + geom_smooth()
+```
+
+If you get an error in the `Render` tab or your page fails to render, first copy the error message, then paste it somewhere in the main body of the `index.Rmd` file, and erase the code chunk you added. Re-knit the page. R error messages can be a bit cryptic. See if you can determine what the problem is. 
+
+### Change & render the entire site
+
+4\. Go into the `_site.yml` file and change the title of the website. Save the file, render the **entire site** using the instructions above, and look at the updated HTML page.  
+
+5\. Find the part in the file where the `navbar` starts. Add another item to the navbar following the formatting exactly. Save the file, render the **entire site**, and look at the updated HTML page.  
+
+### Build a Distill blog
+
+6\. Go back to the section on [building a distill website](#build-a-distill-website) and build a blog instead. Make sure to give it a different name ;) Now compare the default output of the two site types. 
+
+That's all for now. Coming up next we will go through Markdown syntax, incorporating R code, building tables, and creating figure. Thanks for stopping by. 
+
+##  Source Code {.appendix}
+
+The source code for this page can be accessed on GitHub {{< fa brands github size=l >}} by [clicking this link](`r source_code()`). 
+

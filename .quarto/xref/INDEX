@@ -1,0 +1,71 @@
+{
+  "posts/2024-01-01-lesson-1-module-overview/index.qmd": {
+    "index.html": "1234cfd1"
+  },
+  "posts/welcome/index.qmd": {
+    "index.html": "f1ee0338"
+  },
+  "index.qmd": {
+    "index.html": "0f3d7622"
+  },
+  "about.qmd": {
+    "about.html": "6307efa7"
+  },
+  "posts/lesson-1-module-overview/index.qmd": {
+    "index.html": "fecc0505"
+  },
+  "posts/lesson-2-build-your-working-environment/index.qmd": {
+    "index.html": "14895860"
+  },
+  "posts/lesson-3-build-a-basic-site/index.qmd": {
+    "index.html": "1169fa4d"
+  },
+  "posts/lesson-4-markdown-guidebook/index.qmd": {
+    "index.html": "e534f098"
+  },
+  "posts/using-this-site/index.qmd": {
+    "index.html": "8db8ae40"
+  },
+  "posts/lesson-5-markdown-meet-r/index.qmd": {
+    "index.html": "3d8472f6"
+  },
+  "posts/naming-things/index.qmd": {
+    "index.html": "19b4ae7b"
+  },
+  "posts/r-style-guide/index.qmd": {
+    "index.html": "3d6dc2f8"
+  },
+  "posts/mathjax/index.qmd": {
+    "index.html": "a28df4f4"
+  },
+  "docs/lessons/index.qmd": {
+    "index.html": "460f15f5"
+  },
+  "docs/lessons/lesson-1-module-overview/index.qmd": {
+    "index.html": "47c671b9"
+  },
+  "docs/lessons/lesson-2-build-your-working-environment/index.qmd": {
+    "index.html": "1fcebbe3"
+  },
+  "docs/lessons/lesson-3-build-a-basic-site/index.qmd": {
+    "index.html": "ef5dbc4b"
+  },
+  "docs/lessons/lesson-4-markdown-guidebook/index.qmd": {
+    "index.html": "f69ce5c5"
+  },
+  "docs/lessons/lesson-5-markdown-meet-r/index.qmd": {
+    "index.html": "c2648d21"
+  },
+  "docs/resources/bug-reports.qmd": {
+    "bug-reports.html": "70b68b9f"
+  },
+  "docs/resources/index.qmd": {
+    "index.html": "e8c39c07"
+  },
+  "docs/resources/bug-reports/index.qmd": {
+    "index.html": "dec5e53a"
+  },
+  "docs/resources/bug-reports/bug-reports.qmd": {
+    "bug-reports.html": "fcb9892a"
+  }
+}

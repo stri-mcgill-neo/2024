@@ -1,0 +1,110 @@
+project:
+  type: website
+  output-dir: public_build
+  execute-dir: file
+  render:
+    - "*.qmd"
+    - "!public/"
+
+website:
+  title: "Quarto Fieldguide"
+  favicon: "images/favicon_package/favicon.ico"
+  #page-footer: "© Copyright 2024 [metacrobe](https://metacrobe.github.io/) & the STRI-McGill NEO Field Course. Site constructed using [Quarto](https://quarto.org/)."
+  page-footer:
+    left: |
+      Proudly supported by
+      [![](https://www.rstudio.com/assets/img/posit-logo-fullcolor-TM.svg){fig-alt="Posit" width=65px}](https://posit.co)
+    center:
+      - text: "About"
+        href: about.qmd
+      - text: "FAQ"
+        href: docs/faq/index.qmd
+      - text: "License"
+        href: license.qmd
+      - text: "Trademark"
+        href: trademark.qmd
+    right:
+      - icon: twitter
+        href: https://twitter.com/quarto_pub
+        aria-label: Quarto Twitter
+      - icon: github
+        href: https://github.com/quarto-dev/quarto-cli
+        aria-label: Quarto GitHub
+      - icon: rss
+        href: https://quarto.org/docs/blog/index.xml
+        aria-label: Quarto Blog RSS  
+  site-url: https://stri-mcgill-neo.github.io/2024/
+  repo-url: https://github.com/stri-mcgill-neo/2024/
+  repo-actions: [edit, issue]
+  page-navigation: true
+  back-to-top-navigation: false
+  reader-mode: false
+  search:
+    location: navbar
+    type: overlay
+  navbar:
+    logo: "images/icon.png"
+    title: Quarto Fieldguide
+    background: "#004276"
+
+    right:
+      - text: "Lessons"
+        menu:
+          - text: "Main Page"
+            href: "docs/lessons/index.qmd"
+          - text: "Lesson 1"
+            href: "docs/lessons/lesson-1-module-overview/index.qmd"
+          - text: "Lesson 2"
+            href: "docs/lessons/lesson-2-build-your-working-environment/index.qmd"
+          - text: "Lesson 3"
+            href: "docs/lessons/lesson-3-build-a-basic-site/index.qmd"
+          - text: "Lesson 4"
+            href: "docs/lessons/lesson-4-markdown-guidebook/index.qmd"
+          - text: "Lesson 5"
+            href: "docs/lessons/lesson-5-markdown-meet-r/index.qmd"
+      - text: "Lessons"
+        href: docs/lessons/index.qmd
+      - text: "About"
+        href: about.qmd
+    tools:
+      - icon: github
+        menu:
+          - text: Source Code
+            url:  https://github.com/stri-mcgill-neo/2024/
+          - text: Report an Issue
+            url:  https://github.com/stri-mcgill-neo/2024/issues/new
+
+bibliography: assets/cite.bib  
+
+format:
+  html:
+    citations-hover: true
+    footnotes-hover: true
+    self-contained: false
+    smooth-scroll: false
+    theme:
+      light: cosmo
+    fontsize: 1.2em  
+    css: assets/css/styles.css
+    toc: true
+    toc-location: left
+    toc-title: "Contents"
+    toc-depth: 2
+    code-copy: true
+    code-link: true
+    code-overflow: wrap
+    code-tools:
+      source: false
+      toggle: false
+      caption: none
+    grid:
+      sidebar-width: 250px
+      body-width: 900px
+      margin-width: 200px
+    appendix-style: default
+    title-block-banner: '#113858'
+    title-block-style: default
+    #title-block-banner-color: '#414141'
+
+freeze: true
+

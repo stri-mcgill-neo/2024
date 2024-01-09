@@ -1,0 +1,51 @@
+/* Whole document: */
+@import url('https://fonts.googleapis.com/css?family=PT+Sans|PT+Serif|Lato:300|Inconsolata|Source+Sans+Pro|Open+Sans:200,300,400,500|Karla:400,400i,700,700i');
+/********************************/
+/* controls general properties of site*/
+/********************************/
+
+d-article img {
+  margin-bottom: 0px;
+  margin-left: 0px;
+}
+
+.btn-primary {
+    background-color: #0F2E3D;
+    color: #FFFFFF;
+    font-size: 0.8em;
+    padding: 6px 12px;
+    margin: 0 2px 0 2px;
+    border-radius: 2px; /* Rounded edges */
+    border: 0px;
+}
+
+.btn-active {
+    background-color: #004276;
+    color: #FFFFFF;
+    font-size: 0.8em;
+    padding: 6px 12px;
+    margin: 0 2px 0 2px;
+    border-radius: 2px; /* Rounded edges */
+    border: 0px;
+}
+
+.btn-primary:hover {
+    background-color: #004276;
+    color: #FFFFFF;
+    font-size: 0.8em;
+}
+
+.card-title {
+  font-size: 0.8em;
+  font-family:'Open Sans'
+}
+
+.card-footer {
+  font-size: 0.8em;
+  font-family:'Open Sans'
+}
+
+.card-text {
+  font-size: 0.9em;
+  font-family:'Open Sans'
+}

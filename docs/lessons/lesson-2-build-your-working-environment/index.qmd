@@ -1,0 +1,291 @@
+---
+title: "Lesson 2: Build your Working 🧱️ Environment"
+author: "Jarrod J Scott"
+description: |
+  In this lesson we go through the steps building a working environment. Specifically, you will install R and RStudio IDE. You will also install some R packages needed to get started. 
+date: "2024-01-02"
+categories: [news, code, analysis]
+image: "files/feature.png"
+repository_url: "https://github.com/stri-mcgill-neo/2024/"
+reading-time: true
+knitr:
+  opts_chunk: 
+    echo: true
+    eval: false
+    message: false
+    warning: false
+---
+
+```{r}
+#| label: load
+#| eval: true
+#| echo: false
+
+is_html = knitr::is_html_output()
+pacman::p_load(tidyverse, fontawesome, slickR, downlit, 
+               here, scholar, rcrossref, webdriver, rvest, 
+               install = FALSE, update = FALSE)
+
+here::i_am("assets/scripts/functions.R")
+source(here("assets/scripts/functions.R"))
+```
+
+We have a wide range of experience levels in this course, so this lesson is devoted to the basics of setting up your working environment and laying down a good foundation for your projects. I would like to give everyone a chance to get everything installed and to get comfortable with these new tools before we dive in. I realize that some of you may have a lot of this done already. Let's begin.
+
+::: aside
+Estimated reading time: `r round(reading_time(), digits = 0)` minute(s).
+:::
+
+In this lesson you will install the basic tools needed for the course, namely R, R Studio, Quarto and a few R packages. Depending on your interests, you may also want to install some Quarto extensions. At its simplest, R is like the engine of a car while RStudio is like the dashboard. More precisely, R is the programming language that runs computations, while RStudio is an integrated development environment (IDE) that provides an interface with many convenient features and tools. Just as having access to a speedometer, rear view mirrors, and a navigation system makes driving much easier, using RStudio's interface makes using R much easier as well.
+
+As I mentioned, our goals for this course are to build data-driven web products. Each lesson is built around adding functionality to your project. You will start with something simple and, hopefully, by the end have something awesome. Some of you may have more experience with some of these tools than I do. That's great---you can help me and help your classmates. If you think something I say is wrong, please tell me. I would rather do something the right way than be right about the wrong way I am doing something.
+
+The other thing I want to mention is that I assure you this in not a web development course. As you go through this lesson it may *feel* like that is where we are heading, but I promise it is not. Markdown is built on top of HTML and CSS, so you will encounter these lanuguages from time to time. I am interested in functional sites that contain useful content, with maybe a little bit of flair. I have found that even a superficial knowledge of web development and design goes a long way in building good R Markdown sites.
+
+> It is important to follow the next steps in order. You must install R before RStudio or any R packages.
+
+# R
+
+[R](https://www.r-project.org/) is both a software language and an environment for statistical computing and graphics. At some point, you will need to embrace a programming environment to analyze your data and summarize your findings using figures, tables, etc. R is certainly not the only way to do this; however I believe this environment offers a valuable suite of tools for your scientific needs. The benefits of R include: **a**) it is free and open source; **b**) its capabilities are extended through user-created packages; **c**) it has a huge community of users (which means it is well supported); **d**) it is powerful and flexible. And we **need** R to run RStudio.
+
+### [{{< fa edit >}}]{style="color: steelblue;"}  Assignment: Installing R
+
+If you already have R installed please make use it is a relatively up-to-date version. If it is not, please consider reinstalling R.
+
+1.  Download and install R by going to <https://cloud.r-project.org/>.
+
+    -   **Windows**: Click on `Download R for Windows`, then click on `base`, then click on `Download R X.X.X for Windows`.\
+    -   **macOS**: Click on `Download R for (Mac) OS X`, then under **Latest release:** click on `R-X.X.X.pkg`, where R-X.X.X is the version number. For example, the latest version of R as of `r format(Sys.Date(), "%B %d, %Y")` is R-4.1.3. *Note* for MAC users your choice will depend on whether your computer has an Intel or M1 chip.\
+    -   **Linux**: Click on `Download R for Linux` and choose your distribution for more information on installing R for your setup.
+
+2.  Once R is installed, test the install. Open R and type `sessionInfo()`. If you don't get an error, then the install is good.
+
+For more information, please have a look at these instructions for [Installing R and RStudio](https://rstudio-education.github.io/hopr/starting.html).
+
+# RStudio
+
+[RStudio](https://www.rstudio.com/) is an [integrated development environment (IDE)](https://en.wikipedia.org/wiki/Integrated_development_environment) for the R language. Take a moment to familiarize yourself with the idea of an IDE. RStudio is a syntax-highlighting editor that supports **direct code execution**; tools for plotting, history, debugging and workspace management. We will use RStudio to create our web and interactive data products.
+
+### [{{< fa edit >}}]{style="color: steelblue;"} Assignment: Installing RStudio
+
+Again, if you already have RStudio installed please make use it is a relatively up-to-date version. If it is not, please consider reinstalling RStudio.
+
+1)  Go to <https://www.rstudio.com/products/rstudio/download/>.\
+2)  Scroll down and hit the **Download RStudion** button or choose an installer under **All Installers**. Please take note of the OS version required to run the version of RStudio you are downloading. For example, on my computer it says `Requires macOS 10.15+ (64-bit)`, however I am running `macOS 10.14+` so I had to install an older version. If need be, you can find older versions of RStudio [here](https://www.rstudio.com/products/rstudio/older-versions/).\
+3)  Once RStudio is installed, open the application to make sure everything went ok.
+
+For more information, please have a look at these instructions for [Installing R and RStudio](https://rstudio-education.github.io/hopr/starting.html).
+
+# R packages
+
+R packages extend the functionality of R by providing additional functions, data, and documentation. Packages are written by a worldwide community of R users and can be downloaded for free from numerous online repositories. A repository, or repo, is simply a place where packages are located on the web. The three most popular repositories for R packages are:
+
+-   The [Comprehensive R Archive Network, or CRAN](https://cran.r-project.org/web/packages/): the official R package repository, it is a network of ftp and web servers maintained by the R community around the world. The R foundation coordinates CRAN, and for a package to be published here, it needs to pass several tests that ensure the package is following [CRAN policies](https://cran.r-project.org/web/packages/policies.html).
+
+-   [Bioconductor](https://www.bioconductor.org/): this is a topic specific repository, intended for open source bioinformatics software. As with CRAN, Bioconductor has its own submission and review processes, and its community is very active.
+
+-   [Github](https://github.com/) : although this is not R specific, Github is probably the most popular repository for open source projects. Its popularity comes from the unlimited space for open source, the integration with git (a version control software), and its ease to share and collaborate with others. **But be aware that there is no review process associated with GitHub package repos**.
+
+```{r}
+#| eval: true
+#| echo: false
+#| message: false
+ 
+require(webdriver)
+require(rvest)
+
+url <- "https://cran.r-project.org/web/packages/"
+# NEED to run this once, IN R
+# install_phantomjs()
+pjs_instance <- run_phantomjs()
+pjs_session <- Session$new(port = pjs_instance$port)
+# load URL to phantomJS session
+pjs_session$go(url)
+# retrieve the rendered source code of the page
+rendered_source <- pjs_session$getSource()
+# parse the dynamically rendered source code
+html_document <- xml2::read_html(rendered_source)
+
+count_xpath <- '/html/body/div/p[1]'
+count_text <- html_document %>%
+  html_node(xpath = count_xpath) %>%
+  html_text(trim = T)
+
+count_text <- count_text %>% stringr::str_extract("[0-9]+")
+```
+
+```{r}
+#| eval: true
+#| echo: false
+content <- read_html("https://bioconductor.org/packages/3.14/bioc/")
+tables <- content %>% html_table(fill = TRUE)
+tables <- data.frame(tables)
+```
+
+On CRAN alone there are over `r count_text` packages available and an additional `r nrow(tables)` packages on Bioconductor. You will need a few packages to get going with your web project and you will install more as the need arises.
+
+### How to install R packages
+
+Before you install any packages, check to see if the package is already installed. You have a few options. First, open R. If you want to see all the packages you have installed you can run:
+
+```{r}
+#| message: false
+installed.packages()
+```
+
+What about checking for a specific package, like `tmap`? `tmap` is an actively maintained open-source R-library for drawing [thematic maps](https://en.wikipedia.org/wiki/Thematic_map).
+
+```{r}
+#| message: false
+"tmap" %in% rownames(installed.packages())
+```
+
+```
+[1] FALSE
+```
+
+If the output of this command is `TRUE`, you are good to go. If it says `FALSE` then the package is not installed.
+
+Or you can use the `library` command, which loads/attaches installed packages.
+
+```{r}
+#| message: false
+library(tmap)
+```
+
+If you do not get an error that means the package is already installed. However, if you see something like...
+
+```
+Error in library(tmap) : there is no package called ‘tmap’`
+```
+
+...then the package needs to be installed.
+
+> I only use R (instead of RStudio) to install all of my packages. I have found this prevents any conflicts with installation location. Otherwise, I almost exclusively work in RStudio when creating web products.
+
+Let's run through a quick example. I have `r nrow(data.frame(installed.packages()))` R packages installed on my computer but I do not have `tmap`. Turns out that a stable version of `tmap` is available on [CRAN](http://cran.r-project.org/package=tmap) and a development version [GitHub](https://github.com/r-tmap/tmap)[^1]. First, here is how to install the stable version of the `tmap` package.
+
+[^1]: I figured this out by going to the `tmap` [CRAN](http://cran.r-project.org/package=tmap) repo and noticing that a GitHub page was listed under `URL`
+
+```{r}
+#| eval: false
+#| echo: true
+install.packages("tmap")
+```
+
+If all goes well, the beginning of the output should look something like this.
+
+```
+Installing package into ‘/Users/scottjj/Library/R/4.1/library’
+(as ‘lib’ is unspecified)
+also installing the dependencies ‘wk’, ‘geometries’, ‘jsonify’, ‘rapidjsonr’,
+‘sfheaders’, ‘lwgeom’, ‘dichromat’, ‘s2’, ‘geojsonsf’, ‘tmaptools’, ‘sf’,
+‘stars’, ‘units’, ‘widgetframe’, ‘leafsync’, ‘leafem’
+```
+
+In my case, the command is also installing around 15 dependencies---additional packages that `tmap` needs but that are not currently installed.
+
+If instead we wanted to install the development version of [tmap](https://github.com/r-tmap/tmap#development), we need to install the `remotes` package and the run the `install_github` command[^2].
+
+[^2]: The authors state that in order to use the development version of `tmap`, it is recommended to use the development version of `tmaptools` as well
+
+```{r}
+#| echo: true
+#| eval: false
+install.packages("remotes")
+library(remotes)
+install_github("r-tmap/tmaptools")
+install_github("r-tmap/tmap")
+```
+
+```{r}
+#| echo: false
+#| eval: false
+
+library(tmap)
+library(tmaptools)
+
+data("World")
+current.mode <- tmap_mode("view")
+
+#tmap_mode("view")
+na_sub <- World %>% subset(continent == 'North America') %>%
+  dplyr::filter(iso_a3 %in% c("JAM", "NIC", "PAN", "PRI", "SLV", "TTO",
+                       "BHS", "BLZ", "CRI", "CUB", "DOM", "GTM", "HND", "HTI", "MEX"))
+
+sa_sub <- World %>% subset(continent == 'South America') %>%
+  dplyr::filter(iso_a3 %in% c("COL", "ECU", "VEN", "SUR", "GUY"))
+tm_combo <- rbind(na_sub, sa_sub)
+```
+
+Sweet. Let's see what this package can do. Here is a little toy example of an interactive thematic map made with `tmap`.
+
+```{r}
+#| echo: true
+#| eval: true
+#| code_folding: true
+#| fig-align: center
+#| message: false 
+#| warning: false
+
+library(tmap)
+library(tmaptools)
+data("World")
+data(metro)
+current.mode <- tmap_mode("view")
+tm_shape(World) +
+  tm_polygons("HPI", palette = "RdYlGn", midpoint = 35) +
+tm_shape(metro) +
+  tm_bubbles(size = "pop1950") +
+tm_layout(design.mode = TRUE) +
+tm_view(set.view = c(lat = 9, lon = -81, zoom = 3))
+```
+
+### [{{< fa edit >}}]{style="color: steelblue;"} Assignment: Installing R Packages
+
+Once R and RStudio are installed you can install some essential packages. Remember, to install a package from CRAN, call the `library()` command with the package name in quotes `""`, like so: `library("PACKAGE_NAME")`
+
+-   [rmarkdown](https://cran.r-project.org/web/packages/rmarkdown/index.html): [R Markdown](https://rmarkdown.rstudio.com/) is a file format for making dynamic documents with R.
+-   [knitr](https://cran.r-project.org/web/packages/knitr/index.html): A general-purpose package for dynamic report generation in R.
+-   [distill](https://cran.r-project.org/web/packages/distill/index.html): R Markdown format for scientific and technical writing.
+-   [tidyverse](https://cran.r-project.org/web/packages/tidyverse/index.html): [Tidyverse](https://www.tidyverse.org/) is an opinionated collection of almost 30 R packages designed for data science. The [core tidyverse packages](https://www.tidyverse.org/packages/) are [ggplot2](https://ggplot2.tidyverse.org/), [tidyr](https://tidyr.tidyverse.org/), [dplyr](https://dplyr.tidyverse.org/), [readr](https://readr.tidyverse.org/), [tibble](https://tibble.tidyverse.org/), [forcats](https://forcats.tidyverse.org/), [purrr](https://purrr.tidyverse.org/), and [stringr](https://stringr.tidyverse.org/). These packages are loaded automatically when you run `library(tidyverse)`. Other packages in tidyverse need to be loaded separately with their own call to `library()`.
+
+
+> Note. If you are trying to install a package and get an error message containing something like `Timeout of 60 seconds was reached` you need to do the following:
+
+First run `getOption("timeout")` to see what the timeout option is. I think the default is 60 seconds. If so, change it to something larger by running `options(timeout = seconds)` where `seconds` is an integer value. 
+
+```{r}
+getOption("timeout")
+options(timeout = 1000)
+```
+
+This will only change the timeout for the current session. Once you quit R the setting will revert to 60 seconds. 
+
+If you have problems with any of these steps, we will help.
+
+# Getting Started
+
+### [{{< fa edit >}}]{style="color: steelblue;"} Assignment: Get familiar with RStudio
+
+Once you are all set up, open RStudio and start poking around. You can personalize the appearance of the IDE by going to `RStudio` \> `Preferences`. You should also download this [cheat sheet](https://github.com/rstudio/cheatsheets/raw/main/rstudio-ide.pdf) that contains a lot of additional information on the RStudio IDE.
+
+# Concluding Remarks
+
+I wanted to leave you with a few final thoughts. I made my first commit to GitHub a little over three years ago with my first web product, a single page R Markdown HTML document. I am a microbial ecologist, and I was collaborating with four reef ecologists on a project about fish guts and microbes. Anyway, they were having a hard time understanding the microbial data, or I was doing a poor job of explaining it. So I made an HTML page outlining every step of my analysis, including all the code and results. My collaborators were so excited that they started sending me additional material to add to the page.
+
+As the amount of material accumulated, the single page turned into a [project website](https://projectdigest.github.io/). I made a [GitHub repo](https://github.com/projectdigest/web/) for the site and used GitHub Pages to distribute site over the web. I did my best to document everything we did in that study. When we submitted the paper, I included the project website in the Data accessibility section so people could find information not included in the main paper or supplementary material. During the revision process, I was able to quickly address reviewer comments because I could pull material directly from the website without having to dig around in the depths of my computer.
+
+```{r}
+#| eval: true
+#| echo: false
+knitr::include_graphics("files/fish.png")
+```
+
+The site is nothing fancy but the entire project is now archived on the web. I learned by doing and that is my goal for you in this module. I also use R Markdown for presentations, my CV, and professional letters. Along the way, I have gained a lot of experience using other languages like HTML, CSS, and Hugo for my projects.
+
+And that's it for this lesson.
+
+##  Source Code {.appendix}
+
+The source code for this page can be accessed on GitHub {{< fa brands github size=l >}} by [clicking this link](`r source_code()`). 

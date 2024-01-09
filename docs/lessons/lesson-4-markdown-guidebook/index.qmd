@@ -1,0 +1,640 @@
+---
+title: "Lesson 4: Markdown Guidebook"
+author: "Jarrod J Scott"
+description: |
+  A lesson devoted to developing and honing your skills writing Markdown-formatted text. Your assignment is to write text and incorporate Markdown-formatted elements. 
+date: "2024-01-04"
+categories: [news, code, analysis]
+image: "files/feature.png"
+repository_url: "https://github.com/stri-mcgill-neo/2024/"
+reading-time: true
+knitr:
+  opts_chunk: 
+    echo: true
+    eval: false
+    message: false
+    warning: false
+---
+
+
+```{r}
+#| label: load
+#| eval: true
+#| echo: false
+
+is_html = knitr::is_html_output()
+pacman::p_load(tidyverse, fontawesome, slickR, downlit, reactable,
+               here, scholar, rcrossref, webdriver, rvest, magrittr, downlit,
+               install = FALSE, update = FALSE)
+
+here::i_am("assets/scripts/functions.R")
+source(here("assets/scripts/functions.R"))
+```
+
+# Markdown
+
+::: aside
+Estimated reading time: `r round(reading_time(), digits = 0)` minute(s).
+:::
+
+[Markdown](https://www.markdownguide.org/) is a *lightweight markup language with plain-text-formatting syntax*. What this means is that Markdown is easy-to-write using any generic text editor and easy-to-read in its raw form. When you render a page or document, R Studio translates the Markdown syntax to HTML code. I structured this part of the lesson to show you the Markdown way of writing, the HTML equivalent, and what the rendered output looks like. You should take note of the structure of the HTML. There are exceptions, but most HTML elements are wrapped in [tags](https://www.w3schools.com/TAgs/default.asp)---an opening tag at the beginning of the element that looks like this `<tag>` and a closing tag at the end that looks like this `</tag>`. Say you want to write a level 1 header in HTML. You would code it like so: `<h1>`Header 1`</h1>`. Moving on.
+
+# Learning Objectives
+
+In this lesson, you will learn Markdown by writing it. You will learn how to add emphasis to text (e.g., **bold** or *italic*), create ordered and unordered lists, create links and headers, use blockquotes, add line breaks and hyperlink, and more. There are a few things I **will not cover** in this lesson, specifically Markdown formatting for code blocks, inserting images, and creating tables. These will each be covered as part of other lessons.
+
+### [{{< fa edit >}}]{style="color: steelblue;"} Assignment
+
+Your assignment for this lesson is to open up the project you created in the previous lesson and start adding Markdown formatted text. You can use the `index.Rmd`, `about.Rmd`, or create a new page if you're feeling bold. Write whatever you want. If you have field notes, you can totally use that text. If you have nothing, use this [Lorem ipsum generator](https://loremipsum.io/) to make a bunch of plain text that you can add to your page. 
+
+Be sure to check out the [Resources](#resources) section of this lesson for suggested tutorials, references, and markdown editors. If you are a beginner, I suggest using a Markdown editor at first. Markdown editors are a great tool to learn Markdown because you can see a **live preview** of what the rendered text will look like. 
+
+> Your task is to add at least one example of all Markdown elements listed below. 
+
+|             |                   |
+|-------------|-------------------|
+| Headings    | Blockquotes       |
+| Paragraphs  | Links             |
+| Line Breaks | Subscript         |
+| Emphasis    | Superscript       |
+| Lists       | Escape Characters |
+
+I recommend using this lesson more as a reference or guide when you need to figure out out to format some text element.  If you want to actually read through this lesson cover-to-cover, that is up to you. 
+
+> Remember. Knit often!!!
+>
+> Note: I heavily style my work with external CSS and this site is no different. 
+
+So if you render something and it does not look exactly like the examples below, this is likely because of CSS. 
+
+# Elements
+
+## Headings
+
+To create a heading, add number signs (`#`) in front of a word or phrase. The number of signs you use should correspond to the heading level you want. For example, to create a heading level two (\<h2\>), use two number signs (e.g., `## This is a Header` ). There are 6 header levels. Level 1 is the largest and mostly used for titles.
+
+<table class="table table-bordered">
+  <thead class="thead-light">
+    <tr>
+      <th>Markdown</th>
+      <th>HTML</th>
+      <th>Rendered Output</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge"># Header L1</code></td>
+      <td><code class="highlighter-rouge">&lt;h1&gt;Header L1&lt;/h1&gt;</code></td>
+      <td><h1 class="no-anchor" data-toc-skip>Header L1</h1></td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">## Header L2</code></td>
+      <td><code class="highlighter-rouge">&lt;h2&gt;Header L2&lt;/h2&gt;</code></td>
+      <td><h2 class="no-anchor" data-toc-skip>Header L2</h2></td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">### Header L3</code></td>
+      <td><code class="highlighter-rouge">&lt;h3&gt;Header L3&lt;/h3&gt;</code></td>
+      <td><h3 class="no-anchor" data-toc-skip>Header L3</h3></td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">#### Header L4</code></td>
+      <td><code class="highlighter-rouge">&lt;h4&gt;Header L 4&lt;/h4&gt;</code></td>
+      <td><h4 class="no-anchor">Header L4</h4></td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">##### Header L5</code></td>
+      <td><code class="highlighter-rouge">&lt;h5&gt;Header L5&lt;/h5&gt;</code></td>
+      <td><h5 class="no-anchor">Header L5</h5></td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">###### Header L6</code></td>
+      <td><code class="highlighter-rouge">&lt;h6&gt;Header L6&lt;/h6&gt;</code></td>
+      <td><h6 class="no-anchor">Header L6</h6></td>
+    </tr>
+  </tbody>
+</table>
+
+### Heading Best Practices
+
+Applications that use Markdown do not agree on how to handle a missing space between the number signs (`#`) and the heading text. For compatibility, **always put a space between the number signs and the heading name**.
+
+| ✅ Do this                  | ❌ But not this          |
+|----------------------------|---------------------------|
+| </br># A Heading</br></br> | </br>#A Heading</br></br> |
+
+For the same reason, you should also **put blank lines before and after a heading**.
+
+| ✅ Do this                                                                     | ❌ But not this                                                     |
+|--------------------------------------------------------------------------------|---------------------------------------------------------------------|
+| Put a blank line before...</br></br># Heading</br></br>...and after a heading. | Without blank lines, </br># Heading</br>might not render correctly. |
+
+
+## Paragraphs
+
+To create paragraphs, simply use a blank line to separate one or more lines of text.
+
+| Markdown                                                       | HTML                                                                  | Rendered Output                                                |
+|----------------------------------------------------------------|-----------------------------------------------------------------------|----------------------------------------------------------------|
+| `I really like using Markdown.`                                  | \<p>I really like using Markdown.\</p>                                  | I really like using Markdown.                                  |
+| `I think I'll use it to format` </br> `all of my documents from now on. `| \<p>I think I'll use it to format all of my documents from now on.\</p> | I think I'll use it to format all of my documents from now on. |
+
+### Paragraph Best Practices
+
+Unless the paragraph is in a list, do not indent paragraphs with spaces or tabs. If you must indent [try this little hack](https://www.markdownguide.org/hacks/#indent-tab)
+
+| ✅ Do this                                                  | ❌ But not this                                                                  |
+|------------------------------------------------------------|---------------------------------------------------------------------------------|
+| Don't put tabs or spaces <br> in front of your paragraphs. | &nbsp;&nbsp;&nbsp;&nbsp;This can result in unexpected <br> formatting problems. |
+| Keep lines left-aligned like this.                         | &nbsp;&nbsp;&nbsp;&nbsp;Don't add tabs or spaces <br> in front of paragraphs.   |
+
+## Line Breaks
+
+| Markdown                                                      | HTML                                                                    | Rendered Output                                            |
+|---------------------------------------------------------------|-------------------------------------------------------------------------|------------------------------------------------------------|
+| `This is the first line.`<br> `And this is the second line. ` | \<p>This is the first line.\<br> <br> And this is the second line.\</p> | This is the first line.  <br> And this is the second line. |
+
+### Line Break Best Practices
+
+You can use two or more spaces (commonly referred to as *trailing whitespace*) for line breaks in most Markdown applications, but apparently this is a bit controversial. For one it is hard to see trailing whitespace in an editor, and many people (accidentally or intentionally) put two spaces after every sentence. For this reason, you may want to use something other than trailing whitespace for line breaks. If your Markdown application supports HTML, you can use the \<br\> HTML tag^[Note, this is one of those exceptions to the opening/closing HTML tags. To insert single line breaks in a text you simply add \<br\> where you want the break]. For compatibility, use trailing white space or the <br> HTML tag at the end of the line.
+
+## Emphasis
+
+Emphasis can be added by making text **bold** or *italic*. 
+
+### Bold
+
+To bold text, add either two asterisks (`**`) or two underscores (`__`) before and after a word or phrase. To bold the middle of a word for emphasis, add two asterisks (`**`) without spaces around the letters.
+
+| Markdown              | HTML                                | Rendered Output      |
+|-----------------------|-------------------------------------|----------------------|
+| Bold text \**rocks**. | Bold text \<strong>rocks\</strong>. | Bold text **rocks**. |
+| Bold text \__rocks__. | Bold text \<b>rocks\</b>.           | Bold text **rocks**. |
+| Bold\**text**rocks.   | Bold\<b>text\</b> rocks.            | Bold**text**rocks.   |
+
+
+### Bold Best Practices
+
+Markdown applications do not agree on how to handle underscores (`_`) in the middle of a word. For compatibility, use asterisks to bold the middle of a word for emphasis. 
+
+
+| ✅ Do this             | ❌ But not this        |
+|------------------------|-----------------------|
+| Bold\**text**rocks.    | Bold\__text__rocks.   |
+
+### Italic
+
+To italicize text, add one asterisk (`*`) or underscore (`_`) before and after a word or phrase. To italicize the middle of a word for emphasis, add one asterisk (`*`) without spaces around the letters.
+
+| Markdown                        | HTML                                   | Rendered Output                |
+|---------------------------------|----------------------------------------|--------------------------------|
+| Italicized text is \*awesome\*. | Italicized text is \<em>awesome\</em>. | Italicized text is  *awesome*. |
+| Italicized text is \_awesome\_. | Italicized text is \<em>awesome\</em>. | Italicized text is _awesome_.  |
+| Italicized\*text\*isawesome.    | Italicized\<em>text\</em>isawesome.    | Italicized*text*isawesome.     |
+
+### Italic Best Practices
+
+As above, Markdown applications don’t agree on how to handle underscores in the middle of a word. For compatibility, use asterisks to italicize the middle of a word for emphasis.
+
+| ✅ Do this                       | ❌ But not this                  |
+|---------------------------------|---------------------------------|
+| Italicized text is \*awesome\*. | Italicized text is \_awesome\_. |
+
+### Bold and Italic
+
+To emphasize text with **bold** and *italics* at the same time, add three asterisks (`***`) or three underscores (`___`) before and after a word or phrase. To bold and italicize the middle of a word for emphasis, add three asterisks without spaces around the letters.
+
+| Markdown                                   | HTML                                                         | Rendered Output                      |
+|--------------------------------------------|--------------------------------------------------------------|--------------------------------------|
+| This text is \*\*\*really important\*\*\*. | This text is \<em>\<strong>really important\</strong>\</em>. | This text is ***really important***. |
+| This text is \_\_\_really important\_\_\_. | This text is \<em>\<strong>really important\</strong>\</em>. | This text is ___really important___. |
+| This text is \_\_\*really important\*\_\_. | This text is \<em>\<strong>really important\</strong>\</em>. | This text is __*really important*__. |
+| This text is \*\*\_really important\_\*\*. | This text is \<em>\<strong>really important\</strong>\</em>. | This text is **_really important_**. |
+| This textis\*\*\*really\*\*\*important.    | This textis\<em>\<strong>really\</strong>\</em>important.    | This textis***really***important.    |
+
+
+### Bold and Italic Best Practices
+
+For compatibility, use asterisks to bold and italicize the middle of a word for emphasis.
+
+| ✅ Do this                                 | ❌ But not this                      |
+|-----------------------------------------|-----------------------------------------|
+| This textis\*\*\*really\*\*\*important. | This textis\_\_\_really\_\_\_important. |
+
+## Lists
+
+You can organize items into **ordered** and **unordered** lists.
+
+### Ordered Lists
+
+To create an ordered list, add line items with numbers followed by periods. The numbers don’t have to be in numerical order, but if list starts with the number 1 subsequent list items will be rendered in sequential order. In fact, whatever number you start a list with becomes the smallest number in the list.
+
+To write an ordered list in HTML you must enclose each list item in the `<li>` tag and wrap the whole list in the `<ol>` tag.
+
+| Markdown                                                | HTML                                                                                                                      | Rendered Output                                          |
+|---------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------|
+| 1\. First item <br> 2\. Second item <br> 3\. Third item | \<ol> <br> &nbsp; \<li>First item\</li> <br> &nbsp; \<li>Second item\</li> <br> &nbsp; \<li>Third item \</li> <br> \</ol> | 1. First item <br> 2. Second item <br> 3. Third item<br> |
+| 1\. First item <br> 1\. Second item <br> 1\. Third item | \<ol> <br> &nbsp; \<li>First item\</li> <br> &nbsp; \<li>Second item\</li> <br> &nbsp; \<li>Third item \</li> <br> \</ol> | 1. First item <br> 2. Second item <br> 3. Third item<br> |
+| 1\. First item <br> 9\. Second item <br> 2\. Third item | \<ol> <br> &nbsp; \<li>First item\</li> <br> &nbsp; \<li>Second item\</li> <br> &nbsp; \<li>Third item \</li> <br> \</ol> | 1. First item <br> 2. Second item <br> 3. Third item<br> |
+| 5\. First item <br> 1\. Second item <br> 9\. Third item | \<ol> <br> &nbsp; \<li>First item\</li> <br> &nbsp; \<li>Second item\</li> <br> &nbsp; \<li>Third item \</li> <br> \</ol> | 5. First item <br> 6. Second item <br> 7. Third item<br> |
+
+### Ordered List Best Practices
+
+Some markup languages let you use a parenthesis (`)`) as a delimiter (e.g., `1) First item`), but not all Markdown applications support this, so it isn’t a great option from a compatibility perspective. For compatibility, use periods only.
+
+
+| ✅ Do this       | ❌ But not this |
+|-----------------|----------------|
+| 1\. First item  | 1) First item  |
+| 2\. Second item | 2) Second item |
+
+### Unordered Lists
+
+To create an unordered list, add a dash (`-`), an asterisk (`*`), or a plus sign (`+`) in front of line items. 
+
+| Markdown                                          | HTML                                                                                                                      | Rendered Output                                                         |
+|---------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
+| - First item <br> - Second item <br> - Third item | \<ul> <br> &nbsp; \<li>First item\</li> <br> &nbsp; \<li>Second item\</li> <br> &nbsp; \<li>Third item \</li> <br> \</ul> | &#8226; First item <br> &#8226; Second item <br> &#8226; Third item<br> |
+| * First item <br> * Second item <br> * Third item | \<ul> <br> &nbsp; \<li>First item\</li> <br> &nbsp; \<li>Second item\</li> <br> &nbsp; \<li>Third item \</li> <br> \</ul> | &#8226; First item <br> &#8226; Second item <br> &#8226; Third item<br> |
+| + First item <br> + Second item <br> + Third item | \<ul> <br> &nbsp; \<li>First item\</li> <br> &nbsp; \<li>Second item\</li> <br> &nbsp; \<li>Third item \</li> <br> \</ul> | &#8226; First item <br> &#8226; Second item <br> &#8226; Third item<br> |
+
+Indent one or more items to create a nested list.
+
+
+| Markdown                                                                                                  | HTML                                                                                                                                                                                                                                                                               | Rendered Output                                                                                                                             |
+|-----------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
+| - First item <br> - Second item <br> &nbsp; - Indented item <br> &nbsp; - Indented item <br> - Third item | \<ul> <br> &nbsp; \<li>First item\</li> <br> &nbsp; \<li>Second item\</li> <br> &nbsp; &nbsp; \<ul> <br> &nbsp; &nbsp; &nbsp; \<li>Indented item\</li> <br> &nbsp; &nbsp; &nbsp; \<li>Indented item\</li> <br> &nbsp; &nbsp; \</ul> <br> &nbsp; \<li>Third item \</li> <br> \</ul> | &#8226; First item <br> &#8226; Second item <br> &nbsp; &#9702; Indented item <br> &nbsp; &#9702; Indented item <br> &#8226; Third item<br> |
+
+### Unordered List Best Practices
+
+Markdown applications do not agree on how to handle different delimiters in the same list. For compatibility, do not mix and match delimiters in the same list---pick one and stick with it.
+
+| ✅ Do this     | ❌ But not this |
+|---------------|----------------|
+| - First item  | * First item   |
+| - Second item | - Second item  |
+| - Third item  | + Third item   |
+
+### Adding Elements in Lists
+
+To add another element to a list, while preserving the continuity of the list, indent the element four spaces or one tab.
+
+#### Adding a paragraph
+
+```
+1. This is the first list item.
+2. Here is the second list item.
+
+    I need to add another paragraph below the second list item.
+
+3. And here is the third list item.
+```
+
+The rendered output looks like this:
+
+1. This is the first list item.
+2. Here is the second list item.
+
+    I need to add another paragraph below the second list item.
+
+3. And here is the third list item.
+
+#### Adding a blockquote
+
+```
+1. This is the first list item.
+2. Here's the second list item.
+
+     > A blockquote would look great below the second list item.
+
+3. And here's the third list item.
+```
+
+The rendered output looks like this:
+
+1. This is the first list item.
+2. Here's the second list item.
+
+     > A blockquote would look great below the second list item.
+
+3. And here's the third list item.
+
+#### Images
+
+```
+1. Check out the file containing the course badge.
+2. Do you know what the pattern is overlaying the map?
+
+    <img src="../../../images/panama_logo.png" width="250">
+
+3. Let me know what you think it is!
+```
+
+The rendered output looks like this:
+
+1. Check out the file containing the course badge.
+2. Do you know what the pattern is overlaying the map?
+
+    <img src="../../assets/panama_logo.png" width="250">
+
+3. Let me know what you think it is!
+
+
+#### Lists
+
+You can nest an unordered list in an ordered list, or vice versa.
+
+```
+1. First item
+2. Second item
+3. Third item
+    - Indented item
+    - Indented item
+4. Fourth item
+```
+
+The rendered output looks like this:
+
+1. First item
+2. Second item
+3. Third item
+    - Indented item
+    - Indented item
+4. Fourth item
+
+
+
+## Blockquotes
+
+To create a blockquote, add a `>` in front of a paragraph.
+
+```
+> Ants have the most complicated social organization on earth next to humans.
+```
+
+The rendered output looks like this:
+
+> Ants have the most complicated social organization on earth next to humans^[E. O. Wilson said that.].
+
+### Blockquotes with Multiple Paragraphs
+
+```
+> Ants have the most complicated social organization on earth next to humans.
+>
+> When you have seen one ant, one bird, one tree, you have not seen them all.
+```
+
+The rendered output looks like this:
+
+> Ants have the most complicated social organization on earth next to humans.
+> 
+> When you have seen one ant, one bird, one tree, you have not seen them all^[E. O. Wilson said that too.].
+
+
+###  Nested Blockquotes
+
+Blockquotes can be nested by adding a `>>` in front of the paragraph you want to nest.
+
+```
+> Geometry has two great treasures; one is the Theorem of Pythagoras; the other, the division of a line into extreme and mean ratio.
+>
+>> The first we may compare to a measure of gold; the second we may name a precious jewel.
+```
+
+The rendered output looks like this:
+
+> Geometry has two great treasures; one is the Theorem of Pythagoras; the other, the division of a line into extreme and mean ratio.
+>
+>> The first we may compare to a measure of gold; the second we may name a precious jewel^[Johannes Kepler said that.].
+
+### Blockquotes with Other Elements
+
+Blockquotes can contain other Markdown formatted elements. Not all elements can be used---you will need to experiment to see which ones work.
+
+```
+> ### The sequencing data looks great.
+>
+> - The reads are long.
+> - The error rate is low.
+>
+>  Now we are **ready*** analysis.
+```
+
+The rendered output looks like this:
+
+> ### The sequencing data looks great.
+>
+> - The reads are long.
+> - The error rate is low.
+>
+>  Now we are **ready** for analysis.
+
+### Blockquotes Best Practices
+
+As with headers, for compatibility, put blank lines before and after blockquotes.
+
+| ✅ Do this                                                                 | ❌ But not this                                                           |
+|---------------------------------------------------------------------------|--------------------------------------------------------------------------|
+| Put a blank line before...</br></br>> a blockquote</br></br>...and after. | Without blank lines, </br>> a blockquote</br>might not render correctly. |
+
+
+### Horizontal Rules
+
+To create a horizontal rule, use three or more asterisks (`***`), dashes (`---`), or underscores (`___`) on a line by themselves.
+
+```
+***
+
+---
+
+_________________
+
+```
+
+The rendered output of all three looks identical:
+
+***
+
+### Horizontal Rule Best Practices
+
+
+For compatibility, put blank lines before and after horizontal rules.
+
+| ✅ Do this                                                                        | ❌ But not this                                                      |
+|----------------------------------------------------------------------------------|---------------------------------------------------------------------|
+| Put a blank line before...</br></br>---</br></br>...and after a horizontal rule. | Without blank lines, </br>---</br>this would actually be a heading. |
+
+## Links
+
+To create a link, enclose the link text in brackets (`[ ]`), followed immediately by the URL in parentheses (`( )`).
+
+```
+This is a link to awesome [geometric patterns](https://en.wikipedia.org/wiki/Islamic_geometric_patterns) .
+```
+
+And here is the equivalent in HTML. 
+
+```html
+This is a link to awesome <a href="https://en.wikipedia.org/wiki/Islamic_geometric_patterns">link</a> geometric patterns.
+```
+
+The rendered output looks like this:
+
+This is a link to awesome [geometric patterns](https://en.wikipedia.org/wiki/Islamic_geometric_patterns).
+
+### Adding Titles
+
+You can optionally add a title for a link. This will appear as a tooltip when the user hovers over the link. To add a title, enclose it in quotation marks after the URL.
+
+```
+This is a link to awesome [geometric patterns](https://en.wikipedia.org/wiki/Islamic_geometric_patterns "These are called Girih tiles. Incredible.") .
+```
+
+The rendered output looks like this:
+
+This is a link to awesome [geometric patterns](https://en.wikipedia.org/wiki/Islamic_geometric_patterns "These are called Girih tiles. Incredible.") .
+
+
+###  URLs and Email Addresses
+
+To quickly turn a URL or email address into a link, enclose it in angle brackets.
+
+```
+<https://en.wikipedia.org/wiki/Mariano_Rivera>
+<mariano@rivera.com>
+```
+
+The rendered output looks like this:
+
+<https://en.wikipedia.org/wiki/Mariano_Rivera>  
+<mariano@rivera.com>
+
+### Formatting Links
+
+To emphasize links, add asterisks before and after the brackets and parentheses. To denote links as code, add backticks in the brackets.
+
+```
+**[Substituted tryptamines](https://en.wikipedia.org/wiki/Substituted_tryptamine)** are super interesting.  
+This is the *[Markdown Guide](https://www.markdownguide.org)*.
+Want to create an article in Distill? See the help page for the command `r downlit::autolink("distill::create_article")`
+```
+
+The rendered output looks like this:
+
+**[Substituted tryptamines](https://en.wikipedia.org/wiki/Substituted_tryptamine)** are super interesting.  
+This is the *[Markdown Guide](https://www.markdownguide.org)*.  
+Want to create an article in Distill? See the help page for the command `r downlit::autolink("distill::create_article")`
+
+## Subscript
+
+This isn’t common, but some Markdown processors allow you to use subscript to position one or more characters slightly below the normal line of type. To create a subscript, use one tilde symbol (`~`) before and after the characters.
+
+```
+C~12~H~16~N~2~
+```
+
+The rendered output looks like this:
+
+C~12~H~16~N~2~
+
+
+And of course, the HTML equivalent. 
+
+```html
+C<sub>12</sub>H<sub>16</sub>N<sub>2</sub>
+```
+
+## Superscript
+
+Also not common, but some Markdown processors allow you to use superscript to position one or more characters slightly above the normal line of type. To create a superscript, use one caret symbol (`^`) before and after the characters.
+
+```
+z = z^2^ + C
+```
+The rendered output looks like this:
+
+z = z^2^ + C
+
+HTML equivalent. 
+
+```html
+z = z<sup>2</sup> + C
+```
+## Escaping Characters
+
+As you have seen, there are many special characters used to format text in Markdown like the asterick (`*`) and the number or pound sign (`#`). To display a literal character that would otherwise be used to format text in a Markdown document, add a backslash (`\`) in front of the character.
+
+```
+\# Without the backslash, this would be a header.
+```
+
+The rendered output looks like this:
+
+\# Without the backslash, this would be a header.
+
+### Characters You Can Escape
+
+You can use a backslash to escape the following characters.
+
+| Character | Name               |
+|-----------|--------------------|
+| \         | backslash          |
+| `         | backtick           | 
+| *         | asterisk           | 
+| _         | underscore         | 
+| { }       | curly braces       | 
+| [ ]       | brackets           | 
+| < >       | angle brackets     | 
+| ( )       | parentheses        | 
+| #         | pound sign         | 
+| +         | plus sign          | 
+| -         | minus sign (hyphen)| 
+| .         | dot                | 
+| !         | exclamation mark   | 
+| |         | pipe               | 
+
+# Resources
+
+Here are a few resources I recommend to augment your skill development.
+
+* [Basic Markdown Syntax Reference](https://www.markdownguide.org/basic-syntax/) from *[The Markdown Guide](https://www.markdownguide.org/)*, a free and open-source reference guide.
+* [Extended Markdown Syntax Reference](https://www.markdownguide.org/extended-syntax/). Advanced features that build on the basic Markdown syntax. Also from *[The Markdown Guide](https://www.markdownguide.org/)*.
+* [Interactive Markdown Tutorial](https://commonmark.org/help/tutorial/index.html) for beginners. Each lesson contains an  explanation of Markdown syntax. Hit the ***Try it*** button to test your skills and see what your solution looks like when it is rendered. There is also an option to see the HTML equivalent of the Markdown text. This is a nice tutorial.
+* [Markdown Tables Generator](https://www.tablesgenerator.com/markdown_tables). Tired of typing all of those hyphens and pipes?
+* [Character Entity Reference Chart](https://dev.w3.org/html5/html-author/charref) for coding special symblos in Markdown.
+* [Hacks](https://www.markdownguide.org/hacks/#link-targets). Workarounds for things not officially supported by Markdown.
+
+### Markdown Editors
+
+Markdown editors are a great tool to learn Markdown because you can see a **live preview** of what the rendered text will look like. Below I list both  online and desktop Markdown editors. 
+
+#### Markdown Online Editors
+
+Online editors are universally supported across operating systems. Here are a few to get you started. 
+
+* [StackEdit](https://stackedit.io/). In-browser Markdown editor
+* [Dillinger](https://dillinger.io/). "The Last Markdown Editor, Ever."
+* [HackMD](https://hackmd.io/). Scroll down until you see the **Use for free** button.
+* [MarkTwo](https://marktwo.app/). Free, open source progressive web app. It features seamless transition between read and edit mode, snappy performance for large documents, and efficient, continuous, and private syncing via your own Google drive. 
+* [Mark](https://mark.reaper.im/). Simple Web Markdown Editor.
+* [Minimalist Online Markdown Editor](markdown.pioul.fr). The name says it all.
+
+#### Markdown Desktop Editors
+
+I only list free desktop editors here. There are plenty more if you are willing to pony up some cash. Some of these are operating system specific while others are universal. 
+
+* [Abricotine](http://abricotine.brrd.fr/)  Abricotine supports very good instant preview. **Universal**.
+* [MarkText](https://github.com/marktext/marktext). MarkText is very similar to Abricotine, but it's development is much faster than Abricotine's (while isn't really stable yet). **Universal**.
+* [Zettlr](https://www.zettlr.com/). Zettlr ships with a lot of features helpful in writing markdown. It is especially aimed at writing research papers in the arts and humanities (and therefore offers writing aids such as automatic footnote insertion and in-place editing, or a global search). **Universal**.
+* [Znote](https://znote.io/). Znote is a free, elegant program meant to help you write beautifully organized Markdown documents. You can organize your texts, notes, and files even better, using the simplistic left-side widget organizer for smoothly navigating different files. **Universal**.
+* [MarkdownPad](http://markdownpad.com/) and [MarkdownPad 2](http://markdownpad.com/news/2013/introducing-markdownpad-2/) are full-featured Markdown editors for **Windows**.
+* [MacDown](https://macdown.uranusjr.com/) is an open source Markdown editor for **macOS**.
+
+##  Source Code {.appendix}
+
+The source code for this page can be accessed on GitHub {{< fa brands github size=l >}} by [clicking this link](`r source_code()`). 
+
+## Credits {.appendix}
+
+This lesson was modeled (and mostly copied!) from the [Markdown Basic Syntax Guide](https://www.markdownguide.org/basic-syntax/) by
+[Matt Cone](https://www.mattcone.com/) licenced under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).

@@ -1,0 +1,11 @@
+{
+  "listingMap": {
+    "docs/lessons/index.qmd": [
+      "lesson-1-module-overview/index.qmd",
+      "lesson-2-build-your-working-environment/index.qmd",
+      "lesson-3-build-a-basic-site/index.qmd",
+      "lesson-4-markdown-guidebook/index.qmd",
+      "lesson-5-markdown-meet-r/index.qmd"
+    ]
+  }
+}

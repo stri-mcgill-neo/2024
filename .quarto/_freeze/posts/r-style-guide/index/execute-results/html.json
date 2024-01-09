@@ -1,0 +1,14 @@
+{
+  "hash": "06a9dec96ca62c0ec5c0baa9f792d39e",
+  "result": {
+    "markdown": "---\ntitle: \"R style guide\"\nauthor: \"Jarrod J Scott\"\ndescription: |\n  A brief introduction to best practices for styling R code.\ndate: \"2024-01-04\"\ncategories: [news, code, analysis]\nimage: \"files/feature.png\"\nrepository_url: \"https://github.com/stri-mcgill-neo/2024/\"\nreading-time: true\nknitr:\n  opts_chunk: \n    echo: true\n    eval: false\n\n---\n\n::: {.cell file='../../assets/functions.R'}\n\n:::\n\n::: {.cell}\n\n:::\n\n::: {.cell}\n\n:::\n\n\nAs with [file and directory naming](\"_posts/2022-04-21-naming-things/naming-things.html) there is no universally accepted best practices when it comes to naming things in R. \n\n\n\n[The tidyverse style guide](https://style.tidyverse.org/index.html)\n\n\n\n\n\n\n\n\n\n##  Source Code {.appendix}\n\nThe source code for this page can be accessed on GitHub {{< fa brands github size=l >}} by [clicking this link](https://github.com/stri-mcgill-neo/2024/blob/main/posts/r-style-guide/index.qmd). ",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
