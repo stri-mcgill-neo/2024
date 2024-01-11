@@ -106,70 +106,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <span class="navbar-title">Quarto Fieldguide</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-  <span class="navbar-toggler-icon"></span>
-</button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-<li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-lessons" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
- <span class="menu-text">Lessons</span>
-    </a>
-    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-lessons">
-<li>
-    <a class="dropdown-item" href="../../../docs/lessons/index.html" rel="" target="">
- <span class="dropdown-text">Main Page</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../../docs/lessons/lesson-1-module-overview/index.html" rel="" target="">
- <span class="dropdown-text">Lesson 1</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../../docs/lessons/lesson-2-build-your-working-environment/index.html" rel="" target="">
- <span class="dropdown-text">Lesson 2</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../../docs/lessons/lesson-3-build-a-basic-site/index.html" rel="" target="">
- <span class="dropdown-text">Lesson 3</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../../docs/lessons/lesson-4-markdown-guidebook/index.html" rel="" target="">
- <span class="dropdown-text">Lesson 4</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../../docs/lessons/lesson-5-markdown-meet-r/index.html" rel="" target="">
- <span class="dropdown-text">Lesson 5</span></a>
-  </li>  
-    </ul>
-</li>
-  <li class="nav-item">
-    <a class="nav-link" href="../../../docs/lessons/index.html" rel="" target="">
- <span class="menu-text">Lessons</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../../about.html" rel="" target="">
- <span class="menu-text">About</span></a>
-  </li>  
-</ul>
-<div class="quarto-navbar-tools">
+        <div class="quarto-navbar-tools ms-auto">
     <div class="dropdown">
       <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label=""><i class="bi bi-github"></i></a>
       <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="quarto-navigation-tool-dropdown-0">
 <li>
-            <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/stri-mcgill-neo/2024/">
+            <a class="dropdown-item quarto-navbar-tools ms-auto-item" href="https://github.com/stri-mcgill-neo/2024/">
             Source Code
             </a>
           </li>
           <li>
-            <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/stri-mcgill-neo/2024/issues/new">
+            <a class="dropdown-item quarto-navbar-tools ms-auto-item" href="https://github.com/stri-mcgill-neo/2024/issues/new">
             Report an Issue
             </a>
           </li>
       </ul>
 </div>
 </div>
-          </div> <!-- /navcollapse -->
+          <div id="quarto-search" class="" title="Search"></div>
       </div> <!-- /container-fluid -->
     </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full"><div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
@@ -212,15 +166,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto"><nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Contents</h2>
    
-  <ul class="collapse">
+  <ul>
 <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
   <li>
 <a href="#code-chunks" id="toc-code-chunks" class="nav-link" data-scroll-target="#code-chunks">Code Chunks</a>
   <ul class="collapse">
-<li><a href="#code-chunk-anatomy" id="toc-code-chunk-anatomy" class="nav-link" data-scroll-target="#code-chunk-anatomy">Code chunk anatomy</a></li>
+<li>
+<a href="#code-chunk-anatomy" id="toc-code-chunk-anatomy" class="nav-link" data-scroll-target="#code-chunk-anatomy">Code chunk anatomy</a>
+  <ul class="collapse">
+<li><a href="#the-code" id="toc-the-code" class="nav-link" data-scroll-target="#the-code">1. The code</a></li>
+  <li><a href="#delimiters" id="toc-delimiters" class="nav-link" data-scroll-target="#delimiters">2. Delimiters</a></li>
+  <li><a href="#coding-language" id="toc-coding-language" class="nav-link" data-scroll-target="#coding-language">3. Coding Language</a></li>
+  <li><a href="#chunk-name" id="toc-chunk-name" class="nav-link" data-scroll-target="#chunk-name">4. Chunk name</a></li>
+  <li><a href="#chunk-options" id="toc-chunk-options" class="nav-link" data-scroll-target="#chunk-options">5. Chunk Options</a></li>
+  <li><a href="#fa-edit-assignment" id="toc-fa-edit-assignment" class="nav-link" data-scroll-target="#fa-edit-assignment"><span style="color: steelblue;"><i class="fa-solid fa-edit" aria-label="edit"></i></span> Assignment</a></li>
   </ul>
 </li>
-  <li><a href="#inline-r-code" id="toc-inline-r-code" class="nav-link" data-scroll-target="#inline-r-code">Inline R Code</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#inline-r-code" id="toc-inline-r-code" class="nav-link" data-scroll-target="#inline-r-code">Inline R Code</a>
+  <ul class="collapse">
+<li><a href="#fa-edit-assignment-1" id="toc-fa-edit-assignment-1" class="nav-link" data-scroll-target="#fa-edit-assignment-1"><span style="color: steelblue;"><i class="fa-solid fa-edit" aria-label="edit"></i></span> Assignment</a></li>
+  </ul>
+</li>
   <li><a href="#testing-code" id="toc-testing-code" class="nav-link" data-scroll-target="#testing-code">Testing Code</a></li>
   <li>
 <a href="#concluding-remarks" id="toc-concluding-remarks" class="nav-link" data-scroll-target="#concluding-remarks">Concluding Remarks</a>
@@ -321,12 +290,12 @@ Anatomy of a code chunk. The formatting here is strict. Make sure to follow it e
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>total 112
-drwxr-xr-x@  6 rad  staff   192B Sep 16 09:40 .
-drwxr-xr-x@ 10 rad  staff   320B Sep 16 09:39 ..
+drwxr-xr-x@  6 rad  staff   192B Jan 11 07:43 .
+drwxr-xr-x@ 12 rad  staff   384B Jan 11 07:42 ..
 -rw-r--r--@  1 rad  staff   6.0K Sep 16 09:17 .DS_Store
 drwxr-xr-x@  8 rad  staff   256B Sep 15 16:11 files
--rw-r--r--@  1 rad  staff    20K Sep 16 09:40 index.qmd
--rw-r--r--@  1 rad  staff    20K Sep 16 09:40 index.rmarkdown</code></pre>
+-rw-r--r--@  1 rad  staff    20K Jan 10 23:22 index.qmd
+-rw-r--r--@  1 rad  staff    20K Jan 11 07:43 index.rmarkdown</code></pre>
 </div>
 </div>
 <p>By specifying a language, <code>knitr</code> was able to interpret the code and run the commands. And as you can see, I get a printout of the results right in the final document. Though we will mainly use the <code>r</code> language option you may want to explore the functionality of other languages in your own work. OK, back to R.</p>

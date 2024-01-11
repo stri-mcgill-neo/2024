@@ -2,11 +2,11 @@
   {
     "listing": "/docs/lessons/index.html",
     "items": [
-      "/docs/lessons/lesson-5-markdown-meet-r/index.html",
-      "/docs/lessons/lesson-4-markdown-guidebook/index.html",
-      "/docs/lessons/lesson-3-build-a-basic-site/index.html",
-      "/docs/lessons/lesson-2-build-your-working-environment/index.html",
       "/docs/lessons/lesson-1-module-overview/index.html"
     ]
+  },
+  {
+    "listing": "/docs/gallery/index.html",
+    "items": []
   }
 ]
