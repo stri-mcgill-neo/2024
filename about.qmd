@@ -26,5 +26,5 @@ format:
 ---
 
 
-Welcome to the Data Curation/R Markdown module of the STRI-McGill Neotropical field course. This module is meant as a complement for the rest of the curriculum and our main goals here are to: **a**) create interactive, data-driven, web products that capture analytical workflows, raw data, and data outputs; and **b**) hopefully give you the tools, motivation, and inspiration to make your science more accessible, transparent, and reproducible.
+Welcome to the Data Curation/R Markdown module of the STRI-McGill-Isla Secas Neotropical field course. This module is meant as a complement for the rest of the curriculum and our main goals here are to: **a**) create interactive, data-driven, web products that capture analytical workflows, raw data, and data outputs; and **b**) give you the tools, motivation, and inspiration to make your science more accessible, transparent, and reproducible.
 

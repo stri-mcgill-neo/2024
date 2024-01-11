@@ -1,5 +1,8 @@
 {
   "listingMap": {
+    "docs/gallery/index.qmd": [
+      "gallery.yml"
+    ],
     "docs/lessons/index.qmd": [
       "lesson-1-module-overview/index.qmd",
       "lesson-2-build-your-working-environment/index.qmd",

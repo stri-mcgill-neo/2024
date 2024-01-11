@@ -3,7 +3,7 @@ title: "Welcome to the Quarto Fieldguide"
 listing:
   field-display-names:
     title: "Lessons"
-  max-description-length: 300  
+  max-description-length: 1300  
   contents: 
     - "lesson-1-module-overview/index.qmd"
     - "lesson-2-build-your-working-environment/index.qmd"
@@ -15,7 +15,7 @@ listing:
 #    - "docs/tips/naming-things/index.qmd"
     
   fields: [image, date, title, reading-time, description]  
-  sort: "title desc"
+  #sort: "title desc"
   type: default
   categories: false
   sort-ui: true

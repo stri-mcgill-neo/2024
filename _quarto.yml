@@ -47,25 +47,25 @@ website:
     title: Quarto Fieldguide
     background: "#004276"
 
-    right:
-      - text: "Lessons"
-        menu:
-          - text: "Main Page"
-            href: "docs/lessons/index.qmd"
-          - text: "Lesson 1"
-            href: "docs/lessons/lesson-1-module-overview/index.qmd"
-          - text: "Lesson 2"
-            href: "docs/lessons/lesson-2-build-your-working-environment/index.qmd"
-          - text: "Lesson 3"
-            href: "docs/lessons/lesson-3-build-a-basic-site/index.qmd"
-          - text: "Lesson 4"
-            href: "docs/lessons/lesson-4-markdown-guidebook/index.qmd"
-          - text: "Lesson 5"
-            href: "docs/lessons/lesson-5-markdown-meet-r/index.qmd"
-      - text: "Lessons"
-        href: docs/lessons/index.qmd
-      - text: "About"
-        href: about.qmd
+#    right:
+#      - text: "Lessons"
+#        menu:
+#          - text: "Main Page"
+#            href: "docs/lessons/index.qmd"
+#          - text: "Lesson 1"
+#            href: "docs/lessons/lesson-1-module-overview/index.qmd"
+#          - text: "Lesson 2"
+#            href: "docs/lessons/lesson-2-build-your-working-environment/index.qmd"
+#          - text: "Lesson 3"
+#            href: "docs/lessons/lesson-3-build-a-basic-site/index.qmd"
+#          - text: "Lesson 4"
+#            href: "docs/lessons/lesson-4-markdown-guidebook/index.qmd"
+#          - text: "Lesson 5"
+#            href: "docs/lessons/lesson-5-markdown-meet-r/index.qmd"
+#      - text: "Lessons"
+#        href: docs/lessons/index.qmd
+#      - text: "About"
+#        href: about.qmd
     tools:
       - icon: github
         menu:
@@ -84,12 +84,12 @@ format:
     smooth-scroll: false
     theme:
       light: cosmo
-    fontsize: 1.2em  
+#    fontsize: 1.2em  
     css: assets/css/styles.css
     toc: true
     toc-location: left
     toc-title: "Contents"
-    toc-depth: 2
+    toc-depth: 3
     code-copy: true
     code-link: true
     code-overflow: wrap

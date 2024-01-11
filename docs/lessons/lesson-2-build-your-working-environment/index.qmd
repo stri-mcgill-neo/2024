@@ -14,6 +14,7 @@ knitr:
     eval: false
     message: false
     warning: false
+draft: true    
 ---
 
 ```{r}

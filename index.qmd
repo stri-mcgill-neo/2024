@@ -18,7 +18,7 @@ about:
       href: docs/resources/
 #    - icon: github
     - text: Gallery
-      href: https://github.com
+      href: docs/gallery/index.qmd
   image-width: 15em
 format: 
   html:
@@ -26,5 +26,7 @@ format:
 #  image-shape: round
 ---
 
-Welcome to the Data Curation/R Markdown module of the STRI-McGill Neotropical field course. This module is meant as a complement for the rest of the curriculum and our main goals here are to: **a**) create interactive, data-driven, web products that capture analytical workflows, raw data, and data outputs; and **b**) hopefully give you the tools, motivation, and inspiration to make your science more accessible, transparent, and reproducible.
+Welcome to the Data Curation/R Markdown module of the STRI-McGill-Isla Secas Neotropical field course. This module is meant as a complement for the rest of the curriculum and our main goals here are to: **a**) create interactive, data-driven, web products that capture analytical workflows, raw data, and data outputs; and **b**) give you the tools, motivation, and inspiration to make your science more accessible, transparent, and reproducible.
+
+Bienvenido al módulo de Data Curation/R Markdown del curso de campo STRI-McGill-Isla Secas Neotropical. Este módulo pretende ser un complemento para el resto del plan de estudios y nuestros principales objetivos aquí son: **a**) crear productos web interactivos, basados en datos, que capturen flujos de trabajo analíticos, datos brutos y resultados de datos; y **b**) darle las herramientas, la motivación y la inspiración para hacer su ciencia más accesible, transparente y reproducible.
 

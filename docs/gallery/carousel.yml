@@ -1,0 +1,14 @@
+
+- caption: "Create fancy PDF Documents"
+  image: "images/pdf.png"
+  link: "#documents"
+  
+- caption: "Create data-driven presentations"
+  image: "images/presentations.png"
+  link: "#presentations"
+
+- caption: "Publish a collection of workflows as a website"
+  image: "images/websites.png"
+  link: "#websites"
+
+  

@@ -1,0 +1,67 @@
+
+- category: Websites
+  description: |
+    Websites I created for different projects and publications. Each website provides access to raw data and complete analytic workflows. 
+  tiles:
+    - title: Istmobiome
+      subtitle: Grant website. Gordon & Betty Moore Foundation project Divergence of Marine Symbiosis After the Rise of the Isthmus of Panama
+      href: https://istmobiome.rbind.io/
+      code: https://github.com/istmobiome/istmobiome-web
+      thumbnail: images/istmobiome.png
+
+    - title: Hypocolypse
+      subtitle: Publication workflows. Rapid ecosystem-scale consequences of acute deoxygenation on a Caribbean reef.
+      href: https://hypocolypse.github.io/
+      code: https://github.com/hypocolypse/web
+      thumbnail: images/hypocolypse.png
+
+    - title: SWELTR
+      subtitle: Publication workflows. Microbial diversity declines in warmed tropical soil and respiration rise exceed predictions.
+      href: https://sweltr.github.io/high-temp/
+      code: https://github.com/sweltr/high-temp/
+      thumbnail: images/sweltr.png
+
+- category: Presentations
+  description: |
+    Here are a few web-based html presentations I created using R Markdown. 
+  tiles:
+    - title: Cacao Fermentation 
+#      subtitle: HTML presentations
+      href: https://istmobiome.github.io/cacao/talk.html
+      code: https://github.com/istmobiome/istmobiome.github.io/tree/master/cacao
+      thumbnail: images/cacao_fermentation.png
+
+    - title: Rethinking Diversity
+#      subtitle: HTML presentations
+      href: https://istmobiome.github.io/rethink-d/rethink-d.html
+      code: https://github.com/istmobiome/istmobiome.github.io/tree/master/rethink-d
+      thumbnail: images/rethinking_diversity.png
+
+    - title: How the Isthmus of Panama changed the world
+#      subtitle: HTML presentations
+      href: https://istmobiome.github.io/the-isthmus/the-isthmus.html
+      code: https://github.com/istmobiome/istmobiome.github.io/tree/master/the-isthmus
+      thumbnail: images/how_the_isthmus_of_panama_changed_the_world.png
+
+- category: Documents
+  description: |
+    Some examples of pdf documents I created using R Markdown. 
+  tiles:
+    - title: My CV as a PDF
+#      subtitle: HTML presentations
+      href: jarrod-cv.pdf
+      code: https://github.com/istmobiome/istmobiome.github.io/tree/master/jarrod
+      thumbnail: images/cv.png
+  
+    - title: Publication Supplementary data 
+#      subtitle: HTML presentations
+      href: Extended_Data.pdf
+      code: https://github.com/sweltr/high-temp/tree/main/paper/Extended_Data
+      thumbnail: images/ed.png
+
+    - title: Publication Supplementary data 
+#      subtitle: HTML presentations
+      href: Supplementary.pdf
+      code: https://github.com/sweltr/high-temp/tree/main/paper/ESM
+      thumbnail: images/esm.png
+

@@ -23,6 +23,7 @@ lightbox:
   effect: fade
   desc-position: right
   loop: false   
+draft: true  
 ---
 
 ```{r}

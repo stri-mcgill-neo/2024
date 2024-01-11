@@ -67,5 +67,8 @@
   },
   "docs/resources/bug-reports/bug-reports.qmd": {
     "bug-reports.html": "fcb9892a"
+  },
+  "docs/gallery/index.qmd": {
+    "index.html": "c78a8c55"
   }
 }
